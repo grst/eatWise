@@ -95,8 +95,8 @@ class Store {
   @action async checkForOngoingChallenges() {
     const e = (await api.post('/getOngoingChallenge', {
       username: this.username
-    }).data);
-    // {"thisUserWasChallenged": false, "challengedBy": "None"}
+    })).data;
+    // {"thisUserWasChallenged": false, "adversary": "None"}
     set(this.challengeResult, e);
   }
 
@@ -106,7 +106,7 @@ class Store {
       Adversary: this.adversary.username,
     };
   }
-  updatePeriod = 1000; // in ms
+  updatePeriod = 2000; // in ms
 }
 
 const store = new Store();
