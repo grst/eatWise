@@ -50,7 +50,7 @@
   {
     "id": 6,
     "Category": "Cheese",
-    "Name": "Gruyère",
+    "Name": "Gruyere",
     "CO2_Kg": 8.29,
     "CO2_100g": 0.83,
     "iconURL": "6_cheese.png"
@@ -245,7 +245,7 @@
     "Name": "Butter",
     "CO2_Kg": 11.52,
     "CO2_100g": 1.15,
-    "iconURL": "30_butter.png"
+    "iconURL": "30_butterLow.png"
   },
   {
     "id": 31,
@@ -253,7 +253,7 @@
     "Name": "Whole Milk",
     "CO2_Kg": 1.4,
     "CO2_100g": 0.14,
-    "iconURL": "31_wholeLink.png"
+    "iconURL": "31_wholeMilk.png"
   },
   {
     "id": 32,
@@ -261,7 +261,7 @@
     "Name": "Butter Low Fat",
     "CO2_Kg": 23.74,
     "CO2_100g": 2.37,
-    "iconURL": "32_butterLow.png"
+    "iconURL": "30_butterLow.png"
   },
   {
     "id": 33,
@@ -269,7 +269,7 @@
     "Name": "Yoghurt",
     "CO2_Kg": 1.22,
     "CO2_100g": 0.12,
-    "iconURL": "33_yoghurt.png"
+    "iconURL": "32_yoghurt.png"
   },
   {
     "id": 34,
@@ -341,7 +341,7 @@
     "Name": "Red kidney beans",
     "CO2_Kg": 0.78,
     "CO2_100g": 0.08,
-    "iconURL": "43_redKidneyPeas.png"
+    "iconURL": "42_redKidneyPeas.png"
   },
   {
     "id": 43,
@@ -349,7 +349,7 @@
     "Name": "Peas",
     "CO2_Kg": 0.6,
     "CO2_100g": 0.06,
-    "iconURL": "44_peas.png"
+    "iconURL": "43_peas.png"
   },
   {
     "id": 44,
@@ -357,7 +357,7 @@
     "Name": "Chickpeas",
     "CO2_Kg": 0.67,
     "CO2_100g": 0.07,
-    "iconURL": "45_chickPeas.png"
+    "iconURL": "44_chickPeas.png"
   },
   {
     "id": 45,
@@ -365,7 +365,7 @@
     "Name": "Lentils",
     "CO2_Kg": 0.78,
     "CO2_100g": 0.08,
-    "iconURL": "46_lentils.png"
+    "iconURL": "45_lentils.png"
   },
   {
     "id": 46,
@@ -373,7 +373,7 @@
     "Name": "Non-free range eggs",
     "CO2_Kg": 3.94,
     "CO2_100g": 0.39,
-    "iconURL": "47_eggs.png"
+    "iconURL": "46_eggs.png"
   },
   {
     "id": 47,
@@ -381,6 +381,6 @@
     "Name": "Eggs",
     "CO2_Kg": 3.4,
     "CO2_100g": 0.34,
-    "iconURL": "48_eggs.png"
+    "iconURL": "47_eggs.png"
   }
 ]
