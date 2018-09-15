@@ -29,11 +29,9 @@ class UserProfile extends Component {
         <div className="UserProfile">
           <ScoreCard/>
           <div style={{...styles.row, ...styles.username}}>
-            <h3>{store.username}</h3>
+            {store.username} (<Link to='/login'>Logout</Link>)
             </div>
-          <Link to='/login'>
-            <Button variant="outlined">Change User</Button>
-          </Link>
+
         </div>
     );
   }

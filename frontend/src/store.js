@@ -19,6 +19,7 @@ class Store {
   @observable basket = [];
 	@observable username = localStorage.getItem("username", "Sebastian") || "Sebastian";
 	@observable currentScore = 1234;
+	@observable currentCO2 = 34.32;
 	@observable products = normalizedDefaultProducts;
   @observable friends = [
   {

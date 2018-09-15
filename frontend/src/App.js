@@ -13,6 +13,7 @@ import HeaderBar from "./components/HeaderBar";
 import NavigationBar from "./components/NavigationBar";
 
 import Paper from '@material-ui/core/Paper';
+import SupermarketConfirmation from "./components/SupermarketConfirmation";
 
 class App extends Component {
   render() {
@@ -22,17 +23,18 @@ class App extends Component {
         <BrowserRouter>
           <Fragment>
             <HeaderBar />
-            <Paper>
+            {/*<Paper>*/}
              <Switch>
                <Route path='/profile' component={UserProfile} />
                <Route exact path='/' component={ShoppingList} />
                <Route path='/shopping-list' component={ShoppingList} />
+               <Route path='/waiting-for-confirmation' component={SupermarketConfirmation} />
                <Route path='/purchase-summary' component={PurchaseSummary} />
                <Route path='/challenge-a-friend' component={Friends} />
                <Route path='/challenge-result' component={ChallengeResult} />
                <Route path='/login' component={Login} />
              </Switch>
-            </Paper>
+            {/*</Paper>*/}
             {/*<NavigationBar/>*/}
             </Fragment>
         </BrowserRouter>

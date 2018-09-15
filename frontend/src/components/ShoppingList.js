@@ -196,7 +196,7 @@ class ShoppingList extends Component {
   };
 
   onClick = () => {
-    this.props.history.push("/purchase-summary");
+    this.props.history.push("/waiting-for-confirmation");
   }
 
   onSelectChanged = (e) => {

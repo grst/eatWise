@@ -15,8 +15,9 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
-    "typeface-oswald": "0.0.54",
-    "react-select": "^2.0.0"
+    "react-select": "^2.0.0",
+    "react-spinners": "^0.4.5",
+    "typeface-oswald": "0.0.54"
   },
   "scripts": {
     "start": "react-app-rewired start",
