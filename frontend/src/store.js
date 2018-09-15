@@ -21,6 +21,8 @@ class Store {
   @observable basket = [];
 	@observable username = localStorage.getItem("username", "Sebastian") || "Sebastian";
 	@observable user = {};
+	//current adversary of an ongoing challenge
+	@observable adversaryName = null;
   @observable products = [];
   @observable friends = [
   {

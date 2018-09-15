@@ -55,7 +55,8 @@ const Friend = withStyles(styles)(
 class Friends extends Component {
   onClick = (user) => {
     console.log("Selected user: ", user);
-    api.post('/getChallengeState', {"Me": store.username, "Adversary": user});
+    store.adversaryName = user;
+    api.post('/getChallengeState', {"Me": store.username, "Adversary": store.adversaryName});
     this.props.history.push("/waiting-for-challenge-complete");
   }
   componentDidMount() {
