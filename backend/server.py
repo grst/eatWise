@@ -19,7 +19,8 @@ with open('buhlerFoodprint.json') as f:
     productList = json.load(f)
 
 with open('user.json') as f:
-    userList = json.load(f)
+    for user in json.load(f):
+        userList[user['username']] = user
 
 @app.route('/')
 def basic():
@@ -39,7 +40,7 @@ def startChallenge():
 		newUser['id'] = userId
 		userList[username] = newUser
 		return json.dumps({
-			"urrentUser": newUser,
+			"currentUser": newUser,
 			"userList": userList
 		})
 

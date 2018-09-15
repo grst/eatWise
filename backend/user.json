@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "name": "Sebastian",
+    "username": "Sebastian",
     "co2": 0,
     "badges": [
-      
+
     ],
     "points": 0,
     "description": "EcoFighter",
@@ -12,28 +12,28 @@
   },
   {
     "id": 2,
-    "name": "Gregor",
+    "username": "Gregor",
     "description": "Food is my mood.",
     "co2": 0,
     "badges": [
-      
+
     ],
     "points": 0,
     "avatarURL": "/img/avatars/gregor.jpg"
   },
   {
     "id": 3,
-    "name": "Mari",
+    "username": "Mari",
     "description": "Sharing is caring.",
     "avatarURL": "/img/avatars/mari.jpg"
   },
   {
     "id": 4,
-    "name": "Betiana",
+    "username": "Betiana",
     "description": "CheeseSquad",
     "co2": 0,
     "badges": [
-      
+
     ],
     "points": 0,
     "avatarURL": "/img/avatars/betiana.jpg"
