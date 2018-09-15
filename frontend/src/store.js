@@ -4,6 +4,7 @@ import defaultProducts from './products';
 
 function normalizeProducts(products){
   return products.map(p => ({
+    id: p.Name,
     name: p.Name,
     iconURL: p.iconURL,
     co2_kg: p.CO2_KG,
