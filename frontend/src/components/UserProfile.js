@@ -47,7 +47,11 @@ class UserProfile extends Component {
           <div style={{...styles.row, ...styles.username}}>
             {store.username} (<Link to='/login'>Logout</Link>)
             </div>
-
+          {store.challengeResult.thisUserWasChallenged === true &&
+              <div>
+                You are being challenged by {store.challengedBy}.
+              </div>
+          }
         </div>
     );
   }
