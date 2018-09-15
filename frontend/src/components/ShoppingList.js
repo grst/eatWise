@@ -218,11 +218,14 @@ class ShoppingList extends Component {
 
   render() {
     const { classes } = this.props;
+    const options = store.productWithLabels.filter(p => {
+      return this.state.products.filter(p2 => p2.id === p.id).length === 0;
+    });
     return (
       <div className="ShoppingList">
        <Select
             classes={classes}
-            options={store.productWithLabels}
+            options={options}
             components={components}
             value={this.state.single}
             onChange={this.onSelectChanged}
