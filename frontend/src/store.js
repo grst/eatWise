@@ -17,6 +17,7 @@ const normalizedDefaultProducts = normalizeProducts(defaultProducts);
 class Store {
   @observable basket = [];
 	@observable username = localStorage.getItem("username", "Sebastian");
+	@observable currentScore = 1234;
 	@observable products = normalizedDefaultProducts;
 	@observable friends = [];
 	@observable purchase = [];

@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
+import HeaderBar from './HeaderBar'
+import ScoreCard from "./ScoreCard";
 
 const styles = {
   row: {
@@ -18,9 +20,11 @@ const styles = {
     margin: 10,
   },
   bigAvatar: {
-    width: 60,
-    height: 60,
+    width: 128,
+    height: 128,
   },
+  username: {
+  }
 };
 
 @observer
@@ -28,17 +32,23 @@ class UserProfile extends Component {
   render() {
     return (
         <div className="UserProfile">
-          <div className={styles.row}>
+                  <HeaderBar />
+
+          <div style={styles.row}>
             <Avatar
               alt="User1"
               src="/img/user1.png"
-              className={classNames(styles.avatar, styles.bigAvatar)}
+              style={{...styles.avatar, ...styles.bigAvatar}}
             />
           </div>
+          <ScoreCard/>
+          <div style={{...styles.row, ...styles.username}}>
+            <h3>{store.username}</h3>
+            </div>
+          <hr />
           <Link to='/login'>
-            <Button variant="outlined">Change your username</Button>
+            <Button variant="outlined">Change User</Button>
           </Link>
-          <div>Username: {store.username}</div>
           <NavigationBar/>
         </div>
     );
