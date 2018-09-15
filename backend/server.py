@@ -41,10 +41,10 @@ def initUser():
 	userId = len(userList)
 	newUser['id'] = userId
 	userList[username] = newUser
-	return json.dumps(newUser)
-			"currentUser": newUser,
-			"userList": userList
-		})
+	return json.dumps({
+		"currentUser": newUser,
+		"userList": userList
+	})
 
 @app.route('/getProductList/', methods=['GET'])
 def getProductList():
