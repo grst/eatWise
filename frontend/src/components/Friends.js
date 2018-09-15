@@ -9,6 +9,9 @@ class Friends extends Component {
   onClick = () => {
     this.props.history.push("/challenge-result");
   }
+  componentDidMount() {
+    store.pageTitle = "Challenge a friend";
+  }
   render() {
     return (
       <div>

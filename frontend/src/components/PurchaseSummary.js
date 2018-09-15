@@ -9,6 +9,9 @@ class PurchaseSummary extends Component {
   onClick = () => {
     this.props.history.push("/challenge-a-friend");
   }
+  componentDidMount() {
+    store.pageTitle = "Purchase summary";
+  }
   render() {
     return (
       <div className="PurchaseSummary">

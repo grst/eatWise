@@ -10,6 +10,9 @@ class Login extends Component {
   onKeyup = (e) => {
     store.username = e.target.value;
   }
+  componentDidMount() {
+    store.pageTitle = "Change your username";
+  }
   render() {
     return (
       <div className="Login">

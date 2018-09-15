@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react';
 
 import store from '../store'
-import NavigationBar from "./NavigationBar";
-import HeaderBar from "./HeaderBar";
 
 import classNames from 'classnames';
 import Select from 'react-select';
@@ -219,6 +217,10 @@ class ShoppingList extends Component {
     return "No products";
   }
 
+  componentDidMount() {
+    store.pageTitle = "Shop for products";
+  }
+
   render() {
     const { classes } = this.props;
     console.log(this.state);
@@ -229,7 +231,6 @@ class ShoppingList extends Component {
     }));
     return (
       <div className="ShoppingList">
-        <HeaderBar />
         <b>List of products.</b>
 
        <Select
@@ -255,10 +256,7 @@ class ShoppingList extends Component {
           )}
         </List>
 
-
-
         <button onClick={this.onClick}>Buy</button>
-        {/*<NavigationBar/>*/}
       </div>
     );
   }

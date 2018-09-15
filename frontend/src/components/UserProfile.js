@@ -3,12 +3,9 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import store from '../store'
-import NavigationBar from './NavigationBar'
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import HeaderBar from './HeaderBar'
 import ScoreCard from "./ScoreCard";
 
 const styles = {
@@ -29,11 +26,14 @@ const styles = {
 
 @observer
 class UserProfile extends Component {
+
+  componentDidMount() {
+    store.pageTitle = "User profile";
+  }
+
   render() {
     return (
         <div className="UserProfile">
-                  <HeaderBar />
-
           <div style={styles.row}>
             <Avatar
               alt="User1"
@@ -49,7 +49,6 @@ class UserProfile extends Component {
           <Link to='/login'>
             <Button variant="outlined">Change User</Button>
           </Link>
-          {/*<NavigationBar/>*/}
         </div>
     );
   }
