@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './Friends.css';
 
-class App extends Component {
+class Friends extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+      <div className="Friends">
+        <header className="Friends-header">
+          <img src={logo} className="Friends-logo" alt="logo" />
+          <h1 className="Friends-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+        <p className="Friends-intro">
+          To get started, edit <code>src/Friends.js</code> and save to reload.
         </p>
       </div>
     );
   }
 }
 
-export default App;
+export default Friends;
