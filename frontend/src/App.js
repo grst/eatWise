@@ -21,6 +21,7 @@ class App extends Component {
            <Switch>
              <Route path='/profile' component={UserProfile} />
              <Route exact path='/' component={ShoppingList} />
+             <Route path='/shopping-list' component={ShoppingList} />
              <Route path='/purchase-summary' component={PurchaseSummary} />
              <Route path='/challenge-a-friend' component={Friends} />
              <Route path='/challenge-result' component={ChallengeResult} />
