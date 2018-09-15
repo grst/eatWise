@@ -54,7 +54,7 @@ class PendingChallenge extends Component {
   //}
 
   componentDidMount() {
-    store.pageTitle = `${store.adversary.username}'s challenge`;
+    store.pageTitle = `${store.otherPlayer.username}'s challenge`;
     this.interval = setInterval(function() {
       store.checkForOngoingChallenges();
     }, store.updatePeriod);
