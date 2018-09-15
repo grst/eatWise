@@ -34,6 +34,14 @@ const styles = {
     fontSize: 20,
     textAlign: 'center',
   },
+  textBadge: {
+    fontSize: 20,
+    textAlign: 'right',
+    marginRight: 75,
+    marginBottom: -5,
+    fontWeight: 'bold',
+    fontVariant: "small-caps",
+  },
   pos: {
     marginBottom: 12,
   },
@@ -95,20 +103,23 @@ function ScoreCard(props) {
             {props.text1}
           </Typography>
           <Typography className={classes.score} color="textSecondary">
-            {props.score} <span className={classes.scorePoints}>points</span>
+            {Math.round(props.score)} <span className={classes.scorePoints}>points</span>
           </Typography>
           <Typography className={classes.scoreCO2} color="textSecondary">
-            {props.CO2} kg CO2
+            {Math.round(props.CO2*100)/100} kg CO2
           </Typography>
           <Typography className={classes.text2} color="textSecondary">
             {props.text2}
+          </Typography>
+          <Typography className={classes.textBadge} color="textSecondary">
+            {props.badgeText}
           </Typography>
         </CardContent>
         <Avatar
             alt="level"
             src={props.badge}
             className={classes.avatarLevel}
-            childrenClassName={classes.avatarLevelImg}/>
+            childrenClassName={classes.avatarLevelImg} />
         {/*<CardActions>*/}
         {/*<Button size="small">Learn More</Button>*/}
         {/*</CardActions>*/}
