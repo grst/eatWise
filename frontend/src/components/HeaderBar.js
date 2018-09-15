@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { observer } from 'mobx-react';
+import store from '../store'
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -32,6 +34,7 @@ const styles = {
   }
 };
 
+@observer
 class MenuAppBar extends React.Component {
   state = {
     auth: true,
@@ -46,18 +49,21 @@ class MenuAppBar extends React.Component {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
+    const isRoot = this.props.location.pathname === "/";
 
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
             <Link to="/">
-            <IconButton className={classes.menuButton} aria-label="Menu">
-              <BackIcon />
-            </IconButton>
+            { isRoot ||
+              <IconButton className={classes.menuButton} aria-label="Menu">
+                <BackIcon />
+              </IconButton>
+            }
             </Link>
             <Typography variant="title" color="inherit" className={classes.grow}>
-              Eco.li
+              Eco.li - {store.pageTitle}
             </Typography>
             {auth && (
               <div>
@@ -79,4 +85,4 @@ MenuAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MenuAppBar);
+export default withRouter(withStyles(styles)(MenuAppBar));

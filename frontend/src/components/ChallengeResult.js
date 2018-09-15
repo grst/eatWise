@@ -9,6 +9,9 @@ class ChallengeResult extends Component {
   onClick = () => {
     this.props.history.push("/");
   }
+  componentDidMount() {
+    store.pageTitle = "Challenge summary";
+  }
   render() {
     return (
       <div className="ChallengeResult">
