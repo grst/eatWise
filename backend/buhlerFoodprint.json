@@ -1,5 +1,6 @@
 [
   {
+    "id": 0,
     "Category": "Bread",
     "Name": "white bread",
     "CO2_Kg": 0.65,
@@ -8,6 +9,7 @@
     "iconURL": ""
   },
   {
+    "id": 1,
     "Category": "Cereal",
     "Name": "Almonds",
     "CO2_Kg": 2.18,
@@ -16,6 +18,7 @@
     "iconURL": ""
   },
   {
+    "id": 2,
     "Category": "Cereal",
     "Name": "Wheat",
     "CO2_Kg": 0.51,
@@ -24,6 +27,7 @@
     "iconURL": ""
   },
   {
+    "id": 3,
     "Category": "Cereal",
     "Name": "Barley",
     "CO2_Kg": 0.52,
@@ -32,6 +36,7 @@
     "iconURL": ""
   },
   {
+    "id": 4,
     "Category": "Cheese",
     "Name": "Cheese slices",
     "CO2_Kg": 8.29,
@@ -40,6 +45,7 @@
     "iconURL": ""
   },
   {
+    "id": 5,
     "Category": "Cheese",
     "Name": "Cheese spread",
     "CO2_Kg": 6.2,
@@ -48,6 +54,7 @@
     "iconURL": ""
   },
   {
+    "id": 6,
     "Category": "Cheese",
     "Name": "Gruyere",
     "CO2_Kg": 8.29,
@@ -56,6 +63,7 @@
     "iconURL": ""
   },
   {
+    "id": 7,
     "Category": "Cheese",
     "Name": "Smoked cheese",
     "CO2_Kg": 6.2,
@@ -64,6 +72,7 @@
     "iconURL": ""
   },
   {
+    "id": 8,
     "Category": "Dessert",
     "Name": "Chocolate",
     "CO2_Kg": 14.67,
@@ -72,6 +81,7 @@
     "iconURL": ""
   },
   {
+    "id": 9,
     "Category": "Meat",
     "Name": "Beef",
     "CO2_Kg": 27.76,
@@ -80,6 +90,7 @@
     "iconURL": ""
   },
   {
+    "id": 10,
     "Category": "Meat",
     "Name": "Chicken",
     "CO2_Kg": 6.82,
@@ -88,6 +99,7 @@
     "iconURL": ""
   },
   {
+    "id": 11,
     "Category": "Meat",
     "Name": "Dried Beef",
     "CO2_Kg": 27.76,
@@ -96,6 +108,7 @@
     "iconURL": ""
   },
   {
+    "id": 12,
     "Category": "Meat",
     "Name": "Ham",
     "CO2_Kg": 10.76,
@@ -104,6 +117,7 @@
     "iconURL": ""
   },
   {
+    "id": 13,
     "Category": "Meat",
     "Name": "Pancetta",
     "CO2_Kg": 10.76,
@@ -112,6 +126,7 @@
     "iconURL": ""
   },
   {
+    "id": 14,
     "Category": "Meat",
     "Name": "Pork",
     "CO2_Kg": 10.76,
@@ -120,6 +135,7 @@
     "iconURL": ""
   },
   {
+    "id": 15,
     "Category": "Meat",
     "Name": "Pork sausages",
     "CO2_Kg": 10.76,
@@ -128,6 +144,7 @@
     "iconURL": ""
   },
   {
+    "id": 16,
     "Category": "Meat",
     "Name": "Sliced beef",
     "CO2_Kg": 27.76,
@@ -136,6 +153,7 @@
     "iconURL": ""
   },
   {
+    "id": 17,
     "Category": "Meat",
     "Name": "Sliced chicken",
     "CO2_Kg": 6.8,
@@ -144,6 +162,7 @@
     "iconURL": ""
   },
   {
+    "id": 18,
     "Category": "Meat",
     "Name": "Tofu",
     "CO2_Kg": 3.23,
@@ -152,6 +171,7 @@
     "iconURL": ""
   },
   {
+    "id": 19,
     "Category": "Meat",
     "Name": "Vegetarian salami",
     "CO2_Kg": 0.19,
@@ -160,6 +180,7 @@
     "iconURL": ""
   },
   {
+    "id": 20,
     "Category": "Meat",
     "Name": "Lamb",
     "CO2_Kg": 25.44,
@@ -168,6 +189,7 @@
     "iconURL": ""
   },
   {
+    "id": 21,
     "Category": "Meat",
     "Name": "Turkey",
     "CO2_Kg": 5.9,
@@ -176,6 +198,7 @@
     "iconURL": ""
   },
   {
+    "id": 22,
     "Category": "Meat",
     "Name": "Rabbit",
     "CO2_Kg": 3.61,
@@ -184,6 +207,7 @@
     "iconURL": ""
   },
   {
+    "id": 23,
     "Category": "Meat",
     "Name": "Cod",
     "CO2_Kg": 3.49,
@@ -192,6 +216,7 @@
     "iconURL": ""
   },
   {
+    "id": 24,
     "Category": "Meat",
     "Name": "Insect",
     "CO2_Kg": 2.3,
@@ -200,6 +225,7 @@
     "iconURL": ""
   },
   {
+    "id": 25,
     "Category": "Milk",
     "Name": "Almond milk",
     "CO2_Kg": 1.09,
@@ -208,6 +234,7 @@
     "iconURL": ""
   },
   {
+    "id": 26,
     "Category": "Milk",
     "Name": "Chocolate milk",
     "CO2_Kg": 4.65,
@@ -216,6 +243,7 @@
     "iconURL": ""
   },
   {
+    "id": 27,
     "Category": "Milk",
     "Name": "Low fat organic milk",
     "CO2_Kg": 1.11,
@@ -224,6 +252,7 @@
     "iconURL": ""
   },
   {
+    "id": 28,
     "Category": "Milk",
     "Name": "Rice milk",
     "CO2_Kg": 0.26,
@@ -232,6 +261,7 @@
     "iconURL": ""
   },
   {
+    "id": 29,
     "Category": "Milk",
     "Name": "UHT milk",
     "CO2_Kg": 1.31,
@@ -240,6 +270,7 @@
     "iconURL": ""
   },
   {
+    "id": 30,
     "Category": "Milk",
     "Name": "Butter",
     "CO2_Kg": 11.52,
@@ -248,6 +279,7 @@
     "iconURL": ""
   },
   {
+    "id": 31,
     "Category": "Milk",
     "Name": "Whole Milk",
     "CO2_Kg": 1.4,
@@ -256,6 +288,7 @@
     "iconURL": ""
   },
   {
+    "id": 32,
     "Category": "Milk",
     "Name": "butter",
     "CO2_Kg": 23.74,
@@ -264,6 +297,7 @@
     "iconURL": ""
   },
   {
+    "id": 33,
     "Category": "Milk",
     "Name": "yoghurt",
     "CO2_Kg": 1.22,
@@ -272,6 +306,7 @@
     "iconURL": ""
   },
   {
+    "id": 34,
     "Category": "Pasta",
     "Name": "Dry Pasta",
     "CO2_Kg": 1.49,
@@ -280,6 +315,7 @@
     "iconURL": ""
   },
   {
+    "id": 35,
     "Category": "Pasta",
     "Name": "Fresh ravioli with meat",
     "CO2_Kg": 10.25,
@@ -288,6 +324,7 @@
     "iconURL": ""
   },
   {
+    "id": 36,
     "Category": "Pasta",
     "Name": "Fresh ravioli with spinach and ricotta",
     "CO2_Kg": 3.06,
@@ -296,6 +333,7 @@
     "iconURL": ""
   },
   {
+    "id": 37,
     "Category": "Pasta",
     "Name": "Risotto rice",
     "CO2_Kg": 1.03,
@@ -304,6 +342,7 @@
     "iconURL": ""
   },
   {
+    "id": 38,
     "Category": "Pasta",
     "Name": "Spaghetti Carbonara pre-made meal",
     "CO2_Kg": 3.44,
@@ -312,6 +351,7 @@
     "iconURL": ""
   },
   {
+    "id": 39,
     "Category": "Pasta",
     "Name": "Wholegrain dry pasta",
     "CO2_Kg": 1.49,
@@ -320,6 +360,7 @@
     "iconURL": ""
   },
   {
+    "id": 40,
     "Category": "Pasta",
     "Name": "noodles",
     "CO2_Kg": 0.9,
@@ -328,6 +369,7 @@
     "iconURL": ""
   },
   {
+    "id": 41,
     "Category": "Vegetable",
     "Name": "Corn",
     "CO2_Kg": 0.19,
@@ -336,6 +378,7 @@
     "iconURL": ""
   },
   {
+    "id": 42,
     "Category": "Vegetable",
     "Name": "Quorn",
     "CO2_Kg": 0.19,
@@ -344,6 +387,7 @@
     "iconURL": ""
   },
   {
+    "id": 43,
     "Category": "Vegetable",
     "Name": "Red kidney beans",
     "CO2_Kg": 0.78,
@@ -352,6 +396,7 @@
     "iconURL": ""
   },
   {
+    "id": 44,
     "Category": "Vegetable",
     "Name": "Peas",
     "CO2_Kg": 0.6,
@@ -360,6 +405,7 @@
     "iconURL": ""
   },
   {
+    "id": 45,
     "Category": "Vegetable",
     "Name": "Chickpeas",
     "CO2_Kg": 0.67,
@@ -368,6 +414,7 @@
     "iconURL": ""
   },
   {
+    "id": 46,
     "Category": "Vegetables",
     "Name": "Lentils",
     "CO2_Kg": 0.78,
@@ -376,6 +423,7 @@
     "iconURL": ""
   },
   {
+    "id": 47,
     "Category": "Vegetables",
     "Name": "Non-free range eggs",
     "CO2_Kg": 3.94,
@@ -384,6 +432,7 @@
     "iconURL": ""
   },
   {
+    "id": 48,
     "Category": "Vegetables",
     "Name": "Eggs",
     "CO2_Kg": 3.4,
