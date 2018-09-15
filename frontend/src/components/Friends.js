@@ -80,8 +80,9 @@ class Friends extends Component {
         { filteredUsers.length > 0 &&
         <List dense={false}>
           { _.sortBy(filteredUsers, [function(x) {return(-x.points)}]).map(u =>
-            <Friend user={u} key={u.id} onClick={this.onClick.bind(this, u)}
-                    enabled={u.id !== store.user.id} />
+            <Friend user={u} key={u.id}
+                onClick={this.onClick.bind(this, u)}
+                enabled={u.id !== store.user.id} />
           )}
         </List>
         }

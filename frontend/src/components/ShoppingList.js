@@ -235,7 +235,7 @@ class ShoppingList extends Component {
         <br/>
         <List dense={false}>
           {this.state.products.map(p =>
-            <ListItem key={p.id}>
+            <ListItem key={p.id} className="animated slideInUp">
               <ProductItem product={p} />
               <ListItemSecondaryAction onClick={this.onDelete.bind(this, p)}>
                 <IconButton aria-label="Delete">

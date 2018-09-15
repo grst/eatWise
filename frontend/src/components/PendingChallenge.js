@@ -77,7 +77,7 @@ class PendingChallenge extends Component {
 
   render() {
     const { classes } = this.props;
-    const username = store.adversary.username;
+    const username = store.otherPlayer;
     const size = document.body.offsetWidth * 0.2;
     return (
         <div className="PendingChallenge">
