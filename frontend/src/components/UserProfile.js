@@ -69,7 +69,7 @@ class UserProfile extends Component {
 
   render() {
     const classes = this.props.classes;
-    const challengedBy = store.challengeResult ? (store.challengeResult.adversary || {}) : {};
+    const challengedBy = store.challengeResult ? (store.challengeResult.playerOne || {}) : {};
     const challengedByName = challengedBy.username;
     const hasDialogOpened = store.hasChallenge && !store.isPlayerOne && !this.state.hasDeclined;
     // const badge = "foo"
