@@ -6,28 +6,33 @@ import api from './api'
 import {values} from 'lodash';
 
 function normalizeProducts(products){
-  return products.map(p => ({
-    id: p.Name,
-    name: p.Name,
-    iconURL: p.iconURL,
-    co2_kg: p.CO2_KG,
-    co2_100g: Math.round(p.CO2_100g * 1000) / 1000,
-    category: p.Category,
-    points: Math.round(p.Points * 10) / 10,
-  }));
+  return products.map(function(p){
+    const obj = {
+      id: p.id,
+      name: p.Name,
+      iconURL: p.iconURL,
+      co2_kg: p.CO2_KG,
+      co2_100g: Math.round(p.CO2_100g * 1000) / 1000,
+      category: p.Category,
+    };
+    if (p.Quantity !== undefined) {
+      obj.quantity = p.Quantity;
+    }
+    return obj;
+  });
 }
 
 
 class Store {
-  @observable basket = [];
 	@observable username = localStorage.getItem("username", "Sebastian") || "Sebastian";
 	@observable user = {};
-	//current adversary of an ongoing challenge
-	@observable adversaryName = null;
   @observable products = [];
   @observable users = [];
 
-	@observable purchase = JSON.parse(localStorage.getItem("purchase", "[]")) || [];
+	@observable purchase = JSON.parse(localStorage.getItem("purchase", "{}")) || {};
+
+	//current adversary of an ongoing challenge
+	@observable adversary = {};
   @observable challengeResult = {
     status: "lost",
   };
@@ -61,6 +66,29 @@ class Store {
   }
 
   isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
+  @action async buyProducts(products) {
+    const data = (await api.post("/buyProducts", {
+      username: this.user.username,
+      products: products.map(p => p.id),
+    })).data;
+    runInAction(() => {
+      set(this.purchase, {
+        boughtItems: normalizeProducts(data.BoughtItems),
+        basketPoints: data.BasketPoints,
+        basketCO2: data.BasketCO2,
+      });
+    });
+  }
+
+  @action challengeFriend(friend) {
+    console.log("Starting challenge with: ", friend.username);
+    set(this.adversary, friend);
+    api.post('/startChallenge', {
+      Me: this.username,
+      Adversary: friend.username,
+    });
+  }
 }
 
 const store = new Store();
@@ -69,17 +97,17 @@ const store = new Store();
 observe(store, "username", () => {
   localStorage.setItem("username", store.username);
 });
-observe(store, "purchase", () => {
-  localStorage.setItem("purchase", JSON.stringify(store.purchase));
+observe(store.purchase, () => {
+  localStorage.setItem("purchase", JSON.stringify(toJS(store.purchase)));
 });
 observe(store, "pageTitle", () => {
   document.title = store.pageTitle;
 });
 
 // for debugging
-//autorun(() => {
-  //console.log("user", toJS(store.user));
-//});
+autorun(() => {
+  console.log("purchase.watch:", toJS(store.purchase));
+});
 // always keep the current list of all products in memory
 store.fetchProductList();
 store.fetchUserDetails();

@@ -54,9 +54,7 @@ const Friend = withStyles(styles)(
 @observer
 class Friends extends Component {
   onClick = (user) => {
-    console.log("Selected user: ", user);
-    store.adversaryName = user;
-    api.post('/startChallenge', {"Me": store.username, "Adversary": store.adversaryName});
+    store.challengeFriend(user);
     this.props.history.push("/waiting-for-challenge-complete");
   }
   componentDidMount() {

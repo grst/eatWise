@@ -31,11 +31,11 @@ class UserProfile extends Component {
     return (
         <div className="UserProfile">
           <ScoreCard user={store.username}
-                     score={store.user.points}
+              score={Math.round(store.user.points * 10) / 10}
                      avatar={avatar}
                      badge={badge}
-                     CO2={store.user.co2}
-                     text1="Your Score: "/>
+              CO2={store.user.co2}
+              text1="Your Score: "/>
           <div style={{...styles.row, ...styles.username}}>
             {store.username} (<Link to='/login'>Logout</Link>)
             </div>

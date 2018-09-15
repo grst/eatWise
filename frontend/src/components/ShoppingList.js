@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react';
 
+import api from '../api'
 import store from '../store'
 
 import classNames from 'classnames';
@@ -217,10 +218,10 @@ class ShoppingList extends Component {
     store.pageTitle = "Plan your Shopping List";
   }
 
-  onBuy = () => {
-    store.purchase = this.state.products;
+  onBuy = async () => {
     // TODO: send request here
     this.props.history.push("/waiting-for-confirmation");
+    await store.buyProducts(this.state.products);
   };
 
   render() {
@@ -251,11 +252,11 @@ class ShoppingList extends Component {
           )}
         </List>
 
-        <div class={classes.checkoutBar}>
-          <div class={classes.forecast}>
+        <div className={classes.checkoutBar}>
+          <div className={classes.forecast}>
             Forecast: {forecastedPoints} Ecli points
           </div>
-          <Button variant="outlined" onClick={this.onBuy}>Buy</Button>
+          <Button variant="outlined" disabled={this.state.products.length === 0} onClick={this.onBuy}>Buy</Button>
         </div>
       </div>
     );
