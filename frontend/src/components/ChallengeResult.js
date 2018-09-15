@@ -16,18 +16,27 @@ import store from '../store'
 const badgeStyles = {
   badge: {
     fontSize: 18,
+  },
+  img: {
+    display: "block",
+    height: 35,
+    width: 35,
   }
 };
 
-const UserBadge = withStyles(badgeStyles)(function ({badge, classes}) {
+const UserBadge = withStyles(badgeStyles)(function ({badge, classes, className}) {
+  const badgeURL = "/img/badges/" + badge + ".png";
+      //<Typography className={classes.badge}>
+        //{badge}
+      //</Typography>
   return (
-      <Typography className={classes.badge}>
-        {badge}
-      </Typography>
+    <div className={className}>
+      <img src={badgeURL} className={classes.img} />
+    </div>
   );
 });
 
-const userStyles = {
+const userStyles = theme => ({
   user: {
     padding: "10px",
   },
@@ -53,16 +62,19 @@ const userStyles = {
     top: 100,
     right: 5,
     fontSize: 16,
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
+    backgroundColor: theme.palette.grey[300],
   },
-};
+});
 
 const User = withStyles(userStyles)(function ({user, classes, name}) {
   return (
     <div className={classes.user}>
       <Badge color="primary"
-        badgeContent={user.points}
+        badgeContent={
+        (<UserBadge badge={user.badges[0]} />
+        )}
         classes={{badge: classes.badge}}>
         <Avatar
             alt="level"
@@ -86,9 +98,6 @@ const User = withStyles(userStyles)(function ({user, classes, name}) {
         {user.co2} kg
       </Typography>
 
-      {user.badges.map(badge => (
-        <UserBadge badge={badge} key={badge} />
-      ))}
     </div>
   );
 });
@@ -165,7 +174,6 @@ class ChallengeResult extends Component {
               name={store.challengeResult.adversary.username}
             />
           </div>
-          <br/>
           <br/>
           <Typography className={classes.quoteText}>
             {quote}
