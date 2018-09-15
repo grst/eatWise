@@ -1,4 +1,4 @@
-import mobx, {action, autorun, computed, observable, observe, runInAction, set} from 'mobx';
+import mobx, {action, autorun, computed, observable, observe, runInAction, set, toJS} from 'mobx';
 
 //mobx.configure({ enforceActions: true }) // don't allow state modifications outside actions
 
@@ -78,7 +78,7 @@ observe(store, "pageTitle", () => {
 
 // for debugging
 //autorun(() => {
-  //console.log("user", store.user);
+  //console.log("user", toJS(store.user));
 //});
 // always keep the current list of all products in memory
 store.fetchProductList();

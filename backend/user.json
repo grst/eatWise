@@ -2,11 +2,11 @@
   {
     "id": 0,
     "username": "Sebastian",
-    "co2": 0,
+    "co2": 4,
     "badges": [
 
     ],
-    "points": 0,
+    "points": 10,
     "description": "EcoFighter",
     "avatarURL": "/img/avatars/sebastian.jpg"
   },
