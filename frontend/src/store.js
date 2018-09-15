@@ -1,6 +1,7 @@
 import {observable, observe} from 'mobx';
 
 import defaultProducts from './products';
+import api from './api'
 
 function normalizeProducts(products){
   return products.map(p => ({
@@ -14,6 +15,11 @@ function normalizeProducts(products){
 }
 
 const normalizedDefaultProducts = normalizeProducts(defaultProducts);
+
+api.get("/getProductList").then(e => {
+  console.log("foo", e);
+});
+
 
 class Store {
   @observable basket = [];

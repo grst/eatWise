@@ -7,15 +7,19 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
 import store from '../store'
 import {withStyles} from "@material-ui/core";
+import queryString from 'query-string'
 
 const styles = {
   loader: {
-    margin: '0 auto',
   },
   sweetLoading: {
+    margin: '0 auto',
     position: 'relative',
     height: 200,
     width: 200
+  },
+  mainDiv: {
+    textAlign: "center",
   }
 };
 
@@ -28,19 +32,23 @@ class SupermarketConfirmation extends React.Component {
   }
 
   componentDidMount() {
-    store.pageTitle = "Waiting";
-    return;
-    setTimeout(() => {
-      this.props.history.push("/purchase-summary");
-    }, 10 * 1e3);
+    store.pageTitle = "Waiting for confirmation";
+    const query = queryString.parse(this.props.location.search);
+    // just check if set for the sake of simplicity
+    if (!query.skipWaiting) {
+      setTimeout(() => {
+        this.props.history.push("/purchase-summary");
+      }, 10 * 1e3);
+    }
   }
 
   render() {
     const { classes } = this.props;
 
     return (
-        <div>
-          <h3>Waiting for confirmation by Supermarket...</h3>
+        <div className={classes.mainDiv}>
+          <h3>Contacting your supermarket.</h3>
+          <br />
           <div className={classes.sweetLoading}>
             <ClimbingBoxLoader
                 className={classes.loader}
