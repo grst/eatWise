@@ -24,21 +24,29 @@ class PurchaseSummary extends Component {
     store.pageTitle = "Purchase summary";
   }
   render() {
-        //{store.purchase.map(e }
     const totalPoints = 2;
     return (
-      <div className="PurchaseSummary">
-          {store.purchase.map(p =>
-            <ListItem key={p.id}>
-              <ProductItem product={p} />
-            </ListItem>
-          )}
+      <div>
+      {store.purchase && store.purchase["boughtItems"] &&
+        <div className="PurchaseSummary">
+            {store.purchase.boughtItems.map(p =>
+              <ListItem key={p.name}>
+                <ProductItem product={p} />
+                <div>
+                  {p.quantity} g
+                </div>
+              </ListItem>
+            )}
 
-        <br/>
-        Total points: {totalPoints}
-        <br/>
+          <br/>
+          Total points: {store.purchase.basketPoints}
+          <br/>
+          Total CO2: {store.purchase.basketCO2}
+          <br/>
 
-        <Button variant="outlined" onClick={this.onClick}>Challenge a friend</Button>
+          <Button variant="outlined" onClick={this.onClick}>Challenge a friend</Button>
+        </div>
+      }
       </div>
     );
   }

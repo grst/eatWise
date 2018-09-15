@@ -60,11 +60,10 @@ def calculateSum():
 	content = request.json
 	boughtItems = []
 	username = content['username']
-	products = content['products']
+	products = content['products'] # simple list of array indices (aka ids)
 
-	for i in range(0, len(products)):
-		ident = products[i]
-		product = productList[ident]
+	for ident in products:
+		product = productList[int(ident)]
 		qty = randint(100,3000)
 		newItem = {}
 		newItem['Name'] = product['Name']

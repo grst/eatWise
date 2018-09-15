@@ -7,9 +7,29 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import FolderIcon from '@material-ui/icons/Folder';
+import chroma from 'chroma-js';
+
+const RdGreen = chroma.scale(['#33ff00','#aa0000'])
+    .mode('lch').colors(21);
+
+function valToColor(val) {
+  val = val * 10;
+  if(val > 20) val = 20;
+  val = Math.round(val);
+  const col = RdGreen[val];
+  return(col);
+}
 
 function ProductItem(props) {
   const p = props.product;
+
+  const styles = {
+    item: {
+      backgroundColor: valToColor(p.co2_100g),
+      marginRight: 22
+    }
+  };
+
   return <Fragment>
     <ListItemAvatar>
       <Avatar>
@@ -18,8 +38,9 @@ function ProductItem(props) {
     </ListItemAvatar>
     <ListItemText
       primary={p.name}
-      secondary={`${p.points} Elis (${p.co2_100g} CO2 / 100g)`}
+      secondary={`${p.co2_100g} kg of CO2 per 100g`}
     />
+    <Avatar style={styles.item}></Avatar>
   </Fragment>
 }
 export default ProductItem;

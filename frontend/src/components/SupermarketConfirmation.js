@@ -41,6 +41,7 @@ class SupermarketConfirmation extends React.Component {
         this.props.history.push("/purchase-summary");
       }, timeoutTime);
     }
+    // TODO: only redirect if response from server has been received
   }
 
   render() {
