@@ -27,7 +27,11 @@ class UserProfile extends Component {
   render() {
     return (
         <div className="UserProfile">
-          <ScoreCard/>
+          <ScoreCard user={store.username}
+                     score={store.currentScore}
+                     avatar='/img/user1.png'
+                     CO2={store.currentCO2}
+                     text1="Your Score: "/>
           <div style={{...styles.row, ...styles.username}}>
             {store.username} (<Link to='/login'>Logout</Link>)
             </div>

@@ -26,8 +26,12 @@ const styles = {
   },
   title: {
     marginBottom: 16,
-    fontSize: 14,
+    fontSize: 20,
     marginTop: -100,
+    textAlign: 'center',
+  },
+  text2: {
+    fontSize: 20,
     textAlign: 'center',
   },
   pos: {
@@ -66,7 +70,9 @@ const styles = {
   scoreCO2: {
     color: '#777',
     fontSize: 24,
-    textAlign: 'left'
+    textAlign: 'center',
+    marginTop: -22,
+    marginBottom: 40,
   }
 };
 
@@ -78,18 +84,21 @@ function ScoreCard(props) {
       <Card className={classes.card}>
         <CardContent>
           <Avatar
-              alt="User1"
-              src="/img/user1.png"
+              alt={props.user}
+              src={props.avatar}
               className={classes.avatarUser}
           />
           <Typography className={classes.title} color="textSecondary">
-            Your Score:
+            {props.text1}
           </Typography>
           <Typography className={classes.score} color="textSecondary">
-            {store.currentScore} <span className={classes.scorePoints}>points</span>
+            {props.score} <span className={classes.scorePoints}>points</span>
           </Typography>
           <Typography className={classes.scoreCO2} color="textSecondary">
-            {store.currentCO2} kg CO2
+            {props.CO2} kg CO2
+          </Typography>
+          <Typography className={classes.text2} color="textSecondary">
+            {props.text2}
           </Typography>
         </CardContent>
         <Avatar

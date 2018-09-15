@@ -32,34 +32,25 @@ const styles = {
 };
 
 @observer
-class IncomingChallenge extends Component {
+class PendingChallenge extends Component {
   componentDidMount() {
-        store.pageTitle = "You were challenged!";
+        store.pageTitle = "XXX has been challenged. ";
   }
 
   render() {
     const { classes } = this.props;
     return (
-        <div className="IncomingChallenge">
-          <ScoreCard score="XXX" text1="XXX got" text2="in the last Shoptest. "
-          avatar='/img/user2.png'/>
-          <h2>Can you do better?</h2>
-          <div className={classes.row}>
-            <Avatar className={classes.checkAvatar}>
-              <CheckIcon />
-            </Avatar>
-            <Avatar className={classes.cancelAvatar}>
-              <CancelIcon />
-            </Avatar>
-          </div>
+        <div className="PendingChallenge">
+          <h2>XXX has been challenged.
+          You will be notified once XXX completed the challenge!</h2>
         </div>
     );
   }
 }
 
-IncomingChallenge.propTypes = {
+PendingChallenge.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 
-export default withStyles(styles)(IncomingChallenge)
+export default withStyles(styles)(PendingChallenge)

@@ -197,14 +197,14 @@ class ShoppingList extends Component {
     this.setState({
       products: this.state.products.filter(p => p.id!== item.id)
     })
-  }
+  };
 
   noOptionsMessage = () => {
     return "No products";
-  }
+  };
 
   componentDidMount() {
-    store.pageTitle = "Shop for products";
+    store.pageTitle = "Plan your Shopping List";
   }
 
   onBuy = () => {

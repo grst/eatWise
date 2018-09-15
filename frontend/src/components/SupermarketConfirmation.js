@@ -38,7 +38,7 @@ class SupermarketConfirmation extends React.Component {
     if (!query.skipWaiting) {
       setTimeout(() => {
         this.props.history.push("/purchase-summary");
-      }, 10 * 1e3);
+      }, 2 * 1e3);
     }
   }
 
@@ -58,7 +58,6 @@ class SupermarketConfirmation extends React.Component {
                 loading={this.state.loading}
             />
           </div>
-          <Link to="/purchase-summary">Skip</Link>
         </div>
     )
   }

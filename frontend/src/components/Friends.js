@@ -36,7 +36,7 @@ function Friend(props) {
 class Friends extends Component {
   onClick = (user) => {
     console.log("Selected user: ", user);
-    this.props.history.push("/challenge-result");
+    this.props.history.push("/waiting-for-challenge-complete");
   }
   componentDidMount() {
     store.pageTitle = "Challenge a friend";
