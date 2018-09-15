@@ -7,11 +7,13 @@ import PurchaseSummary from './components/PurchaseSummary'
 import Friends from './components/Friends'
 import ChallengeResult from './components/ChallengeResult'
 import Login from './components/Login'
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <CssBaseline />
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={UserProfile} />

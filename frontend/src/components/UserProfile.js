@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import { observer } from 'mobx-react';
@@ -28,9 +29,13 @@ class UserProfile extends Component {
             className={styles.bigAvatar}
           />
         </div>
-        <Link to='/shopping-list'>Start shopping</Link>
+        <Link to='/shopping-list'>
+          <Button variant="outlined">Start shopping</Button>
+        </Link>
         <br/>
-        <Link to='/login'>Change your username</Link>
+        <Link to='/login'>
+          <Button variant="outlined">Change your username</Button>
+        </Link>
         <div>Username: {store.username}</div>
           <NavigationBar/>
       </div>
