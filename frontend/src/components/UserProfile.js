@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import { observer } from 'mobx-react';
 import store from '../store'
+import NavigationBar from './NavigationBar'
 
 const styles = {
   row: {
@@ -36,6 +37,7 @@ class UserProfile extends Component {
           <Button variant="outlined">Change your username</Button>
         </Link>
         <div>Username: {store.username}</div>
+          <NavigationBar/>
       </div>
     );
   }
