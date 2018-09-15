@@ -80,10 +80,6 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-  },
-  forecast: {
-    verticalAlign: 'center',
-    fontSize: '1.1em',
   }
 });
 
@@ -226,7 +222,6 @@ class ShoppingList extends Component {
 
   render() {
     const { classes } = this.props;
-    const forecastedPoints = this.state.products.length * 3;
     return (
       <div className="ShoppingList">
        <Select
@@ -253,9 +248,6 @@ class ShoppingList extends Component {
         </List>
 
         <div className={classes.checkoutBar}>
-          <div className={classes.forecast}>
-            Forecast: {forecastedPoints} Ecli points
-          </div>
           <Button variant="outlined" disabled={this.state.products.length === 0} onClick={this.onBuy}>Buy</Button>
         </div>
       </div>
