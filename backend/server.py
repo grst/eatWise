@@ -110,7 +110,7 @@ def getOngoingChallenge():
 		adversaryUser = "None"
 	result = {}
 	result['thisUserWasChallenged'] = user['wasChallenged']
-	result['challengedBy'] = adversaryUser
+	result['adversary'] = adversaryUser
 	return json.dumps(result)
 
 @app.route('/startChallenge/', methods=['POST'])
@@ -133,11 +133,16 @@ def startChallenge():
 		#this should be the standard case. This function is allowed to assume that both you and the adversary are valid players
 		otherUser = userList[otherUsername]
 		otherPoints = otherUser['points']
+		oldStatus = otherUser['wasChallenged']
+
 		otherUser['wasChallenged'] = True
 		otherUser['adversary'] = thisUsername
 		userList[otherUsername] = otherUser
+		thisUser['wasChallenged'] = True
+		thisUser['adversary'] = otherUsername
+		userList[thisUsername] = thisUser
 
-		if otherPoints == 0:
+		if oldStatus == False:
 			resultStr = "Ongoing"
 		elif thisPoints > otherPoints:
 			resultStr = "Winner"
@@ -157,8 +162,8 @@ def startChallenge():
 
 def calculatePoints(basket):
 	CO2sum = 0
-	weightBasket = 0
-	print(basket)
+	weightBasket = 0 
+#	print(basket)
 
 	for i in range(0, len(basket)):
 		product = basket[i]

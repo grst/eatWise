@@ -13,6 +13,8 @@ import CancelIcon from '@material-ui/icons/Close';
 import api from "../api";
 import {runInAction} from "mobx";
 
+import { PacmanLoader } from 'react-spinners';
+
 const styles = {
   avatar: {
     margin: 10,
@@ -31,13 +33,25 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
   },
+  loader: {
+    padding: "2em",
+  },
 };
 
 @observer
 class PendingChallenge extends Component {
 
+  state = {
+    loading: true,
+  }
+
+  //constructor(props){
+    //super(props)
+    //this.ref = React.createRef()
+  //}
+
   componentDidMount() {
-    store.pageTitle = `${store.adversary.username} has been challenged. `;
+    store.pageTitle = `${store.adversary.username}'s challenge`;
     this.interval = setInterval(function() {
       store.updateChallenge();
     }, store.updatePeriod);
@@ -50,11 +64,22 @@ class PendingChallenge extends Component {
   render() {
     const { classes } = this.props;
     const username = store.adversary.username;
+    const size = document.body.offsetWidth * 0.2;
     return (
         <div className="PendingChallenge">
           <h2>{username} has been challenged.</h2>
           <br/ >
           You will be notified once {username} completed the challenge!
+          <div
+              className={classes.loader}
+          >
+            <PacmanLoader
+              sizeUnit={"px"}
+              size={size}
+              color={'#123abc'}
+              loading={this.state.loading}
+            />
+          </div>
         </div>
     );
   }
