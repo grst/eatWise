@@ -28,6 +28,7 @@ const styles = {
   },
   grow: {
     flexGrow: 1,
+    marginLeft: 15
   },
   menuButton: {
     marginLeft: -12,
@@ -37,6 +38,9 @@ const styles = {
   userButton: {
     color: '#ffffff',
     // backgroundColor: '#000099'
+  },
+  logo: {
+    width: 46
   }
 };
 
@@ -62,15 +66,11 @@ class MenuAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static" className={classes.bar}>
           <Toolbar>
-            {/*<Link to="/">*/}
-            {/*{ isRoot ||*/}
-              {/*<IconButton className={classes.menuButton} aria-label="Menu">*/}
-                {/*<BackIcon />*/}
-              {/*</IconButton>*/}
-            {/*}*/}
-            {/*</Link>*/}
+            <IconButton>
+              <img src="img/logo-small.png" className={classes.logo} />
+            </IconButton>
             <Typography variant="title" color="inherit" className={classes.grow}>
-              Eco.li - {store.pageTitle}
+              {store.pageTitle}
             </Typography>
             {auth && (
               <div>

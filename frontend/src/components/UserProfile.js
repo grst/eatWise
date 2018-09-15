@@ -95,7 +95,7 @@ class UserProfile extends Component {
           <DialogTitle
             id="alert-dialog-title"
             className={classes.dialogTitle}>
-            Accept {challengedByName}'s challenge
+            {challengedByName} challenged you!
           </DialogTitle>
             <DialogContent className={classes.dialogContent}>
               <DialogContentText id="alert-dialog-description">

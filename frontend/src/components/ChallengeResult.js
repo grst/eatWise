@@ -5,8 +5,10 @@ import { observer } from 'mobx-react';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
+
 import Avatar from "@material-ui/core/Avatar/Avatar";
 import Typography from '@material-ui/core/Typography';
+import Badge from '@material-ui/core/Badge';
 
 import store from '../store'
 
@@ -41,19 +43,33 @@ const userStyles = {
     fontStyle: "italic",
   },
   userPoints: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: "bold",
-  }
+  },
+  co2: {
+    fontSize: 20,
+  },
+  badge: {
+    top: 100,
+    right: 5,
+    fontSize: 16,
+    width: 30,
+    height: 30,
+  },
 };
 
 const User = withStyles(userStyles)(function ({user, classes, name}) {
   return (
     <div className={classes.user}>
+      <Badge color="primary"
+        badgeContent={user.points}
+        classes={{badge: classes.badge}}>
         <Avatar
             alt="level"
             src={user.avatarURL}
             className={classes.avatar}
         />
+      </Badge>
       <Typography className={classes.userName}>
         {name}
       </Typography>
@@ -65,6 +81,11 @@ const User = withStyles(userStyles)(function ({user, classes, name}) {
       <Typography className={classes.userPoints}>
         {user.points}
       </Typography>
+
+      <Typography className={classes.co2}>
+        {user.co2} kg
+      </Typography>
+
       {user.badges.map(badge => (
         <UserBadge badge={badge} key={badge} />
       ))}
@@ -91,10 +112,20 @@ const styles = {
   },
   quoteText: {
     fontSize: 18,
-  }
+  },
+  winnerImg: {
+    margin: "0 auto",
+    display: "block",
+    padding: "10px",
+    width: "100%",
+  },
+  looserImg: {
+    display: "block",
+    margin: "0 auto",
+    padding: "10px",
+    height: "200px",
+  },
 }
-
-
 
 @withStyles(styles)
 @observer
@@ -103,7 +134,7 @@ class ChallengeResult extends Component {
     this.props.history.push("/");
   }
   componentDidMount() {
-    store.pageTitle = "Challenge summary";
+    store.pageTitle = "Challenge results";
   }
   render() {
     const classes = this.props.classes;
@@ -116,12 +147,12 @@ class ChallengeResult extends Component {
         {store.challengeResult.status === "won" ?
           <Typography className={classes.statusText}>
             You <b>{store.challengeResult.status}</b>.
+            <img alt="winner" src="/img/result/winner.gif" className={classes.winnerImg} />
           </Typography>
         :
           <Typography className={classes.statusText}>
             You <b>{store.challengeResult.status}</b>.
-            <br />
-            Sorry!
+            <img alt="looser" src="/img/result/looser.gif" className={classes.looserImg} />
           </Typography>
         }
           <div className={classes.userContainer}>
