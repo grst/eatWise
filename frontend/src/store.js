@@ -107,7 +107,7 @@ class Store {
   updatePeriod = 2000; // in ms
 
   @computed get isPlayerOne() {
-    return store.challenge && store.challengeResult.playerOne.username === store.username;
+    return (store.hasChallenge && store.challengeResult.playerOne.username === store.username) || false;
   }
 
   @computed get currentPlayer() {
@@ -122,7 +122,9 @@ class Store {
     // None: initialized
     // WaitingForPlayerTwo
     // Completed
-    return store.challengeResult && store.challengeResult.state === "WaitingForPlayerTwo";
+    return store.challengeResult &&
+      (store.challengeResult.state === "WaitingForPlayerTwo" ||
+       store.challengeResult.state === "Completed");
   }
 
   @computed get isChallengeFinished() {
