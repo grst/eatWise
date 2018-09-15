@@ -15,9 +15,10 @@ class Friends extends Component {
         <button onClick={this.onClick}>Select a friend</button>
         <br/>
         List of friends goes here.
+        { store.friends }
       </div>
     );
   }
 }
 
-export default Friends;
+export default withRouter(Friends);

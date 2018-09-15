@@ -13,6 +13,7 @@ class PurchaseSummary extends Component {
     return (
       <div className="PurchaseSummary">
         List of products..
+        {store.purchase}
         <br/>
         Total points.
         <br/>
@@ -22,4 +23,4 @@ class PurchaseSummary extends Component {
   }
 }
 
-export default PurchaseSummary;
+export default withRouter(PurchaseSummary);
