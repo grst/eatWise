@@ -91,8 +91,8 @@ const styles = {
 function ScoreCard({classes, user, text1, text2, points, co2}) {
   const badgeText = typeof user.badges === "undefined" ? null : user.badges[0];
   const badgeURL = "/img/badges/" + badgeText + ".png";
-  points = points === null ? user.points : points;
-  co2 = co2 === null ? user.co2 : co2;
+  points = typeof points === "undefined" ? user.points : points;
+  co2 = typeof co2 === "undefined" ? user.co2 : co2;
   return (
       <Card className={classes.card}>
         <CardContent>
