@@ -40,6 +40,10 @@ const styles = {
 @observer
 class UserProfile extends Component {
 
+  state = {
+    hasDeclined: false
+  }
+
   componentDidMount() {
     store.pageTitle = "User profile";
 
@@ -48,26 +52,26 @@ class UserProfile extends Component {
     }, store.updatePeriod);
   }
 
-  state = {
-    hasDialogOpened: true,
-  };
-
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
   handleDisagree = () => {
-
+    // TODO:
+    this.setState({
+      hasDeclined: true
+    });
   }
 
   handleAgree = () => {
-
+    this.props.history.push("/shopping-list");
   }
 
   render() {
     const classes = this.props.classes;
     const challengedBy = store.challengeResult ? (store.challengeResult.adversary || {}) : {};
     const challengedByName = challengedBy.username;
+    const hasDialogOpened = store.challengeResult && store.challengeResult.wasChallenged && !this.state.hasDeclined;
     // const badge = "foo"
     return (
         <div className="UserProfile">
@@ -83,7 +87,7 @@ class UserProfile extends Component {
           root: classes.dialog,
           paper: classes.dialog,
         }}
-        open={this.state.hasDialogOpened}
+        open={hasDialogOpened}
         onClose={this.handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
