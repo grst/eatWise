@@ -34,14 +34,16 @@ class UserProfile extends Component {
 
   render() {
     const avatar = "/img/avatars/" + store.username.toLowerCase() + ".jpg";
-    // const badge = "img/badges/" + store.user.badges[0] + ".jpg";
-    const badge = "foo"
+    const badgeText = typeof store.user.badges === "undefined" ? null : store.user.badges[0];
+    const badge = "/img/badges/" + badgeText + ".png";
+    // const badge = "foo"
     return (
         <div className="UserProfile">
           <ScoreCard user={store.username}
               score={Math.round(store.user.points * 10) / 10}
                      avatar={avatar}
                      badge={badge}
+                     badgeText={badgeText}
               CO2={store.user.co2}
               text1="Your Score: "/>
           <div style={{...styles.row, ...styles.username}}>
