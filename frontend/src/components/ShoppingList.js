@@ -172,8 +172,8 @@ const components = {
   ValueContainer,
 };
 
-@observer
 @withStyles(styles)
+@observer
 class ShoppingList extends Component {
 
   state = {
@@ -215,17 +215,11 @@ class ShoppingList extends Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.state);
-    const suggestions = store.products.map(e => ({
-      label: e.name,
-      id: e.id,
-      ...e,
-    }));
     return (
       <div className="ShoppingList">
        <Select
             classes={classes}
-            options={suggestions}
+            options={store.productWithLabels}
             components={components}
             value={this.state.single}
             onChange={this.onSelectChanged}

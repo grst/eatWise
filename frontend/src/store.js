@@ -1,6 +1,7 @@
-import {observable, observe} from 'mobx';
+import mobx, {action, autorun, computed, observable, observe, runInAction} from 'mobx';
 
-import defaultProducts from './products';
+//mobx.configure({ enforceActions: true }) // don't allow state modifications outside actions
+
 import api from './api'
 
 function normalizeProducts(products){
@@ -14,12 +15,6 @@ function normalizeProducts(products){
   }));
 }
 
-const normalizedDefaultProducts = normalizeProducts(defaultProducts);
-
-api.get("/getProductList").then(e => {
-  console.log("foo", e);
-});
-
 
 class Store {
   @observable basket = [];
@@ -28,6 +23,7 @@ class Store {
 	@observable currentCO2 = 34.32;
 	@observable currentLevel = "ecofriendly";
 	@observable products = normalizedDefaultProducts;
+  @observable products = [];
   @observable friends = [
   {
     id: 1,
@@ -45,9 +41,25 @@ class Store {
     status: "lost",
   };
   @observable pageTitle = "";
+
+  @action async fetchProductList() {
+    const e = await api.get("/getProductList");
+    runInAction(() => {
+      this.products.replace(normalizeProducts(e.data));
+    });
+  }
+
+  @computed get productWithLabels() {
+    return this.products.map(e => ({
+      label: e.name,
+      id: e.id,
+      ...e,
+    }));
+  }
 }
 
 const store = new Store();
+
 // store username + last purchase in local storage
 observe(store, "username", () => {
   localStorage.setItem("username", store.username);
@@ -58,4 +70,11 @@ observe(store, "purchase", () => {
 observe(store, "pageTitle", () => {
   document.title = store.pageTitle;
 });
+
+// for debugging
+autorun(() => {
+  //console.log("products", store.products.length);
+});
+// always keep the current list of all products in memory
+store.fetchProductList();
 export default store;
