@@ -22,6 +22,14 @@ class UserProfile extends Component {
 
   componentDidMount() {
     store.pageTitle = "User profile";
+
+    this.interval = setInterval(function() {
+      store.checkForOngoingChallenges();
+    }, store.updatePeriod);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {

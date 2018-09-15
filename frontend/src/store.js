@@ -24,18 +24,18 @@ function normalizeProducts(products){
 
 
 class Store {
-	@observable username = localStorage.getItem("username", "Sebastian") || "Sebastian";
-	@observable user = {};
-  @observable products = [];
-  @observable users = [];
+	@observable username = localStorage.getItem("username") || "Sebastian";
+	@observable user = JSON.parse(localStorage.getItem("user")) || {};
+  @observable products = JSON.parse(localStorage.getItem("products")) || [];
+  @observable users = JSON.parse(localStorage.getItem("users")) || [];
 
-	@observable purchase = JSON.parse(localStorage.getItem("purchase", "{}")) || {};
+	@observable purchase = JSON.parse(localStorage.getItem("purchase")) || {};
 
 	//current adversary of an ongoing challenge
-	@observable adversary = {};
-  @observable challengeResult = {
-    status: "lost",
-  };
+	@observable adversary = JSON.parse(localStorage.getItem("adversary")) || {};
+  @observable challengeResult = JSON.parse(localStorage.getItem("challengeResult")) || {
+    status: "lost"
+  }
   @observable pageTitle = "";
 
   @action async fetchProductList() {
@@ -84,26 +84,47 @@ class Store {
   @action challengeFriend(friend) {
     console.log("Starting challenge with: ", friend.username);
     set(this.adversary, friend);
-    api.post('/startChallenge', {
-      Me: this.username,
-      Adversary: friend.username,
-    });
+    api.post('/startChallenge', this.challengeObject());
   }
+
+  @action async updateChallenge() {
+    const e = (await api.post('/getChallengeState', this.challengeObject()).data);
+  }
+
+  @action async checkForOngoingChallenges() {
+    const e = (await api.post('/getOngoingChallenge', {
+      username: this.username
+    }).data);
+    if (e !== undefined ) {
+      console.log("checkChallenge", e);
+    }
+  }
+
+  challengeObject() {
+    return  {
+      Me: this.username,
+      Adversary: this.adversary.username,
+    };
+  }
+  updatePeriod = 800; // in ms
 }
 
 const store = new Store();
 
-// store username + last purchase in local storage
+// cache in local storage
+["purchase", "adversary", "user", "users", "products"].forEach(key => {
+  console.log(key);
+  observe(store[key], () => {
+    const value = JSON.stringify(toJS(store[key]));
+    localStorage.setItem(key, value);
+  });
+});
 observe(store, "username", () => {
   localStorage.setItem("username", store.username);
-});
-observe(store.purchase, () => {
-  localStorage.setItem("purchase", JSON.stringify(toJS(store.purchase)));
 });
 observe(store, "pageTitle", () => {
   document.title = store.pageTitle;
 });
-
 // for debugging
 autorun(() => {
   console.log("purchase.watch:", toJS(store.purchase));
