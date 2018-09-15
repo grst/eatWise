@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react';
+import Button from '@material-ui/core/Button';
 
 import store from '../store'
 
@@ -19,7 +20,7 @@ class ChallengeResult extends Component {
         <br/>
         In any case you suck!
         <br/>
-        <button onClick={this.onClick}>Restart</button>
+        <Button variant="outlined" onClick={this.onClick}>Restart</Button>
       </div>
     );
   }

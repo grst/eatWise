@@ -20,7 +20,18 @@ class Store {
 	@observable username = localStorage.getItem("username", "Sebastian") || "Sebastian";
 	@observable currentScore = 1234;
 	@observable products = normalizedDefaultProducts;
-	@observable friends = [];
+  @observable friends = [
+  {
+    id: 1,
+    name: "Peter",
+    description: "EcoFighter"
+  },
+  {
+    id: 2,
+    name: "Yustav",
+    description: "FoodArmy"
+  },
+  ];
 	@observable purchase = [];
   @observable challengeResult = {
     status: "lost",

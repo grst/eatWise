@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react';
+import Button from '@material-ui/core/Button';
 
 import store from '../store'
 
@@ -13,14 +14,13 @@ class PurchaseSummary extends Component {
     store.pageTitle = "Purchase summary";
   }
   render() {
+        //{store.purchase.map(e }
     return (
       <div className="PurchaseSummary">
-        List of products..
-        {store.purchase}
         <br/>
         Total points.
         <br/>
-        <button onClick={this.onClick}>Challenge a friend</button>
+        <Button variant="outlined" onClick={this.onClick}>Challenge a friend</Button>
       </div>
     );
   }

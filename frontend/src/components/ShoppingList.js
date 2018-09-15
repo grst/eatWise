@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import Select from 'react-select';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import NoSsr from '@material-ui/core/NoSsr';
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
@@ -231,8 +231,6 @@ class ShoppingList extends Component {
     }));
     return (
       <div className="ShoppingList">
-        <b>List of products.</b>
-
        <Select
             classes={classes}
             options={suggestions}
@@ -256,7 +254,7 @@ class ShoppingList extends Component {
           )}
         </List>
 
-        <button onClick={this.onClick}>Buy</button>
+        <Button variant="outlined" onClick={this.onClick}>Buy</Button>
       </div>
     );
   }
