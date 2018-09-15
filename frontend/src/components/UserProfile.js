@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
-
+import { observer } from 'mobx-react';
+import store from '../store'
 
 const styles = {
   row: {
@@ -14,6 +15,7 @@ const styles = {
   },
 };
 
+@observer
 class UserProfile extends Component {
   render() {
     return (
@@ -26,6 +28,9 @@ class UserProfile extends Component {
           />
         </div>
         <Link to='/shopping-list'>Start shopping</Link>
+        <br/>
+        <Link to='/login'>Change your username</Link>
+        <div>Username: {store.username}</div>
       </div>
     );
   }
