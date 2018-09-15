@@ -91,11 +91,11 @@ const User = withStyles(userStyles)(function ({user, classes, name}) {
       </Typography>
 
       <Typography className={classes.userPoints}>
-        {user.points}
+        {Math.round(user.points)}
       </Typography>
 
       <Typography className={classes.co2}>
-        {user.co2} kg
+        {Math.round(user.co2 * 10) / 10} kg
       </Typography>
 
     </div>
@@ -149,11 +149,12 @@ class ChallengeResult extends Component {
     const classes = this.props.classes;
     console.log(toJS(store.challengeResult));
     const quote = "You're our hero!";
+    const isWinner = store.challengeResult.status !== "lost";
     return (
       <div className={classes.mainDiv}>
       {store.hasChallenge ?
         <div className={classes.challengeDiv}>
-        {store.challengeResult.status === "won" ?
+        {isWinner ?
           <Typography className={classes.statusText}>
             You <b>{store.challengeResult.status}</b>.
             <img alt="winner" src="/img/result/winner.gif" className={classes.winnerImg} />

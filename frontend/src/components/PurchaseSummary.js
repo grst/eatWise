@@ -35,7 +35,6 @@ class PurchaseSummary extends Component {
     store.pageTitle = "Purchase summary";
   }
   render() {
-    let hasChallenge = false;
     const points = Math.round(store.purchase.basketPoints);
     const text1 = "You " + ((points < 0) ? "lost" : "earned");
     const text2 = points < 0 ? "Try again!" : "Good job!";
@@ -51,7 +50,7 @@ class PurchaseSummary extends Component {
 
           <div style={style.button}>
 
-            { store.hasChallenge ?
+            { store.hasChallenge && !store.isPlayerOne ?
             <Button variant="outlined" onClick={this.onSeeResults}>See results</Button>
             :
             <Button variant="outlined" onClick={this.onChallenge}>Challenge a friend</Button>

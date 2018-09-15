@@ -82,10 +82,12 @@ class Store {
     });
   }
 
-  @action challengeFriend(friend) {
+  @action async challengeFriend(friend) {
     console.log("Starting challenge with: ", friend.username);
-    set(this.adversary, friend);
-    api.post('/startChallenge', this.challengeObject());
+    const data = (await api.post('/startChallenge', this.challengeObject())).data;
+    runInAction(() => {
+      set(this.challengeResult, data);
+    });
   }
 
   @action async updateChallenge() {
@@ -93,11 +95,11 @@ class Store {
   }
 
   @action async checkForOngoingChallenges() {
-    const e = (await api.post('/getOngoingChallenge', {
-      username: this.username
-    })).data;
+    const e = (await api.get('/getOngoingChallenge')).data;
     // {"thisUserWasChallenged": false, "adversary": "None"}
-    set(this.challengeResult, e);
+    runInAction(() => {
+      set(this.challengeResult, e);
+    });
   }
 
   challengeObject() {
@@ -108,8 +110,15 @@ class Store {
   }
   updatePeriod = 2000; // in ms
 
+  @computed get isPlayerOne() {
+    return store.challenge && store.challengeResult.playerOne.username === store.username;
+  }
+
   @computed get hasChallenge() {
-    return store.challengeResult && store.challengeResult.wasChallenged;
+    // None: initialized
+    // WaitingForPlayerTwo
+    // Completed
+    return store.challengeResult && store.challengeResult.state === "WaitingForPlayerTwo";
   }
 }
 

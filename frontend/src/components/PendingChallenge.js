@@ -56,7 +56,7 @@ class PendingChallenge extends Component {
       store.updateChallenge();
     }, store.updatePeriod);
     this.cancelObservation = observe(store.challengeResult, () => {
-      if (store.hasChallenge) {
+      if (store.hasChallenge && !store.isPlayerOne) {
         this.props.history.push("/challenge-result");
         this.componentWillUnmount(); // be sure to avoid any overlaps
       }
