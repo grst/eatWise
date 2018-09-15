@@ -1,6 +1,7 @@
 #!flask/bin/python
 from flask import Flask, request, jsonify, abort, make_response
 from flask_httpauth import HTTPBasicAuth
+from flask_cors import CORS
 import json
 from random import randint
 
@@ -19,8 +20,11 @@ class Item(object):
 		self.iconURL = ""
 
 app = Flask(__name__)
+CORS(app)
 auth = HTTPBasicAuth()
 app.config['DEBUG'] = False
+# CORS doesn't support redirects
+app.url_map.strict_slashes = False
 
 isChallengeRunning = False
 
