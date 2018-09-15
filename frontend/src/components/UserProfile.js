@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class UserProfile extends Component {
   render() {
     return (
       <div className="UserProfile">
-        user profile
+        <Link to='/shopping-list'>Start shopping</Link>
       </div>
     );
   }
