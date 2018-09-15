@@ -18,7 +18,7 @@ import FolderIcon from '@material-ui/icons/Folder';
 function Friend(props) {
   const u = props.user;
   return (
-    <ListItem>
+    <ListItem onClick={props.onClick}>
       <ListItemAvatar>
         <Avatar>
           <FolderIcon />
