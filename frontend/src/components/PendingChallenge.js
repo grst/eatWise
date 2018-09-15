@@ -36,6 +36,9 @@ const styles = {
   loader: {
     padding: "2em",
   },
+  pendingChallenge: {
+    textAlign: 'center'
+  }
 };
 
 @observer
@@ -80,7 +83,7 @@ class PendingChallenge extends Component {
     const username = store.otherPlayer;
     const size = document.body.offsetWidth * 0.2;
     return (
-        <div className="PendingChallenge">
+        <div className={classes.pendingChallenge}>
           <h2>{username} has been challenged.</h2>
           <br />
           You will be notified once {username} completed the challenge!
