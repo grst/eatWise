@@ -90,10 +90,6 @@ class Store {
     });
   }
 
-  @action async updateChallenge() {
-    const e = (await api.post('/startChallenge', this.challengeObject()).data);
-  }
-
   @action async checkForOngoingChallenges() {
     const e = (await api.get('/getOngoingChallenge')).data;
     // {"thisUserWasChallenged": false, "adversary": "None"}
@@ -111,13 +107,31 @@ class Store {
   updatePeriod = 2000; // in ms
 
   @computed get isPlayerOne() {
-    return store.challenge && store.challengeResult.playerOne.username === store.username;
+    return (store.hasChallenge && store.challengeResult.playerOne.username === store.username) || false;
+  }
+
+  @computed get currentPlayer() {
+    return this.isPlayerOne ? this.challengeResult.playerOne : this.challengeResult.playerTwo;
+  }
+
+  @computed get otherPlayer() {
+    return this.isPlayerOne ? this.challengeResult.playerTwo : this.challengeResult.playerOne;
   }
 
   @computed get hasChallenge() {
     // None: initialized
     // WaitingForPlayerTwo
     // Completed
+    return store.challengeResult &&
+      (store.challengeResult.state === "WaitingForPlayerTwo" ||
+       store.challengeResult.state === "Completed");
+  }
+
+  @computed get isChallengeFinished() {
+    return store.challengeResult && store.challengeResult.state === "Completed";
+  }
+
+  @computed get isWaitingForPlayerTwo() {
     return store.challengeResult && store.challengeResult.state === "WaitingForPlayerTwo";
   }
 

@@ -91,7 +91,7 @@ const User = withStyles(userStyles)(function ({user, classes, name}) {
       </Typography>
 
       <Typography className={classes.userPoints}>
-        {Math.round(user.points)}
+        {Math.round(user.challengePoints)}
       </Typography>
 
       <Typography className={classes.co2}>
@@ -150,46 +150,59 @@ class ChallengeResult extends Component {
     const classes = this.props.classes;
     console.log(toJS(store.challengeResult));
     const quote = "You're our hero!";
-    const isWinner = store.challengeResult.status !== "lost";
+    let isWinner = false;
+    if (store.hasChallenge) {
+      console.log("playerOne", store.isPlayerOne);
+      console.log("playerOne", store.currentPlayer.challengePoints);
+      isWinner = store.currentPlayer.challengePoints > store.otherPlayer.challengePoints;
+    }
+
+    if (store.isWaitingForPlayerTwo) {
+      // still waiting for player two
+      this.props.history.push("/waiting-for-challenge-complete");
+    }
     return (
       <div className={classes.mainDiv}>
-      {store.hasChallenge ?
-        <div className={classes.challengeDiv}>
-        {isWinner ?
-          <Typography className={classes.statusText}>
-            You <b>{store.challengeResult.status}</b>.
-            <img alt="winner" src="/img/result/winner.gif" className={classes.winnerImg} />
-          </Typography>
-        :
-          <Typography className={classes.statusText}>
-            You <b>{store.challengeResult.status}</b>.
-            <img alt="looser" src="/img/result/looser.gif" className={classes.looserImg} />
-          </Typography>
-        }
-          <div className={classes.userContainer}>
-            <User
-              user={store.user}
-              name="Me"
-            />
-            <User
-              user={store.challengeResult.adversary}
-              name={store.challengeResult.adversary.username}
-            />
+        {store.isWaitingForPlayerTwo ?
+          "Still waiting."
+        : (store.hasChallenge ?
+          <div className={classes.challengeDiv}>
+          {isWinner ?
+            <Typography className={classes.statusText}>
+              You <b>win</b>.
+              <img alt="winner" src="/img/result/winner.gif" className={classes.winnerImg} />
+            </Typography>
+          :
+            <Typography className={classes.statusText}>
+              You <b>loose</b>.
+              <img alt="looser" src="/img/result/looser.gif" className={classes.looserImg} />
+            </Typography>
+          }
+            <div className={classes.userContainer}>
+              <User
+                user={store.currentPlayer}
+                name="Me"
+              />
+              <User
+                user={store.otherPlayer}
+                name={store.otherPlayer.username}
+              />
+            </div>
+            <br/>
+            <Typography className={classes.quoteText}>
+              {quote}
+            </Typography>
+            <br/>
+            <Button variant="outlined" onClick={this.restartChallenge}>Restart</Button>
           </div>
-          <br/>
-          <Typography className={classes.quoteText}>
-            {quote}
-          </Typography>
-          <br/>
-          <Button variant="outlined" onClick={this.restartChallenge}>Restart</Button>
-        </div>
-        :
-          <div>
-            No active challenge.
-            <br />
-            <br />
-            <Button variant="outlined" onClick={this.restartChallenge}>Start a new challenge.</Button>
-          </div>
+          :
+            <div>
+              No active challenge.
+              <br />
+              <br />
+              <Button variant="outlined" onClick={this.restartChallenge}>Start a new challenge.</Button>
+            </div>
+          )
         }
       </div>
     );

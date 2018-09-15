@@ -21,7 +21,8 @@ ongoingChallenge['playerOne'] = ""
 ongoingChallenge['playerTwo'] = ""
 ongoingChallenge['playerOneScore'] = 0
 ongoingChallenge['playerTwoScore'] = 0
-ongoingChallenge['finishedCounter'] = 0
+
+finishedCounter = 0
 
 with open('buhlerFoodprint.json') as f:
     productList = json.load(f)
@@ -152,17 +153,21 @@ def startChallenge():
 def finishChallenge():
 	content = request.json
 	username = content['username']
-	oldCounter = ongoingChallenge['finishedCounter']
-	oldCounter = oldCounter+1
-	if(oldCounter==2):
+	global finishedCounter
+	finishedCounter = finishedCounter+1
+	result= "Ongoing"
+	if(finishedCounter==2):
+		global ongoingChallenge
 		ongoingChallenge = {}
 		ongoingChallenge['state'] = "None"
 		ongoingChallenge['playerOne'] = ""
 		ongoingChallenge['playerTwo'] = ""
 		ongoingChallenge['playerOneScore'] = 0
 		ongoingChallenge['playerTwoScore'] = 0
-		ongoingChallenge['finishedCounter'] = 0
+		finishedCounter = 0
+		result = "Reseted Challenge"
 
+	return result
 
 #0 means inited
 #1 means only player One has visted

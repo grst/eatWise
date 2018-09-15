@@ -74,7 +74,7 @@ class UserProfile extends Component {
 
   render() {
     const classes = this.props.classes;
-    const challengedBy = store.challengeResult ? (store.challengeResult.adversary || {}) : {};
+    const challengedBy = store.challengeResult ? (store.challengeResult.playerOne || {}) : {};
     const challengedByName = challengedBy.username;
     const hasDialogOpened = store.hasChallenge && !store.isPlayerOne && !this.state.hasDeclined;
     // const badge = "foo"
@@ -83,6 +83,7 @@ class UserProfile extends Component {
           <ScoreCard
             user={store.user}
             text1="Your Score: "
+            points={challengedBy.points}
           />
           <div style={{...styles.row, ...styles.username}}>
             {store.username} (<Link to='/login'>Logout</Link>)
@@ -111,6 +112,7 @@ class UserProfile extends Component {
               <DialogContentText id="alert-dialog-description">
                 <ScoreCard user={challengedBy}
                   text1={`${challengedByName}'s score`}
+                  points={challengedBy.challengePoints}
                   compact={true} />
                 <div className={classes.dialogDescription}>
                   Are you ready to challenge {challengedByName}?

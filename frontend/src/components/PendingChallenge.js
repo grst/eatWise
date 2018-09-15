@@ -53,10 +53,11 @@ class PendingChallenge extends Component {
   componentDidMount() {
     store.pageTitle = `${store.adversary.username}'s challenge`;
     this.interval = setInterval(function() {
-      store.updateChallenge();
+      store.checkForOngoingChallenges();
     }, store.updatePeriod);
     this.cancelObservation = observe(store.challengeResult, () => {
-      if (store.hasChallenge && !store.isPlayerOne) {
+      console.log("FF", store.challengeResult);
+      if (store.isChallengeFinished) {
         this.props.history.push("/challenge-result");
         this.componentWillUnmount(); // be sure to avoid any overlaps
       }
