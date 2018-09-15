@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { UserProfile } from './components/UserProfile'
-import { ShoppingList } from './components/ShoppingList'
-import { PurchaseSummary } from './components/PurchaseSummary'
-import { Friends } from './components/Friends'
-import { ChallengeResult } from './components/ChallengeResult'
-import { Login } from './components/Login'
+import UserProfile from './components/UserProfile'
+import  ShoppingList from './components/ShoppingList'
+import  PurchaseSummary from './components/PurchaseSummary'
+import  Friends from './components/Friends'
+import  ChallengeResult from './components/ChallengeResult'
+import  Login from './components/Login'
 
 class App extends Component {
   render() {
