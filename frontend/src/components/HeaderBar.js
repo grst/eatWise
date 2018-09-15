@@ -71,7 +71,7 @@ class MenuAppBar extends React.Component {
                 <Link to="/profile">
                   <IconButton>
                     <Avatar
-                      alt={store.user.name}
+                      alt={store.user.username}
                       className={classes.userButton}
                       src={store.user.avatarURL}
                     />
