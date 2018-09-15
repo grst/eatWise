@@ -55,37 +55,48 @@ def startChallenge(userName):
 def getProductList():
 	return json.dumps(productList)
 
-@app.route('/stopChallenge', methods=['GET'])
-def stopChallenge():
-	isChallengeRunning = False
-	return "fts"
-
-@app.route('/boughtProducts/', methods=['POST'])
-def calculateSum():
+@app.route('/boughtProducts/<username>', methods=['POST'])
+def calculateSum(username):
 	content = request.json
 	totalSum = 0
 	boughtItems = []
 
 	for i in range(0, len(content)):
-		item = content[i]
-		ident = item['id']
+		ident = content[i]
 		product = productList[ident]
 		pts = product['Points']
 		qty = randint(1,20)
-		totalPts = pts*qty
+		itemPts = pts*qty
 		newItem = {}
 		newItem['Name'] = product['Name']
 		newItem['Points'] = product['Points']
 		newItem['Category'] = product['Category']
 		newItem['Quantity'] = qty
-		newItem['TotalPoints'] = totalPts		
-		#print("we had " + product['Name'] + " which had " + str(pts) + " points, and we bought " + str(qty) + " of them, which gives us a total of " + str(totalPts))
-		totalSum = totalSum + totalPts
+		newItem['ItemPoints'] = itemPts		
+		#print("we had " + product['Name'] + " which had " + str(pts) + " points, and we bought " + str(qty) + " of them, which gives us a total of " + str(itemPts))
+		totalSum = totalSum + itemPts
 		boughtItems.append(newItem)
 
 	result = {} 
 	result['BoughtItems'] = boughtItems
 	result['Sum'] = totalSum
+
+	if(userOne.points == 0):
+		#you are the first person to complete the challenge
+		result['Challenge'] = 'Ongoing'
+		userOne.Name = username
+		userOne.points = totalSum
+	else:
+		#you're the second one to finish, let's see if you won..
+		if(userOne.points>totalSum):
+			#the other dude had more points than you did, you loose, sorry lah..
+			result['Challenge'] = 'Looser'
+		else:
+			result['Challenge'] = 'Winner'
+		
+		userTwo.Name = username
+		userTwo.points = totalSum
+	
 	return json.dumps(result)
 
 #start stop
