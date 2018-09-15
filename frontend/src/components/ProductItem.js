@@ -9,15 +9,17 @@ import Avatar from '@material-ui/core/Avatar';
 import FolderIcon from '@material-ui/icons/Folder';
 import chroma from 'chroma-js';
 
-const RdGreen = chroma.scale(['#33ff00','#aa0000'])
-    .mode('lch').colors(21);
+// const RdGreen = chroma.scale(['#33ff00','#aa0000'])
+//     .mode('lch').colors(21);
 
-function valToColor(val) {
-  val = val * 10;
-  if(val > 20) val = 20;
+function valToIcon(val) {
+  const icons = [
+      "1.png", "2.png", "3.png", "4.png", "5.png"
+  ];
+  val = val * 3;
+  if(val > 4) val = 4;
   val = Math.round(val);
-  const col = RdGreen[val];
-  return(col);
+  return "img/moodIcons/" + icons[val];
 }
 
 function ProductItem(props) {
@@ -26,8 +28,9 @@ function ProductItem(props) {
 
   const styles = {
     item: {
-      backgroundColor: valToColor(p.co2_100g),
-      marginRight: 22
+      marginRight: 22,
+      width: 44,
+      height: 40
     }
   };
 
@@ -45,7 +48,7 @@ function ProductItem(props) {
       primary={textPrimary}
       secondary={textSecondary}
     />
-    <Avatar style={styles.item}></Avatar>
+    <img style={styles.item} src={valToIcon(p.co2_100g)}/>
   </Fragment>
 }
 export default ProductItem;
