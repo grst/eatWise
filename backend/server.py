@@ -161,22 +161,21 @@ def startChallenge():
 
 
 def calculatePoints(basket):
-	CO2sum = 0
+	total_co2_basket = 0
 	weightBasket = 0
 #	print(basket)
 
-	for i in range(0, len(basket)):
-		product = basket[i]
+	for product in basket:
 		weight = product['Quantity']
 		#normalized emissions per product from our database
 		CO2_100g = product['CO2_100g']
 		#calculate the total absolute emission
-		CO2sum = CO2sum + CO2_100g * weight/100
+		total_co2_basket += CO2_100g * weight/100
 		#get the total weight of the Basket
-		weightBasket = weightBasket + weight
+		weightBasket += weight
 
-	totalCO2_Basket = 100*CO2sum/weightBasket
-	# 0.39 has bee developed on a representative default basket.
-	savingsCO2_Basket = 0.39 - totalCO2_Basket
+	weighted_average_co2_basket = 100*total_co2_basket/weightBasket
+	# 0.39 is the average of a representative default basket.
+	savingsCO2_Basket = 0.39 - weighted_average_co2_basket
 	finalPoints = savingsCO2_Basket * 100
-	return savingsCO2_Basket, finalPoints
+	return total_co2_basket, finalPoints
