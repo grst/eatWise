@@ -7,8 +7,9 @@
        "ecofriendly"
     ],
     "points": 10,
+    "challengePoints": 0,
     "description": "EcoFighter",
-    "avatarURL": "/img/avatars/sebastian.jpg",
+    "avatarURL": "/img/avatars/sebastian.jpg"
   },
   {
     "id": 1,
@@ -19,7 +20,8 @@
        "econewbie"
     ],
     "points": 13,
-    "avatarURL": "/img/avatars/gregor.jpg",
+    "challengePoints": 0,
+    "avatarURL": "/img/avatars/gregor.jpg"
   },
   {
     "id": 2,
@@ -31,6 +33,7 @@
     ],
     "co2": 0,
     "points": 42,
+    "challengePoints": 0
   },
   {
     "id": 3,
@@ -41,6 +44,7 @@
       "ecowesome"
     ],
     "points": 0,
-    "avatarURL": "/img/avatars/betiana.jpg",
+    "challengePoints": 0,
+    "avatarURL": "/img/avatars/betiana.jpg"
   }
 ]

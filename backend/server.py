@@ -17,6 +17,10 @@ userList = {}
 productList = []
 ongoingChallenge = {}
 ongoingChallenge['state'] = "None"
+ongoingChallenge['playerOne'] = ""
+ongoingChallenge['playerTwo'] = ""
+ongoingChallenge['playerOneScore'] = 0
+ongoingChallenge['playerTwoScore'] = 0
 
 with open('buhlerFoodprint.json') as f:
     productList = json.load(f)
@@ -78,6 +82,7 @@ def calculateBasket():
 		newUser = {}
 		newUser['name'] = username
 		newUser['points'] = basketPoints
+		newUser['challengePoints'] = basketPoints
 		newUser['description'] = ""
 		newUser['co2'] = totalCO2_Basket
 		newUser['badges'] = []
@@ -91,16 +96,13 @@ def calculateBasket():
 		oldCO2Points = oldUser['co2']
 		oldUser['points'] = basketPoints + oldBasketPoints
 		oldUser['co2'] = totalCO2_Basket + oldCO2Points
+		oldUser['challengePoints'] = basketPoints
 		userList[username] = oldUser
 
-	if ongoingChallenge['playerOne'] == username:
-		ongoingChallenge['playerOneScore'] = basketPoints
-		if ongoingChallenge['playerTwoScore'] > 0:
-			ongoingChallenge['state'] == "Completed"
-	elif: ongoingChallenge['playerTwo'] == username:
-		ongoingChallenge['playerTwoScore'] = basketPoints
-		if ongoingChallenge['playerOneScore'] > 0:
-			ongoingChallenge['state'] == "Completed"
+	if ongoingChallenge['state'] == "WaitingForPlayerTwo":
+		if ongoingChallenge['playerTwo'] == username:
+			ongoingChallenge['playerTwoScore'] = basketPoints
+			ongoingChallenge['state'] = "Completed"
 
 	result = {}
 	result['BoughtItems'] = boughtItems
@@ -123,11 +125,14 @@ def startChallenge():
 
 	if otherUsername in userList:
 		#this should be the standard case. This function is allowed to assume that both you and the adversary are valid players
+		thisChallengeUser = userList[thisUsername]
+		thisChallengePoints = thisChallengeUser['challengePoints']
+
 		ongoingChallenge['playerOne'] = thisUsername
 		ongoingChallenge['playerTwo'] = otherUsername
-		ongoingChallenge['playerOneScore'] = 0
+		ongoingChallenge['playerOneScore'] = thisChallengePoints
 		ongoingChallenge['playerTwoScore'] = 0
-		ongoingChallenge['state'] = "Ongoing"
+		ongoingChallenge['state'] = "WaitingForPlayerTwo"
 
 	else:
 		print("ERROR! Your challenger doesn't exist!!")
