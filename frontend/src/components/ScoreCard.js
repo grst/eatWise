@@ -88,7 +88,7 @@ const styles = {
   }
 };
 
-function ScoreCard({classes, user, text1, text2}) {
+function ScoreCard({classes, user, text1, text2, compact = false}) {
   const badgeText = typeof user.badges === "undefined" ? null : user.badges[0];
   const badgeURL = "/img/badges/" + badgeText + ".png";
   return (

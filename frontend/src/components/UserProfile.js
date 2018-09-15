@@ -20,9 +20,23 @@ const styles = {
     justifyContent: 'center',
   },
   username: {
+  },
+  dialog: {
+    margin: "10px",
+    padding: "0",
+  },
+  dialogTitle: {
+    padding: "10px",
+  },
+  dialogContent: {
+    padding: "0px",
+  },
+  dialogDescription: {
+    padding: "20px",
   }
 };
 
+@withStyles(styles)
 @observer
 class UserProfile extends Component {
 
@@ -35,7 +49,7 @@ class UserProfile extends Component {
   }
 
   state = {
-    hasDialogOpened: false,
+    hasDialogOpened: true,
   };
 
   componentWillUnmount() {
@@ -51,7 +65,8 @@ class UserProfile extends Component {
   }
 
   render() {
-    const challengedBy = store.challengeResult ? (store.challengeResult.challengedBy || {}) : {};
+    const classes = this.props.classes;
+    const challengedBy = store.challengeResult ? (store.challengeResult.adversary || {}) : {};
     const challengedByName = challengedBy.username;
     // const badge = "foo"
     return (
@@ -63,32 +78,39 @@ class UserProfile extends Component {
           <div style={{...styles.row, ...styles.username}}>
             {store.username} (<Link to='/login'>Logout</Link>)
             </div>
-          {store.challengeResult.thisUserWasChallenged === true &&
-              <div>
-                You are being challenged by {store.challengedBy}.
-              </div>
-          }
       <Dialog
-          open={this.state.hasDialogOpened}
-          onClose={this.handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
+        classes={{
+          root: classes.dialog,
+          paper: classes.dialog,
+        }}
+        open={this.state.hasDialogOpened}
+        onClose={this.handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
         >
-            <DialogTitle id="alert-dialog-title">{`Accept ${challengedByName}`}</DialogTitle>
-            <DialogContent>
+          <DialogTitle
+            id="alert-dialog-title"
+            className={classes.dialogTitle}>
+            Accept {challengedByName}'s challenge
+          </DialogTitle>
+            <DialogContent className={classes.dialogContent}>
               <DialogContentText id="alert-dialog-description">
-                <ScoreCard user={challengedBy} text1={`${challengedByName}'s score`} />
-                Are you ready to challenge {challengedByName}?
+                <ScoreCard user={challengedBy}
+                  text1={`${challengedByName}'s score`}
+                  compact={true} />
+                <div className={classes.dialogDescription}>
+                  Are you ready to challenge {challengedByName}?
+                </div>
               </DialogContentText>
             </DialogContent>
-            <DialogActions>
-              <Button onClick={this.handleDisagree} color="primary">
-                Decline
-              </Button>
-              <Button onClick={this.handleAgree} color="primary" autoFocus>
-                Accept
-              </Button>
-            </DialogActions>
+              <DialogActions>
+                <Button onClick={this.handleDisagree} color="primary">
+                  Decline
+                </Button>
+                <Button onClick={this.handleAgree} color="primary" autoFocus>
+                  Accept
+                </Button>
+              </DialogActions>
         </Dialog>
         </div>
     );
