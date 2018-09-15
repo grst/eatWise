@@ -1,7 +1,8 @@
+import {observable} from 'mobx';
 
 class Store {
-  basket = [];
-	username = "Sebastian";
+  @observable basket = [];
+	@observable username = "Sebastian";
 }
 
 const store = new Store();
