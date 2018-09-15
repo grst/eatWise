@@ -56,7 +56,7 @@ class Friends extends Component {
   onClick = (user) => {
     console.log("Selected user: ", user);
     store.adversaryName = user;
-    api.post('/getChallengeState', {"Me": store.username, "Adversary": store.adversaryName});
+    api.post('/startChallenge', {"Me": store.username, "Adversary": store.adversaryName});
     this.props.history.push("/waiting-for-challenge-complete");
   }
   componentDidMount() {
