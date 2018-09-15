@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
 import store from '../store'
+import api from '../api'
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -54,6 +55,7 @@ const Friend = withStyles(styles)(
 class Friends extends Component {
   onClick = (user) => {
     console.log("Selected user: ", user);
+    api.post('/getChallengeState', {"Me": store.username, "Adversary": user});
     this.props.history.push("/waiting-for-challenge-complete");
   }
   componentDidMount() {
