@@ -4,7 +4,7 @@
     "username": "Sebastian",
     "co2": 4,
     "badges": [
-
+       "ecofriendly"
     ],
     "points": 10,
     "description": "EcoFighter",
@@ -16,7 +16,7 @@
     "description": "Food is my mood.",
     "co2": 3,
     "badges": [
-
+       "econewbie"
     ],
     "points": 13,
     "avatarURL": "/img/avatars/gregor.jpg"
@@ -25,7 +25,10 @@
     "id": 2,
     "username": "Mari",
     "description": "Sharing is caring.",
-    "avatarURL": "/img/avatars/mari.jpg"
+    "avatarURL": "/img/avatars/mari.jpg",
+    "badges": [
+       "ecomaster"
+    ]
   },
   {
     "id": 3,
@@ -33,7 +36,7 @@
     "description": "CheeseSquad",
     "co2": 0,
     "badges": [
-
+      "ecowesome"
     ],
     "points": 0,
     "avatarURL": "/img/avatars/betiana.jpg"

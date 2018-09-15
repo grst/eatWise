@@ -25,12 +25,15 @@ class UserProfile extends Component {
   }
 
   render() {
+    const avatar = "/img/avatars/" + store.username.toLowerCase() + ".jpg";
+    // const badge = "img/badges/" + store.user.badges[0] + ".jpg";
+    const badge = "foo"
     return (
         <div className="UserProfile">
           <ScoreCard user={store.username}
                      score={store.user.points}
-                     avatar='/img/user1.png'
-                     // level={store.currentLevel}
+                     avatar={avatar}
+                     badge={badge}
                      CO2={store.user.co2}
                      text1="Your Score: "/>
           <div style={{...styles.row, ...styles.username}}>

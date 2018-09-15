@@ -82,8 +82,6 @@ const styles = {
 
 function ScoreCard(props) {
   const {classes} = props;
-  const levelIcon = (props.level === null) ? null : 'img/' + props.level + '.png';
-
 
   return (
       <Card className={classes.card}>
@@ -108,7 +106,7 @@ function ScoreCard(props) {
         </CardContent>
         <Avatar
             alt="level"
-            src={levelIcon}
+            src={props.badge}
             className={classes.avatarLevel}
             childrenClassName={classes.avatarLevelImg}/>
         {/*<CardActions>*/}
