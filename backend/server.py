@@ -41,7 +41,7 @@ def initUser():
 	username = content['username']
 	newUser = {}
 	if username not in userList:
-		newUser['name'] = username
+		newUser['username'] = username
 		newUser['points'] = 0
 		newUser['co2'] = 0
 		newUser['description'] = ""
@@ -82,7 +82,7 @@ def calculateBasket():
 	thisUser = None;
 	if not username in userList:
 		newUser = {}
-		newUser['name'] = username
+		newUser['username'] = username
 		newUser['points'] = basketPoints
 		newUser['challengePoints'] = basketPoints
 		newUser['description'] = ""
@@ -105,7 +105,7 @@ def calculateBasket():
 
 	if ongoingChallenge['state'] == "WaitingForPlayerTwo":
 		playerTwoObject = ongoingChallenge['playerTwo']
-		if playerTwoObject['name'] == username:
+		if playerTwoObject['username'] == username:
 			ongoingChallenge['playerTwoScore'] = basketPoints
 			ongoingChallenge['state'] = "Completed"
 			ongoingChallenge['playerTwo'] = thisUser
