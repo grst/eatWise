@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
 import store from '../store'
 import {withStyles} from "@material-ui/core";
-import queryString from 'query-string'
+import qs from 'qs'
 
 const styles = {
   loader: {
@@ -33,7 +33,7 @@ class SupermarketConfirmation extends React.Component {
 
   componentDidMount() {
     store.pageTitle = "Waiting for confirmation";
-    const query = queryString.parse(this.props.location.search);
+    const query = qs.parse(this.props.location.search);
     // just check if set for the sake of simplicity
     if (!query.skipWaiting) {
       setTimeout(() => {
