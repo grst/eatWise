@@ -57,17 +57,17 @@ class PurchaseSummary extends Component {
             }
           </div>
 
-          {/*{store.purchase && store.purchase["boughtItems"] &&*/}
-          {/*<div className="PurchaseSummary">*/}
+          {store.purchase && store.purchase["boughtItems"] &&
+          <div className="PurchaseSummary">
 
-            {/*{store.purchase.boughtItems.map(p =>*/}
-                {/*<ListItem key={p.name}>*/}
-                  {/*<ProductItem product={p} quantity={p.quantity}/>*/}
-                {/*</ListItem>*/}
-            {/*)}*/}
+            {store.purchase.boughtItems.map(p =>
+                <ListItem key={p.name}>
+                  <ProductItem product={p} quantity={p.quantity}/>
+                </ListItem>
+            )}
 
-          {/*</div>*/}
-          {/*}*/}
+          </div>
+          }
         </div>
     );
   }

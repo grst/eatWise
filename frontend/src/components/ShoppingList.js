@@ -225,6 +225,7 @@ class ShoppingList extends Component {
       <div className="ShoppingList">
        <Select
             classes={classes}
+            // className={classes.select}
             options={options}
             components={components}
             value={this.state.single}

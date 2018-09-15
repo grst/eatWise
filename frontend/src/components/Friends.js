@@ -51,7 +51,7 @@ const Friend = withStyles(styles)(
         secondary={user.description}
       />
       <div className={classes.score}>
-        {user.points}
+        {Math.round(user.points)}
       </div>
     </ListItem>
   );
