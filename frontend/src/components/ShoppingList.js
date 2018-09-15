@@ -13,6 +13,9 @@ class ShoppingList extends Component {
     return (
       <div className="ShoppingList">
         List of products.
+        {store.products.map(e =>
+          <div id={e.name}> {e.name} </div>
+        )}
         <br/>
         <button onClick={this.onClick}>Buy</button>
       </div>

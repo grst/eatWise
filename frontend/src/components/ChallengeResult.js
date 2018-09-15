@@ -12,7 +12,7 @@ class ChallengeResult extends Component {
   render() {
     return (
       <div className="ChallengeResult">
-        You won or lost.
+        You <b>{store.challengeResult.status}</b>
         <br/>
         In any case you suck!
         <br/>

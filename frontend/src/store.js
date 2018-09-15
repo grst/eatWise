@@ -1,8 +1,28 @@
 import {observable, observe} from 'mobx';
 
+import defaultProducts from './products';
+
+function normalizeProducts(products){
+  return products.map(p => ({
+    name: p.Name,
+    iconURL: p.iconURL,
+    co2_kg: p.CO2_KG,
+    co2_100g: p.CO2_100g,
+    category: p.Category,
+  }));
+}
+
+const normalizedDefaultProducts = normalizeProducts(defaultProducts);
+
 class Store {
   @observable basket = [];
 	@observable username = localStorage.getItem("username", "Sebastian");
+	@observable products = normalizedDefaultProducts;
+	@observable friends = [];
+	@observable purchase = [];
+  @observable challengeResult = {
+    status: "lost",
+  };
 }
 
 const store = new Store();
