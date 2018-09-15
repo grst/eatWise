@@ -10,6 +10,8 @@ import ScoreCard from "./ScoreCard";
 import PropTypes from 'prop-types';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Close';
+import api from "../api";
+import {runInAction} from "mobx";
 
 const styles = {
   avatar: {
@@ -34,7 +36,14 @@ const styles = {
 @observer
 class PendingChallenge extends Component {
   componentDidMount() {
-        store.pageTitle = "XXX has been challenged. ";
+      store.pageTitle = "XXX has been challenged. ";
+      // let challengeState = 'Ongoing';
+      // const challengeInterval = setInterval(function() {
+      //   const e = api.post('/getChallengeState', {"Me": store.username, "Adversary": store.adversaryName});
+      //   runInAction(() => {
+      //
+      //   });
+      // }, 2e3);
   }
 
   render() {
