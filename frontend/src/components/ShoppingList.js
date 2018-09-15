@@ -182,7 +182,7 @@ class ShoppingList extends Component {
   };
 
   onClick = () => {
-    this.props.history.push("/purchase-summary");
+    this.props.history.push("/waiting-for-confirmation");
   }
 
   onSelectChanged = (e) => {
@@ -210,7 +210,7 @@ class ShoppingList extends Component {
   onBuy = () => {
     store.purchase = this.state.products;
     // TODO: send request here
-    this.props.history.push("/wait-for-supermarket");
+    this.props.history.push("/waiting-for-confirmation");
   };
 
   render() {

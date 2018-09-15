@@ -17,6 +17,7 @@ const styles = {
     margin: "40px 60px",
     overflow: 'visible',
     position: 'relative',
+    marginTop: 60,
   },
   bullet: {
     display: 'inline-block',
@@ -26,7 +27,8 @@ const styles = {
   title: {
     marginBottom: 16,
     fontSize: 14,
-    marginTop: -60,
+    marginTop: -100,
+    textAlign: 'center',
   },
   pos: {
     marginBottom: 12,
@@ -34,13 +36,13 @@ const styles = {
   score: {
     fontFamily: "oswald",
     color: "blue",
-    fontSize: 32,
+    fontSize: 68,
     width: '100%',
     textAlign: 'center',
   },
   avatarUser: {
-    width: 64,
-    height: 64,
+    width: 100,
+    height: 100,
     margin: 10,
     position: 'relative',
     left: -64,
@@ -54,8 +56,18 @@ const styles = {
     fontWeight: 'bold',
     position: 'absolute',
     right: -30,
-    bottom: -30
+    bottom: -30,
+    width: 80,
+    height: 80,
   },
+  scorePoints: {
+    fontSize: 32
+  },
+  scoreCO2: {
+    color: '#777',
+    fontSize: 24,
+    textAlign: 'left'
+  }
 };
 
 function ScoreCard(props) {
@@ -74,7 +86,10 @@ function ScoreCard(props) {
             Your Score:
           </Typography>
           <Typography className={classes.score} color="textSecondary">
-            {store.currentScore}
+            {store.currentScore} <span className={classes.scorePoints}>points</span>
+          </Typography>
+          <Typography className={classes.scoreCO2} color="textSecondary">
+            {store.currentCO2} kg CO2
           </Typography>
         </CardContent>
         <Avatar
