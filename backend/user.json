@@ -14,11 +14,11 @@
     "id": 1,
     "username": "Gregor",
     "description": "Food is my mood.",
-    "co2": 0,
+    "co2": 3,
     "badges": [
 
     ],
-    "points": 0,
+    "points": 13,
     "avatarURL": "/img/avatars/gregor.jpg"
   },
   {
