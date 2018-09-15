@@ -73,6 +73,7 @@ class Store {
       products: products.map(p => p.id),
     })).data;
     runInAction(() => {
+      console.log(this.purchase);
       set(this.purchase, {
         boughtItems: normalizeProducts(data.BoughtItems),
         basketPoints: data.BasketPoints,

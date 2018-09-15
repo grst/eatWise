@@ -31,17 +31,14 @@ class PurchaseSummary extends Component {
         <div className="PurchaseSummary">
             {store.purchase.boughtItems.map(p =>
               <ListItem key={p.name}>
-                <ProductItem product={p} />
-                <div>
-                  {p.quantity} g
-                </div>
+                <ProductItem product={p} quantity={p.quantity}/>
               </ListItem>
             )}
 
           <br/>
-          Total points: {store.purchase.basketPoints}
+          Total points: {Math.round(store.purchase.basketPoints)}
           <br/>
-          Total CO2: {store.purchase.basketCO2}
+          Total CO2: {Math.round(store.purchase.basketCO2*100)/100} kg
           <br/>
 
           <Button variant="outlined" onClick={this.onClick}>Challenge a friend</Button>

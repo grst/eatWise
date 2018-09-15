@@ -31,14 +31,19 @@ function ProductItem(props) {
     }
   };
 
+  const textPrimary = typeof props.quantity === "undefined" ? p.name :
+      `${p.name} (${Math.round(p.quantity / 10) / 100} kg)`;
+  const textSecondary = typeof props.quantity === "undefined" ? `${p.co2_100g} kg of CO₂ per 100g` :
+      Math.round(p.quantity * (p.co2_100g / 100) * 100) / 100 + " kg CO₂";
+
   return <Fragment>
     <ListItemAvatar>
       <Avatar src={imgUrl}>
       </Avatar>
     </ListItemAvatar>
     <ListItemText
-      primary={p.name}
-      secondary={`${p.co2_100g} kg of CO2 per 100g`}
+      primary={textPrimary}
+      secondary={textSecondary}
     />
     <Avatar style={styles.item}></Avatar>
   </Fragment>
