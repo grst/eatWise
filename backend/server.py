@@ -21,6 +21,7 @@ ongoingChallenge['playerOne'] = ""
 ongoingChallenge['playerTwo'] = ""
 ongoingChallenge['playerOneScore'] = 0
 ongoingChallenge['playerTwoScore'] = 0
+ongoingChallenge['finishedCounter'] = 0
 
 with open('buhlerFoodprint.json') as f:
     productList = json.load(f)
@@ -78,6 +79,7 @@ def calculateBasket():
 
 	totalCO2_Basket,basketPoints = calculatePoints(boughtItems)
 
+	thisUser = None;
 	if not username in userList:
 		newUser = {}
 		newUser['name'] = username
@@ -89,7 +91,7 @@ def calculateBasket():
 		newUser['avatarURL'] = '/img/avatars/dummy.jpg'
 		userId = len(userList)
 		newUser['id'] = userId
-		userList[username] = newUser
+		thisUser = newUser
 	else:
 		oldUser = userList[username]
 		oldBasketPoints = oldUser['points']
@@ -97,12 +99,17 @@ def calculateBasket():
 		oldUser['points'] = basketPoints + oldBasketPoints
 		oldUser['co2'] = totalCO2_Basket + oldCO2Points
 		oldUser['challengePoints'] = basketPoints
-		userList[username] = oldUser
+		thisUser = oldUser
+
+	userList[username] = thisUser
 
 	if ongoingChallenge['state'] == "WaitingForPlayerTwo":
-		if ongoingChallenge['playerTwo'] == username:
+		playerTwoObject = ongoingChallenge['playerTwo']
+		if playerTwoObject['name'] == username:
 			ongoingChallenge['playerTwoScore'] = basketPoints
 			ongoingChallenge['state'] = "Completed"
+			ongoingChallenge['playerTwo'] = thisUser
+
 
 	result = {}
 	result['BoughtItems'] = boughtItems
@@ -127,9 +134,10 @@ def startChallenge():
 		#this should be the standard case. This function is allowed to assume that both you and the adversary are valid players
 		thisChallengeUser = userList[thisUsername]
 		thisChallengePoints = thisChallengeUser['challengePoints']
+		otherChallengeUser = userList[otherUsername]
 
-		ongoingChallenge['playerOne'] = thisUsername
-		ongoingChallenge['playerTwo'] = otherUsername
+		ongoingChallenge['playerOne'] = thisChallengeUser
+		ongoingChallenge['playerTwo'] = otherChallengeUser
 		ongoingChallenge['playerOneScore'] = thisChallengePoints
 		ongoingChallenge['playerTwoScore'] = 0
 		ongoingChallenge['state'] = "WaitingForPlayerTwo"
@@ -140,6 +148,26 @@ def startChallenge():
 
 	return json.dumps(ongoingChallenge)
 
+@app.route('/finishChallenge/', methods=['POST'])
+def finishChallenge():
+	content = request.json
+	username = content['username']
+	oldCounter = ongoingChallenge['finishedCounter']
+	oldCounter = oldCounter+1
+	if(oldCounter==2):
+		ongoingChallenge = {}
+		ongoingChallenge['state'] = "None"
+		ongoingChallenge['playerOne'] = ""
+		ongoingChallenge['playerTwo'] = ""
+		ongoingChallenge['playerOneScore'] = 0
+		ongoingChallenge['playerTwoScore'] = 0
+		ongoingChallenge['finishedCounter'] = 0
+
+
+#0 means inited
+#1 means only player One has visted
+#2 means only player Two has visited
+#3 means both have visted, and this can be restet
 
 def calculatePoints(basket):
 	total_co2_basket = 0
