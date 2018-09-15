@@ -63,8 +63,6 @@ const Friend = withStyles(styles)(
 class Friends extends Component {
   challengePicker = (typeof this.props.disableChallenge === "undefined");
   onClick = (user) => {
-    console.log(toJS(user));
-    debugger;
     if(this.challengePicker && user.id !== store.user.id) {
       store.challengeFriend(user);
       this.props.history.push("/waiting-for-challenge-complete");
