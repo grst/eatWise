@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react';
 
@@ -29,14 +29,6 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
-
-function generate(element) {
-  return [0, 1, 2].map(value =>
-    React.cloneElement(element, {
-      key: value,
-    }),
-  );
-}
 
 const styles = theme => ({
   root: {
@@ -130,7 +122,7 @@ function Option(props) {
       }}
       {...props.innerProps}
     >
-      {props.children}
+      <ProductItem product={props.data} />
     </MenuItem>
   );
 }
@@ -151,26 +143,15 @@ function SingleValue(props) {
   return (
     <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
       {props.children}
+      SINGLE
     </Typography>
   );
 }
 
 function ValueContainer(props) {
-  return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
-}
-
-function MultiValue(props) {
-  return (
-    <Chip
-      tabIndex={-1}
-      label={props.children}
-      className={classNames(props.selectProps.classes.chip, {
-        [props.selectProps.classes.chipFocused]: props.isFocused,
-      })}
-      onDelete={props.removeProps.onClick}
-      deleteIcon={<CancelIcon {...props.removeProps} />}
-    />
-  );
+  return <div className={props.selectProps.classes.valueContainer}>
+    {props.children}
+  </div>;
 }
 
 function Menu(props) {
@@ -181,10 +162,24 @@ function Menu(props) {
   );
 }
 
+function ProductItem(props) {
+  const p = props.product;
+  return <Fragment>
+    <ListItemAvatar>
+      <Avatar>
+        <FolderIcon />
+      </Avatar>
+    </ListItemAvatar>
+    <ListItemText
+      primary={p.name}
+      secondary={p.name}
+    />
+  </Fragment>
+}
+
 const components = {
   Control,
   Menu,
-  MultiValue,
   NoOptionsMessage,
   Option,
   Placeholder,
@@ -197,23 +192,12 @@ const components = {
 class ShoppingList extends Component {
 
   state = {
-    single: "Foo",
+    single: "",
     products: [],
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   onClick = () => {
     this.props.history.push("/purchase-summary");
-  }
-
-  componentDidMount() {
-    //this.setState(store.products.map(p => ({
-      //value: p.name,
-      //label: p.name,
-    //})));
   }
 
   onSelectChanged = (e) => {
@@ -228,6 +212,10 @@ class ShoppingList extends Component {
     this.setState({
       products: this.state.products.filter(p => p.id!== item.id)
     })
+  }
+
+  noOptionsMessage = () => {
+    return "No products";
   }
 
   render() {
@@ -248,27 +236,20 @@ class ShoppingList extends Component {
             components={components}
             value={this.state.single}
             onChange={this.onSelectChanged}
-            placeholder="Search a product"
+            placeholder="Enter your food"
+            noOptionsMessage={this.noOptionsMessage}
         />
         <br/>
         <List dense={false}>
           {this.state.products.map(p =>
             <ListItem key={p.id}>
-              <ListItemAvatar>
-                <Avatar>
-                  <FolderIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary={p.name}
-                secondary={p.name}
-              />
+              <ProductItem product={p} />
               <ListItemSecondaryAction onClick={this.onDelete.bind(this, p)}>
                 <IconButton aria-label="Delete">
                   <DeleteIcon />
                 </IconButton>
               </ListItemSecondaryAction>
-            </ListItem>,
+            </ListItem>
           )}
         </List>
 
