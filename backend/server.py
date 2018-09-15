@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, abort, make_response
 from flask_httpauth import HTTPBasicAuth
 from flask_cors import CORS
 import json
-from random import randint
+from random import randint, seed
 
 app = Flask(__name__)
 CORS(app)
@@ -33,7 +33,7 @@ def get_password(username):
 def startChallenge(userName):
 		newUser = {}
 		newUser['name'] = username
-		newUser['points'] = totalSum
+		newUser['points'] = 0
 		newUser['badges'] = []
 		userId = len(userList)
 		newUser['id'] = userId
@@ -44,43 +44,44 @@ def startChallenge(userName):
 def getProductList():
 	return json.dumps(productList)
 
-@app.route('/boughtProducts/<username>', methods=['POST'])
+@app.route('/buyProducts/<username>', methods=['POST'])
 def calculateSum(username):
+	seed(42)
 	content = request.json
-	totalSum = 0
 	boughtItems = []
 
 	for i in range(0, len(content)):
 		ident = content[i]
 		product = productList[ident]
-		pts = product['Points']
-		qty = randint(1,20)
-		itemPts = pts*qty
+		qty = randint(100,3000)
 		newItem = {}
 		newItem['Name'] = product['Name']
-		newItem['Points'] = product['Points']
+		newItem['CO2_100g'] = product['CO2_100g']
 		newItem['Category'] = product['Category']
 		newItem['Quantity'] = qty
-		newItem['ItemPoints'] = itemPts		
 		#print("we had " + product['Name'] + " which had " + str(pts) + " points, and we bought " + str(qty) + " of them, which gives us a total of " + str(itemPts))
-		totalSum = totalSum + itemPts
 		boughtItems.append(newItem)
+
+	totalCO2_Basket,basketPoints = calculatePoints(boughtItems)
 
 	if not username in userList:
 		newUser = {}
 		newUser['name'] = username
-		newUser['points'] = totalSum
+		newUser['points'] = basketPoints
+		newUser['co2'] = totalCO2_Basket
 		newUser['badges'] = []
 		userId = len(userList)
 		newUser['id'] = userId
 		userList[username] = newUser
 	else:
 		oldUser = userList[username]
-		oldUser['points'] = totalSum
+		oldUser['points'] = basketPoints
+		oldUser['co2'] = totalCO2_Basket
 
 	result = {} 
 	result['BoughtItems'] = boughtItems
-	result['Sum'] = totalSum
+	result['BasketCO2'] = totalCO2_Basket
+	result['BasketPoints'] = basketPoints
 	return json.dumps(result)
 
 @app.route('/getChallengeState/<username>', methods=['POST'])
@@ -116,5 +117,22 @@ def getChallengeState(username):
 	result['ChallengeResult'] = resultStr
 	return json.dumps(result)
 
-#start stop
-#get shoppin
+
+def calculatePoints(basket):
+	CO2sum = 0
+	weightBasket = 0 
+	print(basket)
+
+	for i in range(0, len(basket)):
+		product = basket[i]
+		weight = product['Quantity']
+		#normalized emissions per product from our database
+		CO2_100g = product['CO2_100g']
+		#calculate the total absolute emission
+		CO2sum = CO2sum + CO2_100g * weight/100
+		#get the total weight of the Basket
+		weightBasket = weightBasket + weight
+
+	totalCO2_Basket = 100*CO2sum/weightBasket
+	finalPoints = 1/totalCO2_Basket
+	return totalCO2_Basket,finalPoints
