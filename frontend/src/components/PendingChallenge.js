@@ -35,23 +35,26 @@ const styles = {
 
 @observer
 class PendingChallenge extends Component {
+
   componentDidMount() {
-      store.pageTitle = "XXX has been challenged. ";
-      // let challengeState = 'Ongoing';
-      // const challengeInterval = setInterval(function() {
-      //   const e = api.post('/getChallengeState', {"Me": store.username, "Adversary": store.adversaryName});
-      //   runInAction(() => {
-      //
-      //   });
-      // }, 2e3);
+    store.pageTitle = `${store.adversary.username} has been challenged. `;
+    this.interval = setInterval(function() {
+      store.updateChallenge();
+    }, store.updatePeriod);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
     const { classes } = this.props;
+    const username = store.adversary.username;
     return (
         <div className="PendingChallenge">
-          <h2>XXX has been challenged.
-          You will be notified once XXX completed the challenge!</h2>
+          <h2>{username} has been challenged.</h2>
+          <br/ >
+          You will be notified once {username} completed the challenge!
         </div>
     );
   }
