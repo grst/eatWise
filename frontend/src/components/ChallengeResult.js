@@ -144,6 +144,7 @@ class ChallengeResult extends Component {
   }
   componentDidMount() {
     store.pageTitle = "Challenge results";
+    store.sendResultSeen();
   }
   render() {
     const classes = this.props.classes;

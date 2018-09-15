@@ -120,6 +120,11 @@ class Store {
     // Completed
     return store.challengeResult && store.challengeResult.state === "WaitingForPlayerTwo";
   }
+
+  sendResultSeen() {
+    // tell the server that we have seen this
+    api.post('/finishChallenge', {username: store.username});
+  }
 }
 
 const store = new Store();
