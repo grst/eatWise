@@ -9,6 +9,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import CartIcon from '@material-ui/icons/ShoppingCart';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Switch from '@material-ui/core/Switch';
@@ -31,7 +32,8 @@ const styles = {
     color: '#ffffff',
   },
   userButton: {
-    color: '#ffffff'
+    color: '#ffffff',
+    // backgroundColor: '#000099'
   }
 };
 
@@ -57,22 +59,27 @@ class MenuAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Link to="/">
-            { isRoot ||
-              <IconButton className={classes.menuButton} aria-label="Menu">
-                <BackIcon />
-              </IconButton>
-            }
-            </Link>
+            {/*<Link to="/">*/}
+            {/*{ isRoot ||*/}
+              {/*<IconButton className={classes.menuButton} aria-label="Menu">*/}
+                {/*<BackIcon />*/}
+              {/*</IconButton>*/}
+            {/*}*/}
+            {/*</Link>*/}
             <Typography variant="title" color="inherit" className={classes.grow}>
               Eco.li - {store.pageTitle}
             </Typography>
             {auth && (
               <div>
+                <Link to="/">
+                  <IconButton className={classes.userButton}>
+                    <CartIcon />
+                  </IconButton>
+                </Link>
                 <Link to="/profile">
                   <IconButton>
                     <Avatar
-                      alt={store.user.username}
+                      alt={store.user.name}
                       className={classes.userButton}
                       src={store.user.avatarURL}
                     />
