@@ -8,6 +8,12 @@ import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import ScoreCard from "./ScoreCard";
 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 const styles = {
   row: {
     display: 'flex',
@@ -28,24 +34,32 @@ class UserProfile extends Component {
     }, store.updatePeriod);
   }
 
+  state = {
+    hasDialogOpened: false,
+  };
+
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
+  handleDisagree = () => {
+
+  }
+
+  handleAgree = () => {
+
+  }
+
   render() {
-    const avatar = "/img/avatars/" + store.username.toLowerCase() + ".jpg";
-    const badgeText = typeof store.user.badges === "undefined" ? null : store.user.badges[0];
-    const badge = "/img/badges/" + badgeText + ".png";
+    const challengedBy = store.challengeResult ? (store.challengeResult.challengedBy || {}) : {};
+    const challengedByName = challengedBy.username;
     // const badge = "foo"
     return (
         <div className="UserProfile">
-          <ScoreCard user={store.username}
-              score={Math.round(store.user.points * 10) / 10}
-                     avatar={avatar}
-                     badge={badge}
-                     badgeText={badgeText}
-              CO2={store.user.co2}
-              text1="Your Score: "/>
+          <ScoreCard
+            user={store.user}
+            text1="Your Score: "
+          />
           <div style={{...styles.row, ...styles.username}}>
             {store.username} (<Link to='/login'>Logout</Link>)
             </div>
@@ -54,6 +68,28 @@ class UserProfile extends Component {
                 You are being challenged by {store.challengedBy}.
               </div>
           }
+      <Dialog
+          open={this.state.hasDialogOpened}
+          onClose={this.handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+            <DialogTitle id="alert-dialog-title">{`Accept ${challengedByName}`}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                <ScoreCard user={challengedBy} text1={`${challengedByName}'s score`} />
+                Are you ready to challenge {challengedByName}?
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleDisagree} color="primary">
+                Decline
+              </Button>
+              <Button onClick={this.handleAgree} color="primary" autoFocus>
+                Accept
+              </Button>
+            </DialogActions>
+        </Dialog>
         </div>
     );
   }

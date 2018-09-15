@@ -88,36 +88,36 @@ const styles = {
   }
 };
 
-function ScoreCard(props) {
-  const {classes} = props;
-
+function ScoreCard({classes, user, text1, text2}) {
+  const badgeText = typeof user.badges === "undefined" ? null : user.badges[0];
+  const badgeURL = "/img/badges/" + badgeText + ".png";
   return (
       <Card className={classes.card}>
         <CardContent>
           <Avatar
-              alt={props.user}
-              src={props.avatar}
+              alt={user}
+              src={user.avatarURL}
               className={classes.avatarUser}
           />
           <Typography className={classes.title} color="textSecondary">
-            {props.text1}
+            {text1}
           </Typography>
           <Typography className={classes.score} color="textSecondary">
-            {Math.round(props.score)} <span className={classes.scorePoints}>points</span>
+            {Math.round(user.points * 10) / 10} <span className={classes.scorePoints}>points</span>
           </Typography>
           <Typography className={classes.scoreCO2} color="textSecondary">
-            {Math.round(props.CO2*100)/100} kg CO2
+            {Math.round(user.co2 *100)/100} kg CO2
           </Typography>
           <Typography className={classes.text2} color="textSecondary">
-            {props.text2}
+            {text2}
           </Typography>
           <Typography className={classes.textBadge} color="textSecondary">
-            {props.badgeText}
+            {badgeText}
           </Typography>
         </CardContent>
         <Avatar
             alt="level"
-            src={props.badge}
+            src={badgeURL}
             className={classes.avatarLevel}
             childrenClassName={classes.avatarLevelImg} />
         {/*<CardActions>*/}
