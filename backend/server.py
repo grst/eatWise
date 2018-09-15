@@ -4,6 +4,7 @@ from flask_httpauth import HTTPBasicAuth
 from flask_cors import CORS
 import json
 from random import randint, seed
+import copy
 
 app = Flask(__name__)
 CORS(app)
@@ -65,11 +66,8 @@ def calculateBasket():
 
 	for ident in products:
 		product = productList[int(ident)]
-		qty = randint(100,3000)
-		newItem = {}
-		newItem['Name'] = product['Name']
-		newItem['CO2_100g'] = product['CO2_100g']
-		newItem['Category'] = product['Category']
+		qty = randint(100, 3000)
+		newItem = copy.deepcopy(product)
 		newItem['Quantity'] = qty
 		#print("we had " + product['Name'] + " which had " + str(pts) + " points, and we bought " + str(qty) + " of them, which gives us a total of " + str(itemPts))
 		boughtItems.append(newItem)
@@ -94,7 +92,7 @@ def calculateBasket():
 		oldUser['points'] = basketPoints
 		oldUser['co2'] = totalCO2_Basket
 
-	result = {} 
+	result = {}
 	result['BoughtItems'] = boughtItems
 	result['BasketCO2'] = totalCO2_Basket
 	result['BasketPoints'] = basketPoints
@@ -104,11 +102,11 @@ def calculateBasket():
 def getOngoingChallenge():
 	content = request.json
 	username = content['username'] #returns "two"
-	user = userList[username] 
+	user = userList[username]
 	adversaryName = user['adversary']
 	if not adversaryName == "None":
 		adversaryUser = userList[adversaryName]
-	else: 
+	else:
 		adversaryUser = "None"
 	result = {}
 	result['thisUserWasChallenged'] = user['wasChallenged']
@@ -118,7 +116,7 @@ def getOngoingChallenge():
 @app.route('/startChallenge/', methods=['POST'])
 def startChallenge():
 	content = request.json
-	thisUsername = content['Me'] 
+	thisUsername = content['Me']
 	otherUsername = content['Adversary']
 	thisPoints = 0
 	otherPoints = 0
@@ -159,7 +157,7 @@ def startChallenge():
 
 def calculatePoints(basket):
 	CO2sum = 0
-	weightBasket = 0 
+	weightBasket = 0
 	print(basket)
 
 	for i in range(0, len(basket)):
