@@ -8,6 +8,8 @@
     "react": "^16.5.1",
     "react-app-rewire-mobx": "^1.0.9",
     "react-dom": "^16.5.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5"
   },
   "scripts": {

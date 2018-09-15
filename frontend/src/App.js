@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom'
+
+import { UserProfile } from './components/UserProfile'
+import { ShoppingList } from './components/ShoppingList'
+import { PurchaseSummary } from './components/PurchaseSummary'
+import { Friends } from './components/Friends'
+import { Login } from './components/ChallengeResult'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <BrowserRouter>
+          Hello
+          <Switch>
+            <Route exact path='/' component={UserProfile} />
+            <Route path='/shopping-list' component={ShoppingList} />
+            <Route path='/purchase-summary' component={PurchaseSummary} />
+            <Route path='/challenge-your-friend' component={Friends} />
+            <Route path='/challenge-result' component={ChallengeResult} />
+            <Route path='/login' component={Login} />
+          </Switch>
+         </BrowserRouter>
       </div>
     );
   }
