@@ -14,6 +14,7 @@ import NavigationBar from "./components/NavigationBar";
 
 import Paper from '@material-ui/core/Paper';
 import SupermarketConfirmation from "./components/SupermarketConfirmation";
+import IncomingChallenge from "./components/IncomingChallenge";
 
 class App extends Component {
   render() {
@@ -32,6 +33,7 @@ class App extends Component {
                <Route path='/purchase-summary' component={PurchaseSummary} />
                <Route path='/challenge-a-friend' component={Friends} />
                <Route path='/challenge-result' component={ChallengeResult} />
+               <Route path='/you-were-challenged' component={IncomingChallenge} />
                <Route path='/login' component={Login} />
              </Switch>
             {/*</Paper>*/}
