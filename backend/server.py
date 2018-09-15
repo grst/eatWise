@@ -23,6 +23,8 @@ app = Flask(__name__)
 CORS(app)
 auth = HTTPBasicAuth()
 app.config['DEBUG'] = False
+# CORS doesn't support redirects
+app.url_map.strict_slashes = False
 
 isChallengeRunning = False
 
