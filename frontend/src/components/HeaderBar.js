@@ -20,6 +20,9 @@ import Menu from '@material-ui/core/Menu';
 import Avatar from '@material-ui/core/Avatar';
 
 const styles = {
+  bar: {
+    backgroundColor: "#0cbd00",
+  },
   root: {
     flexGrow: 1,
   },
@@ -57,7 +60,7 @@ class MenuAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" className={classes.bar}>
           <Toolbar>
             {/*<Link to="/">*/}
             {/*{ isRoot ||*/}

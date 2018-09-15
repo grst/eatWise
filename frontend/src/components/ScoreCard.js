@@ -88,7 +88,7 @@ const styles = {
   }
 };
 
-function ScoreCard({classes, user, text1, text2, points, co2}) {
+function ScoreCard({classes, user, text1, text2, points, co2, textColor}) {
   const badgeText = typeof user.badges === "undefined" ? null : user.badges[0];
   const badgeURL = "/img/badges/" + badgeText + ".png";
   points = typeof points === "undefined" ? user.points : points;
@@ -104,7 +104,7 @@ function ScoreCard({classes, user, text1, text2, points, co2}) {
           <Typography className={classes.title} color="textSecondary">
             {text1}
           </Typography>
-          <Typography className={classes.score} color="textSecondary">
+          <Typography className={classes.score} color="textSecondary" style={{color: textColor}}>
             {Math.round(points)} <span className={classes.scorePoints}>points</span>
           </Typography>
           <Typography className={classes.scoreCO2} color="textSecondary">

@@ -10,7 +10,6 @@ import Login from './components/Login'
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import HeaderBar from "./components/HeaderBar";
-import NavigationBar from "./components/NavigationBar";
 
 import Paper from '@material-ui/core/Paper';
 import SupermarketConfirmation from "./components/SupermarketConfirmation";

@@ -36,12 +36,17 @@ class PurchaseSummary extends Component {
   }
   render() {
     let hasChallenge = false;
+    const points = Math.round(store.purchase.basketPoints);
+    const text1 = "You " + ((points < 0) ? "lost" : "earned");
+    const text2 = points < 0 ? "Try again!" : "Good job!";
+    const textColor = points < 0 ? "#aa0000" : "#00aa00";
     return (
         <div>
           <ScoreCard user={store.user}
-                     text1="You earned"
-                     text2="Good job!"
-                     points={Math.round(store.purchase.basketPoints)}
+                     text1={text1}
+                     text2={text2}
+                     textColor={textColor}
+                     points={Math.abs(Math.round(store.purchase.basketPoints))}
                      co2={Math.round(store.purchase.basketCO2*100)/100}/>
 
           <div style={style.button}>
@@ -53,17 +58,17 @@ class PurchaseSummary extends Component {
             }
           </div>
 
-          {store.purchase && store.purchase["boughtItems"] &&
-          <div className="PurchaseSummary">
+          {/*{store.purchase && store.purchase["boughtItems"] &&*/}
+          {/*<div className="PurchaseSummary">*/}
 
-            {store.purchase.boughtItems.map(p =>
-                <ListItem key={p.name}>
-                  <ProductItem product={p} quantity={p.quantity}/>
-                </ListItem>
-            )}
+            {/*{store.purchase.boughtItems.map(p =>*/}
+                {/*<ListItem key={p.name}>*/}
+                  {/*<ProductItem product={p} quantity={p.quantity}/>*/}
+                {/*</ListItem>*/}
+            {/*)}*/}
 
-          </div>
-          }
+          {/*</div>*/}
+          {/*}*/}
         </div>
     );
   }
