@@ -1,4 +1,4 @@
-import mobx, {action, autorun, computed, observable, observe, runInAction} from 'mobx';
+import mobx, {action, autorun, computed, observable, observe, runInAction, set} from 'mobx';
 
 //mobx.configure({ enforceActions: true }) // don't allow state modifications outside actions
 
@@ -43,7 +43,7 @@ class Store {
   @action async fetchUserDetails() {
     const e = await api.post("/start", {'username': this.username});
     runInAction(() => {
-      this.user = e.data.currentUser;
+      set(this.user, e.data.currentUser);
       this.users.replace(values(e.data.userList));
     });
   }
