@@ -24,9 +24,7 @@ app.config['DEBUG'] = False
 
 isChallengeRunning = False
 
-userOne = User()
-userTwo = User()
-
+userList = {}
 productList = []
 
 with open('buhlerFoodprint.json') as f:
@@ -77,26 +75,54 @@ def calculateSum(username):
 		totalSum = totalSum + itemPts
 		boughtItems.append(newItem)
 
+	if not username in userList:
+		newUser = {}
+		newUser['name'] = username
+		newUser['points'] = totalSum
+		newUser['badges'] = []
+		userId = len(userList)
+		newUser['id'] = userId
+		userList[username] = newUser
+	else:
+		oldUser = userList[username]
+		oldUser['points'] = totalSum
+
 	result = {} 
 	result['BoughtItems'] = boughtItems
 	result['Sum'] = totalSum
+	return json.dumps(result)
 
-	if(userOne.points == 0):
-		#you are the first person to complete the challenge
-		result['Challenge'] = 'Ongoing'
-		userOne.Name = username
-		userOne.points = totalSum
+@app.route('/getChallengeState/<username>', methods=['POST'])
+def getChallengeState(username):
+	content = request.json
+	thisUsername = content['Me'] 
+	otherUsername = content['Adversary']
+	thisPoints = 0
+	otherPoints = 0
+	resultStr = ""
+
+	if thisUsername in userList:
+		thisUser = userList[thisUsername]
+		thisPoints = thisUser['points']
 	else:
-		#you're the second one to finish, let's see if you won..
-		if(userOne.points>totalSum):
-			#the other dude had more points than you did, you loose, sorry lah..
-			result['Challenge'] = 'Looser'
+		print("ERROR! You never saved your own points!!")
+		return make_response(jsonify({'Error!': 'Bad request format! Did you save your own points before quering it?'}), 400)
+
+	if not otherUsername in userList:
+		resultStr = "Ongoing"
+	else:
+		otherUser = userList[otherUsername]
+		otherPoints = otherUser['points']
+
+		if thisPoints > otherPoints:
+			resultStr = "Winner"
+		elif otherPoints > thisPoints:
+			resultStr = "Looser"
 		else:
-			result['Challenge'] = 'Winner'
-		
-		userTwo.Name = username
-		userTwo.points = totalSum
-	
+			resultStr = "Tie!"
+
+	result = {}
+	result['ChallengeResult'] = resultStr
 	return json.dumps(result)
 
 #start stop
