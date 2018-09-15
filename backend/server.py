@@ -176,5 +176,6 @@ def calculatePoints(basket):
 		weightBasket = weightBasket + weight
 
 	totalCO2_Basket = 100*CO2sum/weightBasket
-	finalPoints = 1/totalCO2_Basket
+	savingsCO2_Basket = 0.39 - totalCO2_Basket
+	finalPoints = savingCO2 * 100
 	return totalCO2_Basket,finalPoints
