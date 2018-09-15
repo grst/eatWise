@@ -15,6 +15,8 @@ app.url_map.strict_slashes = False
 
 userList = {}
 productList = []
+ongoingChallenge = {}
+ongoingChallenge['state'] = "None"
 
 with open('buhlerFoodprint.json') as f:
     productList = json.load(f)
@@ -37,8 +39,6 @@ def initUser():
 		newUser['name'] = username
 		newUser['points'] = 0
 		newUser['co2'] = 0
-		newUser['wasChallenged'] = False
-		newUser['adversary'] = "None"
 		newUser['description'] = ""
 		newUser['badges'] = []
 		newUser['avatarURL'] = '/img/avatars/dummy.jpg'
@@ -78,8 +78,6 @@ def calculateBasket():
 		newUser = {}
 		newUser['name'] = username
 		newUser['points'] = basketPoints
-		newUser['wasChallenged'] = False
-		newUser['adversary'] = "None"
 		newUser['description'] = ""
 		newUser['co2'] = totalCO2_Basket
 		newUser['badges'] = []
@@ -89,8 +87,20 @@ def calculateBasket():
 		userList[username] = newUser
 	else:
 		oldUser = userList[username]
-		oldUser['points'] = basketPoints
-		oldUser['co2'] = totalCO2_Basket
+		oldBasketPoints = oldUser['points']
+		oldCO2Points = oldUser['co2']
+		oldUser['points'] = basketPoints + oldBasketPoints
+		oldUser['co2'] = totalCO2_Basket + oldCO2Points
+		userList[username] = oldUser
+
+	if ongoingChallenge['playerOne'] == username:
+		ongoingChallenge['playerOneScore'] = basketPoints
+		if ongoingChallenge['playerTwoScore'] > 0:
+			ongoingChallenge['state'] == "Completed"
+	elif: ongoingChallenge['playerTwo'] == username:
+		ongoingChallenge['playerTwoScore'] = basketPoints
+		if ongoingChallenge['playerOneScore'] > 0:
+			ongoingChallenge['state'] == "Completed"
 
 	result = {}
 	result['BoughtItems'] = boughtItems
@@ -98,72 +108,37 @@ def calculateBasket():
 	result['BasketPoints'] = basketPoints
 	return json.dumps(result)
 
-@app.route('/getOngoingChallenge/', methods=['POST'])
+@app.route('/getOngoingChallenge/', methods=['GET'])
 def getOngoingChallenge():
-	content = request.json
-	username = content['username'] #returns "two"
-	user = userList[username]
-	adversaryName = user['adversary']
-	if not adversaryName == "None":
-		adversaryUser = userList[adversaryName]
-	else:
-		adversaryUser = "None"
-	result = {}
-	result['wasChallenged'] = user['wasChallenged']
-	result['adversary'] = adversaryUser
-	return json.dumps(result)
+	return json.dumps(ongoingChallenge)
 
 @app.route('/startChallenge/', methods=['POST'])
 def startChallenge():
 	content = request.json
 	thisUsername = content['Me']
 	otherUsername = content['Adversary']
-	thisPoints = 0
-	otherPoints = 0
-	resultStr = ""
-
-	if thisUsername in userList:
-		thisUser = userList[thisUsername]
-		thisPoints = thisUser['points']
-	else:
+	if not thisUsername in userList:
 		print("ERROR! You never saved your own points!!")
 		return make_response(jsonify({'Error!': 'Bad request format! Did you save your own points before quering it?'}), 400)
 
 	if otherUsername in userList:
 		#this should be the standard case. This function is allowed to assume that both you and the adversary are valid players
-		otherUser = userList[otherUsername]
-		otherPoints = otherUser['points']
-		oldStatus = otherUser['wasChallenged']
-
-		otherUser['wasChallenged'] = True
-		otherUser['adversary'] = thisUsername
-		userList[otherUsername] = otherUser
-		thisUser['wasChallenged'] = True
-		thisUser['adversary'] = otherUsername
-		userList[thisUsername] = thisUser
-
-		if oldStatus == False:
-			resultStr = "Ongoing"
-		elif thisPoints > otherPoints:
-			resultStr = "Winner"
-		elif otherPoints > thisPoints:
-			resultStr = "Looser"
-		else:
-			resultStr = "Tie!"
+		ongoingChallenge['playerOne'] = thisUsername
+		ongoingChallenge['playerTwo'] = otherUsername
+		ongoingChallenge['playerOneScore'] = 0
+		ongoingChallenge['playerTwoScore'] = 0
+		ongoingChallenge['state'] = "Ongoing"
 
 	else:
 		print("ERROR! Your challenger doesn't exist!!")
 		return make_response(jsonify({'Error!': 'Bad request format! Your challenger does not exist!'}), 400)
 
-	result = {}
-	result['ChallengeResult'] = resultStr
-	return json.dumps(result)
+	return json.dumps(ongoingChallenge)
 
 
 def calculatePoints(basket):
 	CO2sum = 0
 	weightBasket = 0
-#	print(basket)
 
 	for i in range(0, len(basket)):
 		product = basket[i]

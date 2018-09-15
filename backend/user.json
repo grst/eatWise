@@ -9,8 +9,6 @@
     "points": 10,
     "description": "EcoFighter",
     "avatarURL": "/img/avatars/sebastian.jpg",
-    "adversary" : "None",
-    "wasChallenged" : false
   },
   {
     "id": 1,
@@ -22,8 +20,6 @@
     ],
     "points": 13,
     "avatarURL": "/img/avatars/gregor.jpg",
-    "adversary" : "None",
-    "wasChallenged" : false
   },
   {
     "id": 2,
@@ -33,10 +29,8 @@
     "badges": [
        "ecomaster"
     ],
-    "adversary" : "None",
     "co2": 0,
     "points": 42,
-    "wasChallenged" : false
   },
   {
     "id": 3,
@@ -47,8 +41,6 @@
       "ecowesome"
     ],
     "points": 0,
-    "adversary" : "None",
     "avatarURL": "/img/avatars/betiana.jpg",
-    "wasChallenged" : false
   }
 ]
