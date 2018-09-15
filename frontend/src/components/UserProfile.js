@@ -30,6 +30,7 @@ class UserProfile extends Component {
           <ScoreCard user={store.username}
                      score={store.currentScore}
                      avatar='/img/user1.png'
+                     level={store.currentLevel}
                      CO2={store.currentCO2}
                      text1="Your Score: "/>
           <div style={{...styles.row, ...styles.username}}>

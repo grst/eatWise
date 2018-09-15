@@ -61,8 +61,12 @@ const styles = {
     position: 'absolute',
     right: -30,
     bottom: -30,
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
+  },
+  avatarLevelImg: {
+    width: 64,
+    height: 64
   },
   scorePoints: {
     fontSize: 32
@@ -78,7 +82,8 @@ const styles = {
 
 function ScoreCard(props) {
   const {classes} = props;
-  const bull = <span className={classes.bullet}>•</span>;
+  const levelIcon = (props.level === null) ? null : 'img/' + props.level + '.png';
+
 
   return (
       <Card className={classes.card}>
@@ -103,7 +108,9 @@ function ScoreCard(props) {
         </CardContent>
         <Avatar
             alt="level"
-            className={classes.avatarLevel}>1</Avatar>
+            src={levelIcon}
+            className={classes.avatarLevel}
+            childrenClassName={classes.avatarLevelImg}/>
         {/*<CardActions>*/}
         {/*<Button size="small">Learn More</Button>*/}
         {/*</CardActions>*/}
