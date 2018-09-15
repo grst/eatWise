@@ -105,14 +105,13 @@ class Store {
       Adversary: this.adversary.username,
     };
   }
-  updatePeriod = 800; // in ms
+  updatePeriod = 1000; // in ms
 }
 
 const store = new Store();
 
 // cache in local storage
 ["purchase", "adversary", "user", "users", "products"].forEach(key => {
-  console.log(key);
   observe(store[key], () => {
     const value = JSON.stringify(toJS(store[key]));
     localStorage.setItem(key, value);
