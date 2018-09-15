@@ -13,13 +13,6 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
   },
-  avatar: {
-    margin: 10,
-  },
-  bigAvatar: {
-    width: 128,
-    height: 128,
-  },
   username: {
   }
 };
@@ -34,18 +27,10 @@ class UserProfile extends Component {
   render() {
     return (
         <div className="UserProfile">
-          <div style={styles.row}>
-            <Avatar
-              alt="User1"
-              src="/img/user1.png"
-              style={{...styles.avatar, ...styles.bigAvatar}}
-            />
-          </div>
           <ScoreCard/>
           <div style={{...styles.row, ...styles.username}}>
             <h3>{store.username}</h3>
             </div>
-          <hr />
           <Link to='/login'>
             <Button variant="outlined">Change User</Button>
           </Link>
