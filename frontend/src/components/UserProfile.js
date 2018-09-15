@@ -13,6 +13,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Friends from "./Friends";
 
 const styles = {
   row: {
@@ -33,6 +34,10 @@ const styles = {
   },
   dialogDescription: {
     padding: "20px",
+  },
+  friendsTitle: {
+    padding: "18px",
+    marginBottom: "-21px"
   }
 };
 
@@ -82,6 +87,11 @@ class UserProfile extends Component {
           <div style={{...styles.row, ...styles.username}}>
             {store.username} (<Link to='/login'>Logout</Link>)
             </div>
+
+          <h2 style={styles.friendsTitle}>Your friends</h2>
+          <Friends disableChallenge="true"/>
+
+      {/*dialog for incoming challenge*/}
       <Dialog
         classes={{
           root: classes.dialog,
