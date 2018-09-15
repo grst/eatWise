@@ -18,6 +18,10 @@ productList = []
 with open('buhlerFoodprint.json') as f:
     productList = json.load(f)
 
+with open('user.json') as f:
+    for user in json.load(f):
+        userList[user['username']] = user
+
 @app.route('/')
 def basic():
     # show the post with the given id, the id is an integer
@@ -37,7 +41,10 @@ def initUser():
 	userId = len(userList)
 	newUser['id'] = userId
 	userList[username] = newUser
-	return json.dumps(newUser)
+	return json.dumps({
+		"currentUser": newUser,
+		"userList": userList
+	})
 
 @app.route('/getProductList/', methods=['GET'])
 def getProductList():
@@ -73,6 +80,7 @@ def calculateSum():
 		newUser['adversary'] = None
 		newUser['co2'] = totalCO2_Basket
 		newUser['badges'] = []
+		newUser['avatarURL'] = '/img/avatars/dummy.jpg'
 		userId = len(userList)
 		newUser['id'] = userId
 		userList[username] = newUser
