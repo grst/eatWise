@@ -18,7 +18,7 @@ function ProductItem(props) {
     </ListItemAvatar>
     <ListItemText
       primary={p.name}
-      secondary={`${p.points} Elis (${p.co2_100g} CO2 / 100g)`}
+      secondary={`${p.co2_100g} CO2 / 100g`}
     />
   </Fragment>
 }
