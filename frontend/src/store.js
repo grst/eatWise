@@ -22,7 +22,6 @@ class Store {
 	@observable currentScore = 1234;
 	@observable currentCO2 = 34.32;
 	@observable currentLevel = "ecofriendly";
-	@observable products = normalizedDefaultProducts;
   @observable products = [];
   @observable friends = [
   {
