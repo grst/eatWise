@@ -2,7 +2,7 @@
 from flask import Flask, request, jsonify, abort, make_response
 from flask_httpauth import HTTPBasicAuth
 import json
-from pprint import pprint
+from random import randint
 
 class User(object):
     def __init__(self):
@@ -25,20 +25,14 @@ app.config['DEBUG'] = False
 isChallengeRunning = False
 
 userOne = User()
-
-almond = Item()
-almond.name = "Almond Milk"
-almond.score = 1.09
-almond.category = "Milk"
+userTwo = User()
 
 productList = []
 
 with open('buhlerFoodprint.json') as f:
     productList = json.load(f)
-
-item = productList[5]
-
-print(item)
+# item = productList[5]
+# print(item)
 
 @app.route('/')
 def basic():
@@ -57,9 +51,42 @@ def startChallenge(userName):
 	isChallengeRunning = True
 	return json.dumps(userOne)
 
-@app.route('/getProductList/', methods=['POST'])
-def startChallenge():
+@app.route('/getProductList/', methods=['GET'])
+def getProductList():
 	return json.dumps(productList)
+
+@app.route('/stopChallenge', methods=['GET'])
+def stopChallenge():
+	isChallengeRunning = False
+	return "fts"
+
+@app.route('/boughtProducts/', methods=['POST'])
+def calculateSum():
+	content = request.json
+	totalSum = 0
+	boughtItems = []
+
+	for i in range(0, len(content)):
+		item = content[i]
+		ident = item['id']
+		product = productList[ident]
+		pts = product['Points']
+		qty = randint(1,20)
+		totalPts = pts*qty
+		newItem = {}
+		newItem['Name'] = product['Name']
+		newItem['Points'] = product['Points']
+		newItem['Category'] = product['Category']
+		newItem['Quantity'] = qty
+		newItem['TotalPoints'] = totalPts		
+		#print("we had " + product['Name'] + " which had " + str(pts) + " points, and we bought " + str(qty) + " of them, which gives us a total of " + str(totalPts))
+		totalSum = totalSum + totalPts
+		boughtItems.append(newItem)
+
+	result = {} 
+	result['BoughtItems'] = boughtItems
+	result['Sum'] = totalSum
+	return json.dumps(result)
 
 #start stop
 #get shoppin

@@ -4,6 +4,7 @@
     "Name": "white bread",
     "CO2_Kg": 0.65,
     "CO2_100g": 0.065,
+    "Points": 15.38461538,
     "iconURL": ""
   },
   {
@@ -11,6 +12,7 @@
     "Name": "Almonds",
     "CO2_Kg": 2.18,
     "CO2_100g": 0.218,
+    "Points": 4.587155963,
     "iconURL": ""
   },
   {
@@ -18,6 +20,7 @@
     "Name": "Wheat",
     "CO2_Kg": 0.51,
     "CO2_100g": 0.051,
+    "Points": 19.60784314,
     "iconURL": ""
   },
   {
@@ -25,6 +28,7 @@
     "Name": "Barley",
     "CO2_Kg": 0.52,
     "CO2_100g": 0.052,
+    "Points": 19.23076923,
     "iconURL": ""
   },
   {
@@ -32,6 +36,7 @@
     "Name": "Cheese slices",
     "CO2_Kg": 8.29,
     "CO2_100g": 0.829,
+    "Points": 1.206272618,
     "iconURL": ""
   },
   {
@@ -39,6 +44,7 @@
     "Name": "Cheese spread",
     "CO2_Kg": 6.2,
     "CO2_100g": 0.62,
+    "Points": 1.612903226,
     "iconURL": ""
   },
   {
@@ -46,6 +52,7 @@
     "Name": "Gruyere",
     "CO2_Kg": 8.29,
     "CO2_100g": 0.829,
+    "Points": 1.206272618,
     "iconURL": ""
   },
   {
@@ -53,6 +60,7 @@
     "Name": "Smoked cheese",
     "CO2_Kg": 6.2,
     "CO2_100g": 0.62,
+    "Points": 1.612903226,
     "iconURL": ""
   },
   {
@@ -60,6 +68,7 @@
     "Name": "Chocolate",
     "CO2_Kg": 14.67,
     "CO2_100g": 1.467,
+    "Points": 0.000681663,
     "iconURL": ""
   },
   {
@@ -67,6 +76,7 @@
     "Name": "Beef",
     "CO2_Kg": 27.76,
     "CO2_100g": 2.776,
+    "Points": 0.000360231,
     "iconURL": ""
   },
   {
@@ -74,6 +84,7 @@
     "Name": "Chicken",
     "CO2_Kg": 6.82,
     "CO2_100g": 0.682,
+    "Points": 1.46627566,
     "iconURL": ""
   },
   {
@@ -81,6 +92,7 @@
     "Name": "Dried Beef",
     "CO2_Kg": 27.76,
     "CO2_100g": 2.776,
+    "Points": 0.000360231,
     "iconURL": ""
   },
   {
@@ -88,6 +100,7 @@
     "Name": "Ham",
     "CO2_Kg": 10.76,
     "CO2_100g": 1.076,
+    "Points": 0.000929368,
     "iconURL": ""
   },
   {
@@ -95,6 +108,7 @@
     "Name": "Pancetta",
     "CO2_Kg": 10.76,
     "CO2_100g": 1.076,
+    "Points": 0.000929368,
     "iconURL": ""
   },
   {
@@ -102,6 +116,7 @@
     "Name": "Pork",
     "CO2_Kg": 10.76,
     "CO2_100g": 1.076,
+    "Points": 0.000929368,
     "iconURL": ""
   },
   {
@@ -109,6 +124,7 @@
     "Name": "Pork sausages",
     "CO2_Kg": 10.76,
     "CO2_100g": 1.076,
+    "Points": 0.000929368,
     "iconURL": ""
   },
   {
@@ -116,6 +132,7 @@
     "Name": "Sliced beef",
     "CO2_Kg": 27.76,
     "CO2_100g": 2.776,
+    "Points": 0.000360231,
     "iconURL": ""
   },
   {
@@ -123,6 +140,7 @@
     "Name": "Sliced chicken",
     "CO2_Kg": 6.8,
     "CO2_100g": 0.68,
+    "Points": 1.470588235,
     "iconURL": ""
   },
   {
@@ -130,6 +148,7 @@
     "Name": "Tofu",
     "CO2_Kg": 3.23,
     "CO2_100g": 0.323,
+    "Points": 3.095975232,
     "iconURL": ""
   },
   {
@@ -137,6 +156,7 @@
     "Name": "Vegetarian salami",
     "CO2_Kg": 0.19,
     "CO2_100g": 0.019,
+    "Points": 52.63157895,
     "iconURL": ""
   },
   {
@@ -144,6 +164,7 @@
     "Name": "Lamb",
     "CO2_Kg": 25.44,
     "CO2_100g": 2.544,
+    "Points": 0.000393082,
     "iconURL": ""
   },
   {
@@ -151,6 +172,7 @@
     "Name": "Turkey",
     "CO2_Kg": 5.9,
     "CO2_100g": 0.59,
+    "Points": 1.694915254,
     "iconURL": ""
   },
   {
@@ -158,6 +180,7 @@
     "Name": "Rabbit",
     "CO2_Kg": 3.61,
     "CO2_100g": 0.361,
+    "Points": 2.770083102,
     "iconURL": ""
   },
   {
@@ -165,6 +188,7 @@
     "Name": "Cod",
     "CO2_Kg": 3.49,
     "CO2_100g": 0.349,
+    "Points": 2.865329513,
     "iconURL": ""
   },
   {
@@ -172,6 +196,7 @@
     "Name": "Insect",
     "CO2_Kg": 2.3,
     "CO2_100g": 0.23,
+    "Points": 4.347826087,
     "iconURL": ""
   },
   {
@@ -179,6 +204,7 @@
     "Name": "Almond milk",
     "CO2_Kg": 1.09,
     "CO2_100g": 0.109,
+    "Points": 9.174311927,
     "iconURL": ""
   },
   {
@@ -186,6 +212,7 @@
     "Name": "Chocolate milk",
     "CO2_Kg": 4.65,
     "CO2_100g": 0.465,
+    "Points": 2.150537634,
     "iconURL": ""
   },
   {
@@ -193,6 +220,7 @@
     "Name": "Low fat organic milk",
     "CO2_Kg": 1.11,
     "CO2_100g": 0.111,
+    "Points": 9.009009009,
     "iconURL": ""
   },
   {
@@ -200,6 +228,7 @@
     "Name": "Rice milk",
     "CO2_Kg": 0.26,
     "CO2_100g": 0.026,
+    "Points": 38.46153846,
     "iconURL": ""
   },
   {
@@ -207,6 +236,7 @@
     "Name": "UHT milk",
     "CO2_Kg": 1.31,
     "CO2_100g": 0.131,
+    "Points": 7.633587786,
     "iconURL": ""
   },
   {
@@ -214,6 +244,7 @@
     "Name": "Butter",
     "CO2_Kg": 11.52,
     "CO2_100g": 1.152,
+    "Points": 0.000868056,
     "iconURL": ""
   },
   {
@@ -221,6 +252,7 @@
     "Name": "Whole Milk",
     "CO2_Kg": 1.4,
     "CO2_100g": 0.14,
+    "Points": 7.142857143,
     "iconURL": ""
   },
   {
@@ -228,6 +260,7 @@
     "Name": "butter",
     "CO2_Kg": 23.74,
     "CO2_100g": 2.374,
+    "Points": 0.00042123,
     "iconURL": ""
   },
   {
@@ -235,6 +268,7 @@
     "Name": "yoghurt",
     "CO2_Kg": 1.22,
     "CO2_100g": 0.122,
+    "Points": 8.196721311,
     "iconURL": ""
   },
   {
@@ -242,6 +276,7 @@
     "Name": "Dry Pasta",
     "CO2_Kg": 1.49,
     "CO2_100g": 0.149,
+    "Points": 6.711409396,
     "iconURL": ""
   },
   {
@@ -249,6 +284,7 @@
     "Name": "Fresh ravioli with meat",
     "CO2_Kg": 10.25,
     "CO2_100g": 1.025,
+    "Points": 0.00097561,
     "iconURL": ""
   },
   {
@@ -256,6 +292,7 @@
     "Name": "Fresh ravioli with spinach and ricotta",
     "CO2_Kg": 3.06,
     "CO2_100g": 0.306,
+    "Points": 3.267973856,
     "iconURL": ""
   },
   {
@@ -263,6 +300,7 @@
     "Name": "Risotto rice",
     "CO2_Kg": 1.03,
     "CO2_100g": 0.103,
+    "Points": 9.708737864,
     "iconURL": ""
   },
   {
@@ -270,6 +308,7 @@
     "Name": "Spaghetti Carbonara pre-made meal",
     "CO2_Kg": 3.44,
     "CO2_100g": 0.344,
+    "Points": 2.906976744,
     "iconURL": ""
   },
   {
@@ -277,6 +316,7 @@
     "Name": "Wholegrain dry pasta",
     "CO2_Kg": 1.49,
     "CO2_100g": 0.149,
+    "Points": 6.711409396,
     "iconURL": ""
   },
   {
@@ -284,6 +324,7 @@
     "Name": "noodles",
     "CO2_Kg": 0.9,
     "CO2_100g": 0.09,
+    "Points": 11.11111111,
     "iconURL": ""
   },
   {
@@ -291,6 +332,7 @@
     "Name": "Corn",
     "CO2_Kg": 0.19,
     "CO2_100g": 0.019,
+    "Points": 52.63157895,
     "iconURL": ""
   },
   {
@@ -298,6 +340,7 @@
     "Name": "Quorn",
     "CO2_Kg": 0.19,
     "CO2_100g": 0.019,
+    "Points": 52.63157895,
     "iconURL": ""
   },
   {
@@ -305,6 +348,7 @@
     "Name": "Red kidney beans",
     "CO2_Kg": 0.78,
     "CO2_100g": 0.078,
+    "Points": 12.82051282,
     "iconURL": ""
   },
   {
@@ -312,6 +356,7 @@
     "Name": "Peas",
     "CO2_Kg": 0.6,
     "CO2_100g": 0.06,
+    "Points": 16.66666667,
     "iconURL": ""
   },
   {
@@ -319,6 +364,7 @@
     "Name": "Chickpeas",
     "CO2_Kg": 0.67,
     "CO2_100g": 0.067,
+    "Points": 14.92537313,
     "iconURL": ""
   },
   {
@@ -326,6 +372,7 @@
     "Name": "Lentils",
     "CO2_Kg": 0.78,
     "CO2_100g": 0.078,
+    "Points": 12.82051282,
     "iconURL": ""
   },
   {
@@ -333,6 +380,7 @@
     "Name": "Non-free range eggs",
     "CO2_Kg": 3.94,
     "CO2_100g": 0.394,
+    "Points": 2.538071066,
     "iconURL": ""
   },
   {
@@ -340,6 +388,7 @@
     "Name": "Eggs",
     "CO2_Kg": 3.4,
     "CO2_100g": 0.34,
+    "Points": 2.941176471,
     "iconURL": ""
   }
 ]
