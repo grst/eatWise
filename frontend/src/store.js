@@ -3,6 +3,7 @@ import mobx, {action, autorun, computed, observable, observe, runInAction} from 
 //mobx.configure({ enforceActions: true }) // don't allow state modifications outside actions
 
 import api from './api'
+import {values} from 'lodash';
 
 function normalizeProducts(products){
   return products.map(p => ({
@@ -22,32 +23,8 @@ class Store {
 	@observable username = localStorage.getItem("username", "Sebastian") || "Sebastian";
 	@observable user = {};
   @observable products = [];
-  @observable friends = [
-  {
-    id: 1,
-    name: "Sebastian",
-    description: "EcoFighter",
-    avatarURL: "/img/avatars/sebastian.jpg",
-  },
-  {
-    id: 2,
-    name: "Gregor",
-    description: "Food is my mood.",
-    avatarURL: "/img/avatars/gregor.jpg",
-  },
-  {
-    id: 3,
-    name: "Mari",
-    description: "Sharing is caring.",
-    avatarURL: "/img/avatars/mari.jpg",
-  },
-  {
-    id: 4,
-    name: "Betiana",
-    description: "CheeseSquad",
-    avatarURL: "/img/avatars/betiana.jpg",
-  },
-  ];
+  @observable users = [];
+
 	@observable purchase = JSON.parse(localStorage.getItem("purchase", "[]")) || [];
   @observable challengeResult = {
     status: "lost",
@@ -64,7 +41,8 @@ class Store {
   @action async fetchUserDetails() {
     const e = await api.post("/start", {'username': this.username});
     runInAction(() => {
-      this.user = e.data;
+      this.user = e.data.currentUser;
+      this.users.replace(values(e.data.userList));
     });
   }
 
@@ -75,16 +53,11 @@ class Store {
       ...e,
     }));
   }
-  @computed get currentUser() {
-    // silly search for the currently logged in user
-    const user = this.username.toLowerCase();
-    const userNames = this.friends.filter(f => f.name.toLowerCase() === user);
-    if (userNames.length === 0) {
-      return {};
-    } else {
-      return userNames[0];
-    }
+
+  @computed get otherUsers() {
+    return this.users.filter(u => u.id !== this.user.id);
   }
+
   isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 }
 
@@ -102,9 +75,9 @@ observe(store, "pageTitle", () => {
 });
 
 // for debugging
-autorun(() => {
-  //console.log("products", store.products.length);
-});
+//autorun(() => {
+  //console.log("user", store.user);
+//});
 // always keep the current list of all products in memory
 store.fetchProductList();
 store.fetchUserDetails();

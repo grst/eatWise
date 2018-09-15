@@ -62,14 +62,14 @@ class Friends extends Component {
   render() {
     return (
       <div>
-        { store.friends.length > 0 &&
+        { store.otherUsers.length > 0 &&
         <List dense={false}>
-          { store.friends.map(u =>
+          { store.otherUsers.map(u =>
             <Friend user={u} key={u.id} onClick={this.onClick.bind(this, u)} />
           )}
         </List>
         }
-        { store.friends.length === 0 &&
+        { store.otherUsers.length === 0 &&
           <div>Get some friends you looser!</div>
         }
       </div>
