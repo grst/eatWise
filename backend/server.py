@@ -32,15 +32,19 @@ def initUser():
 	content = request.json
 	username = content['username']
 	newUser = {}
-	newUser['name'] = username
-	newUser['points'] = 0
-	newUser['co2'] = 0
-	newUser['wasChallenged'] = False
-	newUser['adversary'] = None
-	newUser['badges'] = []
-	userId = len(userList)
-	newUser['id'] = userId
-	userList[username] = newUser
+	if username not in userList:
+		newUser['name'] = username
+		newUser['points'] = 0
+		newUser['co2'] = 0
+		newUser['wasChallenged'] = False
+		newUser['adversary'] = None
+		newUser['badges'] = []
+		newUser['avatarURL'] = '/img/avatars/dummy.jpg'
+		userId = len(userList)
+		newUser['id'] = userId
+		userList[username] = newUser
+	else:
+		newUser = userList[username]
 	return json.dumps({
 		"currentUser": newUser,
 		"userList": userList
