@@ -38,8 +38,8 @@ function ProductItem(props) {
     <ListItemText
       primary={p.name}
       secondary={`${p.co2_100g} kg of CO2 per 100g)`}
-      style={styles.item}
     />
+    <Avatar style={styles.item}></Avatar>
   </Fragment>
 }
 export default ProductItem;
