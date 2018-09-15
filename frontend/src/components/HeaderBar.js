@@ -50,7 +50,8 @@ class MenuAppBar extends React.Component {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
-    const isRoot = this.props.location.pathname === "/";
+    const isRoot = this.props.location.pathname === "/" ||
+                   this.props.location.pathname === "/profile";
 
     return (
       <div className={classes.root}>
