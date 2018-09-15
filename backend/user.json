@@ -2,11 +2,11 @@
   {
     "id": 0,
     "username": "Sebastian",
-    "co2": 4,
+    "co2": 25.3,
     "badges": [
        "ecofriendly"
     ],
-    "points": 10,
+    "points": 256,
     "description": "EcoFighter",
     "avatarURL": "/img/avatars/sebastian.jpg",
     "adversary" : "None",
@@ -16,11 +16,11 @@
     "id": 1,
     "username": "Gregor",
     "description": "Food is my mood.",
-    "co2": 3,
+    "co2": 30.3,
     "badges": [
        "econewbie"
     ],
-    "points": 13,
+    "points": 52,
     "avatarURL": "/img/avatars/gregor.jpg",
     "adversary" : "None",
     "wasChallenged" : false
@@ -34,19 +34,19 @@
        "ecomaster"
     ],
     "adversary" : "None",
-    "co2": 0,
-    "points": 42,
+    "co2": 60,
+    "points": 398,
     "wasChallenged" : false
   },
   {
     "id": 3,
     "username": "Betiana",
     "description": "CheeseSquad",
-    "co2": 0,
+    "co2": 42.0,
     "badges": [
       "ecowesome"
     ],
-    "points": 0,
+    "points": 1042,
     "adversary" : "None",
     "avatarURL": "/img/avatars/betiana.jpg",
     "wasChallenged" : false
