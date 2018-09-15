@@ -22,6 +22,7 @@ function valToColor(val) {
 
 function ProductItem(props) {
   const p = props.product;
+  const imgUrl = '/img/foodIcons/' + p.iconURL
 
   const styles = {
     item: {
@@ -32,8 +33,7 @@ function ProductItem(props) {
 
   return <Fragment>
     <ListItemAvatar>
-      <Avatar>
-        <FolderIcon />
+      <Avatar src={imgUrl}>
       </Avatar>
     </ListItemAvatar>
     <ListItemText
