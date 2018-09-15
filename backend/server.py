@@ -37,7 +37,8 @@ def initUser():
 		newUser['points'] = 0
 		newUser['co2'] = 0
 		newUser['wasChallenged'] = False
-		newUser['adversary'] = None
+		newUser['adversary'] = "None"
+		newUser['description'] = ""
 		newUser['badges'] = []
 		newUser['avatarURL'] = '/img/avatars/dummy.jpg'
 		userId = len(userList)
@@ -55,7 +56,7 @@ def getProductList():
 	return json.dumps(productList)
 
 @app.route('/buyProducts/', methods=['POST'])
-def calculateSum():
+def calculateBasket():
 	seed(42)
 	content = request.json
 	boughtItems = []
@@ -80,7 +81,8 @@ def calculateSum():
 		newUser['name'] = username
 		newUser['points'] = basketPoints
 		newUser['wasChallenged'] = False
-		newUser['adversary'] = None
+		newUser['adversary'] = "None"
+		newUser['description'] = ""
 		newUser['co2'] = totalCO2_Basket
 		newUser['badges'] = []
 		newUser['avatarURL'] = '/img/avatars/dummy.jpg'
@@ -104,10 +106,10 @@ def getOngoingChallenge():
 	username = content['username'] #returns "two"
 	user = userList[username] 
 	adversaryName = user['adversary']
-	print(adversaryName)
-	if not adversaryName == None:
+	if not adversaryName == "None":
 		adversaryUser = userList[adversaryName]
-	else: adversaryUser = None
+	else: 
+		adversaryUser = "None"
 	result = {}
 	result['thisUserWasChallenged'] = user['wasChallenged']
 	result['challengedBy'] = adversaryUser
