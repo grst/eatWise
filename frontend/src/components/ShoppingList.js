@@ -188,10 +188,6 @@ class ShoppingList extends Component {
     products: [],
   };
 
-  onClick = () => {
-    this.props.history.push("/waiting-for-confirmation");
-  }
-
   onSelectChanged = (e) => {
     console.log("onSelectChanged.", e);
     this.setState({
@@ -211,13 +207,13 @@ class ShoppingList extends Component {
   };
 
   componentDidMount() {
-    store.pageTitle = "Plan your Shopping List";
+    store.pageTitle = "Planning";
   }
 
   onBuy = async () => {
-    // TODO: send request here
     this.props.history.push("/waiting-for-confirmation");
     await store.buyProducts(this.state.products);
+    store.checkForOngoingChallenges();
   };
 
   render() {

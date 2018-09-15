@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Close';
 import api from "../api";
-import {runInAction} from "mobx";
+import {observe, runInAction} from "mobx";
 
 import { PacmanLoader } from 'react-spinners';
 
@@ -55,10 +55,23 @@ class PendingChallenge extends Component {
     this.interval = setInterval(function() {
       store.updateChallenge();
     }, store.updatePeriod);
+    this.cancelObservation = observe(store.challengeResult, () => {
+      if (store.hasChallenge) {
+        this.props.history.push("/challenge-result");
+        this.componentWillUnmount(); // be sure to avoid any overlaps
+      }
+    });
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    }
+    if (this.cancelObservation) {
+      this.cancelObservation();
+      this.cancelObservation = null;
+    }
   }
 
   render() {

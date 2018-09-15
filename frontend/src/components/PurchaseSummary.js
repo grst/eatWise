@@ -25,13 +25,17 @@ const style = {
 
 @observer
 class PurchaseSummary extends Component {
-  onClick = () => {
+  onChallenge = () => {
     this.props.history.push("/challenge-a-friend");
+  }
+  onSeeResults = () => {
+    this.props.history.push("/challenge-result");
   }
   componentDidMount() {
     store.pageTitle = "Purchase summary";
   }
   render() {
+    let hasChallenge = false;
     return (
         <div>
           <ScoreCard user={store.user}
@@ -41,7 +45,12 @@ class PurchaseSummary extends Component {
                      co2={Math.round(store.purchase.basketCO2*100)/100}/>
 
           <div style={style.button}>
-            <Button variant="outlined" onClick={this.onClick}>Challenge a friend</Button>
+
+            { store.hasChallenge ?
+            <Button variant="outlined" onClick={this.onSeeResults}>See results</Button>
+            :
+            <Button variant="outlined" onClick={this.onChallenge}>Challenge a friend</Button>
+            }
           </div>
 
           {store.purchase && store.purchase["boughtItems"] &&

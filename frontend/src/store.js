@@ -107,6 +107,10 @@ class Store {
     };
   }
   updatePeriod = 2000; // in ms
+
+  @computed get hasChallenge() {
+    return store.challengeResult && store.challengeResult.wasChallenged;
+  }
 }
 
 const store = new Store();
@@ -131,4 +135,5 @@ autorun(() => {
 // always keep the current list of all products in memory
 store.fetchProductList();
 store.fetchUserDetails();
+store.checkForOngoingChallenges();
 export default store;
