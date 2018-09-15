@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react';
 
 import store from '../store'
+import NavigationBar from "./NavigationBar";
 
 @observer
 class ShoppingList extends Component {
@@ -18,6 +19,7 @@ class ShoppingList extends Component {
         )}
         <br/>
         <button onClick={this.onClick}>Buy</button>
+        <NavigationBar/>
       </div>
     );
   }
