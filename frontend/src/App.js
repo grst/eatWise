@@ -6,6 +6,7 @@ import ShoppingList from './components/ShoppingList'
 import PurchaseSummary from './components/PurchaseSummary'
 import Friends from './components/Friends'
 import ChallengeResult from './components/ChallengeResult'
+import WaitingForSupermarket from './components/WaitingForSupermarket'
 import Login from './components/Login'
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -27,6 +28,7 @@ class App extends Component {
                <Route path='/profile' component={UserProfile} />
                <Route exact path='/' component={ShoppingList} />
                <Route path='/shopping-list' component={ShoppingList} />
+               <Route path='/wait-for-supermarket' component={WaitingForSupermarket} />
                <Route path='/purchase-summary' component={PurchaseSummary} />
                <Route path='/challenge-a-friend' component={Friends} />
                <Route path='/challenge-result' component={ChallengeResult} />
