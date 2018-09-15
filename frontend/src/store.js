@@ -64,7 +64,7 @@ class Store {
   @action async fetchUserDetails() {
     const e = await api.post("/start", {'username': this.username});
     runInAction(() => {
-      this.user.replace(e.data);
+      this.user = e.data;
     });
   }
 
