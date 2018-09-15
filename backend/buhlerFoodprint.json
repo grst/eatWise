@@ -2,344 +2,385 @@
   {
     "id": 0,
     "Category": "Bread",
-    "Name": "white bread",
-    "CO2_100g": 0.065,
-    "iconURL": ""
+    "Name": "White bread",
+    "CO2_Kg": 0.65,
+    "CO2_100g": 0.07,
+    "iconURL": "0_whiteBread.png"
   },
   {
     "id": 1,
     "Category": "Cereal",
     "Name": "Almonds",
-    "CO2_100g": 0.218,
-    "iconURL": ""
+    "CO2_Kg": 2.18,
+    "CO2_100g": 0.22,
+    "iconURL": "1_almonds.png"
   },
   {
     "id": 2,
     "Category": "Cereal",
     "Name": "Wheat",
-    "CO2_100g": 0.051,
-    "iconURL": ""
+    "CO2_Kg": 0.51,
+    "CO2_100g": 0.05,
+    "iconURL": "2_wheat.png"
   },
   {
     "id": 3,
     "Category": "Cereal",
     "Name": "Barley",
-    "CO2_100g": 0.052,
-    "iconURL": ""
+    "CO2_Kg": 0.52,
+    "CO2_100g": 0.05,
+    "iconURL": "3_barley.png"
   },
   {
     "id": 4,
     "Category": "Cheese",
     "Name": "Cheese slices",
-    "CO2_100g": 0.829,
-    "iconURL": ""
+    "CO2_Kg": 8.29,
+    "CO2_100g": 0.83,
+    "iconURL": "4_cheese.png"
   },
   {
     "id": 5,
     "Category": "Cheese",
     "Name": "Cheese spread",
+    "CO2_Kg": 6.2,
     "CO2_100g": 0.62,
-    "iconURL": ""
+    "iconURL": "5_cheese.png"
   },
   {
     "id": 6,
     "Category": "Cheese",
-    "Name": "Gruyere",
-    "CO2_100g": 0.829,
-    "iconURL": ""
+    "Name": "Gruy%uFFFDre",
+    "CO2_Kg": 8.29,
+    "CO2_100g": 0.83,
+    "iconURL": "6_cheese.png"
   },
   {
     "id": 7,
     "Category": "Cheese",
     "Name": "Smoked cheese",
+    "CO2_Kg": 6.2,
     "CO2_100g": 0.62,
-    "iconURL": ""
+    "iconURL": "7_cheese.png"
   },
   {
     "id": 8,
     "Category": "Dessert",
     "Name": "Chocolate",
-    "CO2_100g": 1.467,
-    "iconURL": ""
+    "CO2_Kg": 14.67,
+    "CO2_100g": 1.47,
+    "iconURL": "8_chocolate.png"
   },
   {
     "id": 9,
     "Category": "Meat",
     "Name": "Beef",
-    "CO2_100g": 2.776,
-    "iconURL": ""
+    "CO2_Kg": 27.76,
+    "CO2_100g": 2.78,
+    "iconURL": "9_beef.png"
   },
   {
     "id": 10,
     "Category": "Meat",
     "Name": "Chicken",
-    "CO2_100g": 0.682,
-    "iconURL": ""
+    "CO2_Kg": 6.82,
+    "CO2_100g": 0.68,
+    "iconURL": "10_chicken.png"
   },
   {
     "id": 11,
     "Category": "Meat",
     "Name": "Dried Beef",
-    "CO2_100g": 2.776,
-    "iconURL": ""
+    "CO2_Kg": 27.76,
+    "CO2_100g": 2.78,
+    "iconURL": "11_driedBeef.png"
   },
   {
     "id": 12,
     "Category": "Meat",
     "Name": "Ham",
-    "CO2_100g": 1.076,
-    "iconURL": ""
+    "CO2_Kg": 10.76,
+    "CO2_100g": 1.08,
+    "iconURL": "12_ham.png"
   },
   {
     "id": 13,
     "Category": "Meat",
     "Name": "Pancetta",
-    "CO2_100g": 1.076,
-    "iconURL": ""
+    "CO2_Kg": 10.76,
+    "CO2_100g": 1.08,
+    "iconURL": "13_bacon.png"
   },
   {
     "id": 14,
     "Category": "Meat",
     "Name": "Pork",
-    "CO2_100g": 1.076,
-    "iconURL": ""
+    "CO2_Kg": 10.76,
+    "CO2_100g": 1.08,
+    "iconURL": "14_pork.png"
   },
   {
     "id": 15,
     "Category": "Meat",
     "Name": "Pork sausages",
-    "CO2_100g": 1.076,
-    "iconURL": ""
+    "CO2_Kg": 10.76,
+    "CO2_100g": 1.08,
+    "iconURL": "15_porkSausages.png"
   },
   {
     "id": 16,
     "Category": "Meat",
     "Name": "Sliced beef",
-    "CO2_100g": 2.776,
-    "iconURL": ""
+    "CO2_Kg": 27.76,
+    "CO2_100g": 2.78,
+    "iconURL": "16_slicedBeef.png"
   },
   {
     "id": 17,
     "Category": "Meat",
     "Name": "Sliced chicken",
+    "CO2_Kg": 6.8,
     "CO2_100g": 0.68,
-    "iconURL": ""
+    "iconURL": "17_slicedChicken.png"
   },
   {
     "id": 18,
     "Category": "Meat",
     "Name": "Tofu",
-    "CO2_100g": 0.323,
-    "iconURL": ""
+    "CO2_Kg": 3.23,
+    "CO2_100g": 0.32,
+    "iconURL": "18_tofu.png"
   },
   {
     "id": 19,
     "Category": "Meat",
     "Name": "Vegetarian salami",
-    "CO2_100g": 0.019,
-    "iconURL": ""
+    "CO2_Kg": 0.19,
+    "CO2_100g": 0.02,
+    "iconURL": "19_vegetarianSalami.png"
   },
   {
     "id": 20,
     "Category": "Meat",
     "Name": "Lamb",
-    "CO2_100g": 2.544,
-    "iconURL": ""
+    "CO2_Kg": 25.44,
+    "CO2_100g": 2.54,
+    "iconURL": "20_lamb.png"
   },
   {
     "id": 21,
     "Category": "Meat",
     "Name": "Turkey",
+    "CO2_Kg": 5.9,
     "CO2_100g": 0.59,
-    "iconURL": ""
+    "iconURL": "21_turkey.png"
   },
   {
     "id": 22,
     "Category": "Meat",
     "Name": "Rabbit",
-    "CO2_100g": 0.361,
-    "iconURL": ""
+    "CO2_Kg": 3.61,
+    "CO2_100g": 0.36,
+    "iconURL": "22_rabbit.png"
   },
   {
     "id": 23,
     "Category": "Meat",
     "Name": "Cod",
-    "CO2_100g": 0.349,
-    "iconURL": ""
+    "CO2_Kg": 3.49,
+    "CO2_100g": 0.35,
+    "iconURL": "23_cod.png"
   },
   {
     "id": 24,
     "Category": "Meat",
     "Name": "Insect",
+    "CO2_Kg": 2.3,
     "CO2_100g": 0.23,
-    "iconURL": ""
+    "iconURL": "24_insect.png"
   },
   {
     "id": 25,
     "Category": "Milk",
     "Name": "Almond milk",
-    "CO2_100g": 0.109,
-    "iconURL": ""
+    "CO2_Kg": 1.09,
+    "CO2_100g": 0.11,
+    "iconURL": "25_almondMilk.png"
   },
   {
     "id": 26,
     "Category": "Milk",
     "Name": "Chocolate milk",
-    "CO2_100g": 0.465,
-    "iconURL": ""
+    "CO2_Kg": 4.65,
+    "CO2_100g": 0.47,
+    "iconURL": "26_chocolateMilk.png"
   },
   {
     "id": 27,
     "Category": "Milk",
     "Name": "Low fat organic milk",
-    "CO2_100g": 0.111,
-    "iconURL": ""
+    "CO2_Kg": 1.11,
+    "CO2_100g": 0.11,
+    "iconURL": "27_lowFatMilk.png"
   },
   {
     "id": 28,
     "Category": "Milk",
     "Name": "Rice milk",
-    "CO2_100g": 0.026,
-    "iconURL": ""
+    "CO2_Kg": 0.26,
+    "CO2_100g": 0.03,
+    "iconURL": "28_riceMilk.png"
   },
   {
     "id": 29,
     "Category": "Milk",
     "Name": "UHT milk",
-    "CO2_100g": 0.131,
-    "iconURL": ""
+    "CO2_Kg": 1.31,
+    "CO2_100g": 0.13,
+    "iconURL": "29_uhtMilk.png"
   },
   {
     "id": 30,
     "Category": "Milk",
     "Name": "Butter",
-    "CO2_100g": 1.152,
-    "iconURL": ""
+    "CO2_Kg": 11.52,
+    "CO2_100g": 1.15,
+    "iconURL": "30_butter.png"
   },
   {
     "id": 31,
     "Category": "Milk",
     "Name": "Whole Milk",
+    "CO2_Kg": 1.4,
     "CO2_100g": 0.14,
-    "iconURL": ""
+    "iconURL": "31_wholeLink.png"
   },
   {
     "id": 32,
     "Category": "Milk",
-    "Name": "butter",
-    "CO2_100g": 2.374,
-    "iconURL": ""
+    "Name": "Butter Low Fat",
+    "CO2_Kg": 23.74,
+    "CO2_100g": 2.37,
+    "iconURL": "32_butterLow.png"
   },
   {
     "id": 33,
     "Category": "Milk",
-    "Name": "yoghurt",
-    "CO2_100g": 0.122,
-    "iconURL": ""
+    "Name": "Yoghurt",
+    "CO2_Kg": 1.22,
+    "CO2_100g": 0.12,
+    "iconURL": "33_yoghurt.png"
   },
   {
     "id": 34,
     "Category": "Pasta",
     "Name": "Dry Pasta",
-    "CO2_100g": 0.149,
-    "iconURL": ""
+    "CO2_Kg": 1.49,
+    "CO2_100g": 0.15,
+    "iconURL": "34_driedPasta.png"
   },
   {
     "id": 35,
     "Category": "Pasta",
     "Name": "Fresh ravioli with meat",
-    "CO2_100g": 1.025,
-    "iconURL": ""
+    "CO2_Kg": 10.25,
+    "CO2_100g": 1.03,
+    "iconURL": "35_ravioliMeat.png"
   },
   {
     "id": 36,
     "Category": "Pasta",
     "Name": "Fresh ravioli with spinach and ricotta",
-    "CO2_100g": 0.306,
-    "iconURL": ""
+    "CO2_Kg": 3.06,
+    "CO2_100g": 0.31,
+    "iconURL": "36_ravioliVegetables.png"
   },
   {
     "id": 37,
     "Category": "Pasta",
     "Name": "Risotto rice",
-    "CO2_100g": 0.103,
-    "iconURL": ""
+    "CO2_Kg": 1.03,
+    "CO2_100g": 0.1,
+    "iconURL": "37_risottoRice.png"
   },
   {
     "id": 38,
     "Category": "Pasta",
     "Name": "Spaghetti Carbonara pre-made meal",
-    "CO2_100g": 0.344,
-    "iconURL": ""
+    "CO2_Kg": 3.44,
+    "CO2_100g": 0.34,
+    "iconURL": "38_spaghettiCarbonara.png"
   },
   {
     "id": 39,
     "Category": "Pasta",
     "Name": "Wholegrain dry pasta",
-    "CO2_100g": 0.149,
-    "iconURL": ""
+    "CO2_Kg": 1.49,
+    "CO2_100g": 0.15,
+    "iconURL": "39_wholeGrainPasta.png"
   },
   {
     "id": 40,
     "Category": "Pasta",
-    "Name": "noodles",
+    "Name": "Noodles",
+    "CO2_Kg": 0.9,
     "CO2_100g": 0.09,
-    "iconURL": ""
+    "iconURL": "40_noodles.png"
   },
   {
     "id": 41,
     "Category": "Vegetable",
     "Name": "Corn",
-    "CO2_100g": 0.019,
-    "iconURL": ""
+    "CO2_Kg": 0.19,
+    "CO2_100g": 0.02,
+    "iconURL": "41_corn.png"
   },
   {
     "id": 42,
     "Category": "Vegetable",
-    "Name": "Quorn",
-    "CO2_100g": 0.019,
-    "iconURL": ""
+    "Name": "Red kidney beans",
+    "CO2_Kg": 0.78,
+    "CO2_100g": 0.08,
+    "iconURL": "43_redKidneyPeas.png"
   },
   {
     "id": 43,
     "Category": "Vegetable",
-    "Name": "Red kidney beans",
-    "CO2_100g": 0.078,
-    "iconURL": ""
+    "Name": "Peas",
+    "CO2_Kg": 0.6,
+    "CO2_100g": 0.06,
+    "iconURL": "44_peas.png"
   },
   {
     "id": 44,
     "Category": "Vegetable",
-    "Name": "Peas",
-    "CO2_100g": 0.06,
-    "iconURL": ""
+    "Name": "Chickpeas",
+    "CO2_Kg": 0.67,
+    "CO2_100g": 0.07,
+    "iconURL": "45_chickPeas.png"
   },
   {
     "id": 45,
-    "Category": "Vegetable",
-    "Name": "Chickpeas",
-    "CO2_100g": 0.067,
-    "iconURL": ""
+    "Category": "Vegetables",
+    "Name": "Lentils",
+    "CO2_Kg": 0.78,
+    "CO2_100g": 0.08,
+    "iconURL": "46_lentils.png"
   },
   {
     "id": 46,
     "Category": "Vegetables",
-    "Name": "Lentils",
-    "CO2_100g": 0.078,
-    "iconURL": ""
+    "Name": "Non-free range eggs",
+    "CO2_Kg": 3.94,
+    "CO2_100g": 0.39,
+    "iconURL": "47_eggs.png"
   },
   {
     "id": 47,
     "Category": "Vegetables",
-    "Name": "Non-free range eggs",
-    "CO2_100g": 0.394,
-    "iconURL": ""
-  },
-  {
-    "id": 48,
-    "Category": "Vegetables",
     "Name": "Eggs",
+    "CO2_Kg": 3.4,
     "CO2_100g": 0.34,
-    "iconURL": ""
+    "iconURL": "48_eggs.png"
   }
 ]

@@ -26,6 +26,7 @@ function ProductItem(props) {
   const styles = {
     item: {
       backgroundColor: valToColor(p.co2_100g),
+      marginRight: 22
     }
   };
 
@@ -37,9 +38,9 @@ function ProductItem(props) {
     </ListItemAvatar>
     <ListItemText
       primary={p.name}
-      secondary={`${p.co2_100g} kg of CO2 per 100g)`}
-      style={styles.item}
+      secondary={`${p.co2_100g} kg of CO2 per 100g`}
     />
+    <Avatar style={styles.item}></Avatar>
   </Fragment>
 }
 export default ProductItem;
