@@ -28,6 +28,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
+import ProductItem from './ProductItem';
 
 const styles = theme => ({
   root: {
@@ -161,21 +162,6 @@ function Menu(props) {
   );
 }
 
-function ProductItem(props) {
-  const p = props.product;
-  return <Fragment>
-    <ListItemAvatar>
-      <Avatar>
-        <FolderIcon />
-      </Avatar>
-    </ListItemAvatar>
-    <ListItemText
-      primary={p.name}
-      secondary={p.name}
-    />
-  </Fragment>
-}
-
 const components = {
   Control,
   Menu,
@@ -221,6 +207,12 @@ class ShoppingList extends Component {
     store.pageTitle = "Shop for products";
   }
 
+  onBuy = () => {
+    store.purchase = this.state.products;
+    // TODO: send request here
+    this.props.history.push("/waiting-for-confirmation");
+  };
+
   render() {
     const { classes } = this.props;
     console.log(this.state);
@@ -254,7 +246,7 @@ class ShoppingList extends Component {
           )}
         </List>
 
-        <Button variant="outlined" onClick={this.onClick}>Buy</Button>
+        <Button variant="outlined" onClick={this.onBuy}>Buy</Button>
       </div>
     );
   }

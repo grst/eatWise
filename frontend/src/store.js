@@ -33,7 +33,7 @@ class Store {
     description: "FoodArmy"
   },
   ];
-	@observable purchase = [];
+	@observable purchase = JSON.parse(localStorage.getItem("purchase", "[]")) || [];
   @observable challengeResult = {
     status: "lost",
   };
@@ -41,8 +41,12 @@ class Store {
 }
 
 const store = new Store();
+// store username + last purchase in local storage
 observe(store, "username", () => {
   localStorage.setItem("username", store.username);
+});
+observe(store, "purchase", () => {
+  localStorage.setItem("purchase", JSON.stringify(store.purchase));
 });
 observe(store, "pageTitle", () => {
   document.title = store.pageTitle;
