@@ -207,7 +207,7 @@ class ShoppingList extends Component {
   };
 
   componentDidMount() {
-    store.pageTitle = "Planning";
+    store.pageTitle = "Grocery List";
   }
 
   onBuy = async () => {
