@@ -12,6 +12,8 @@ class ShoppingList extends Component {
   render() {
     return (
       <div className="ShoppingList">
+        List of products.
+        <br/>
         <button onClick={this.onClick}>Buy</button>
       </div>
     );

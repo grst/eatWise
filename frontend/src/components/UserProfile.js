@@ -10,6 +10,8 @@ class UserProfile extends Component {
     return (
       <div className="UserProfile">
         <Link to='/shopping-list'>Start shopping</Link>
+        <br/>
+        <Link to='/login'>Change your username</Link>
         <div>Username: {store.username}</div>
       </div>
     );
