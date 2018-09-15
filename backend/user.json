@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "username": "Sebastian",
     "co2": 0,
     "badges": [
@@ -11,7 +11,7 @@
     "avatarURL": "/img/avatars/sebastian.jpg"
   },
   {
-    "id": 2,
+    "id": 1,
     "username": "Gregor",
     "description": "Food is my mood.",
     "co2": 0,
@@ -22,13 +22,13 @@
     "avatarURL": "/img/avatars/gregor.jpg"
   },
   {
-    "id": 3,
+    "id": 2,
     "username": "Mari",
     "description": "Sharing is caring.",
     "avatarURL": "/img/avatars/mari.jpg"
   },
   {
-    "id": 4,
+    "id": 3,
     "username": "Betiana",
     "description": "CheeseSquad",
     "co2": 0,
