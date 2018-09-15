@@ -68,7 +68,7 @@ class PendingChallenge extends Component {
     return (
         <div className="PendingChallenge">
           <h2>{username} has been challenged.</h2>
-          <br/ >
+          <br />
           You will be notified once {username} completed the challenge!
           <div
               className={classes.loader}

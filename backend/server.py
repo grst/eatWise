@@ -109,7 +109,7 @@ def getOngoingChallenge():
 	else:
 		adversaryUser = "None"
 	result = {}
-	result['thisUserWasChallenged'] = user['wasChallenged']
+	result['wasChallenged'] = user['wasChallenged']
 	result['adversary'] = adversaryUser
 	return json.dumps(result)
 
