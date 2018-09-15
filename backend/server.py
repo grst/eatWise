@@ -5,20 +5,6 @@ from flask_cors import CORS
 import json
 from random import randint
 
-class User(object):
-    def __init__(self):
-        self.username=""
-        self.badges=[]
-        self.points = 0
-
-class Item(object):
-	def __init__(self):
-		self.Name=""
-		self.CO2_Kg=0
-		self.CO2_100g = 0
-		self.Category=""
-		self.iconURL = ""
-
 app = Flask(__name__)
 CORS(app)
 auth = HTTPBasicAuth()
@@ -26,15 +12,11 @@ app.config['DEBUG'] = False
 # CORS doesn't support redirects
 app.url_map.strict_slashes = False
 
-isChallengeRunning = False
-
 userList = {}
 productList = []
 
 with open('buhlerFoodprint.json') as f:
     productList = json.load(f)
-# item = productList[5]
-# print(item)
 
 @app.route('/')
 def basic():
@@ -49,9 +31,14 @@ def get_password(username):
 
 @app.route('/start/<userName>', methods=['POST'])
 def startChallenge(userName):
-	userOne.username = userName
-	isChallengeRunning = True
-	return json.dumps(userOne)
+		newUser = {}
+		newUser['name'] = username
+		newUser['points'] = totalSum
+		newUser['badges'] = []
+		userId = len(userList)
+		newUser['id'] = userId
+		userList[username] = newUser
+		return json.dumps(newUser)
 
 @app.route('/getProductList/', methods=['GET'])
 def getProductList():
