@@ -36,9 +36,10 @@ class SupermarketConfirmation extends React.Component {
     const query = qs.parse(this.props.location.search);
     // just check if set for the sake of simplicity
     if (!query.skipWaiting) {
+      const timeoutTime = store.isLocal ? 200 : 2000;
       setTimeout(() => {
         this.props.history.push("/purchase-summary");
-      }, 2 * 1e3);
+      }, timeoutTime);
     }
   }
 

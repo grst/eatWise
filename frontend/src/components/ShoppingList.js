@@ -75,6 +75,15 @@ const styles = theme => ({
   divider: {
     height: theme.spacing.unit * 2,
   },
+  checkoutBar: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  forecast: {
+    verticalAlign: 'center',
+    fontSize: '1.1em',
+  }
 });
 
 function NoOptionsMessage(props) {
@@ -195,7 +204,7 @@ class ShoppingList extends Component {
   onDelete = (item) => {
     console.log("item", item);
     this.setState({
-      products: this.state.products.filter(p => p.id!== item.id)
+      products: this.state.products.filter(p => p.id !== item.id)
     })
   };
 
@@ -215,6 +224,7 @@ class ShoppingList extends Component {
 
   render() {
     const { classes } = this.props;
+    const forecastedPoints = this.state.products.length * 3;
     return (
       <div className="ShoppingList">
        <Select
@@ -240,7 +250,12 @@ class ShoppingList extends Component {
           )}
         </List>
 
-        <Button variant="outlined" onClick={this.onBuy}>Buy</Button>
+        <div class={classes.checkoutBar}>
+          <div class={classes.forecast}>
+            Forecast: {forecastedPoints} Ecli points
+          </div>
+          <Button variant="outlined" onClick={this.onBuy}>Buy</Button>
+        </div>
       </div>
     );
   }
