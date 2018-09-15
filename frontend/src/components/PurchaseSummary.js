@@ -14,6 +14,14 @@ import Avatar from '@material-ui/core/Avatar';
 import FolderIcon from '@material-ui/icons/Folder';
 
 import ProductItem from './ProductItem';
+import ScoreCard from "./ScoreCard";
+
+const style = {
+  button : {
+    textAlign: 'center',
+    marginBottom: 15
+  }
+};
 
 @observer
 class PurchaseSummary extends Component {
@@ -24,27 +32,30 @@ class PurchaseSummary extends Component {
     store.pageTitle = "Purchase summary";
   }
   render() {
-    const totalPoints = 2;
     return (
-      <div>
-      {store.purchase && store.purchase["boughtItems"] &&
-        <div className="PurchaseSummary">
+        <div>
+          <ScoreCard user={store.user}
+                     text1="You earned"
+                     text2="Good job!"
+                     points={Math.round(store.purchase.basketPoints)}
+                     co2={Math.round(store.purchase.basketCO2*100)/100}/>
+
+          <div style={style.button}>
+            <Button variant="outlined" onClick={this.onClick}>Challenge a friend</Button>
+          </div>
+
+          {store.purchase && store.purchase["boughtItems"] &&
+          <div className="PurchaseSummary">
+
             {store.purchase.boughtItems.map(p =>
-              <ListItem key={p.name}>
-                <ProductItem product={p} quantity={p.quantity}/>
-              </ListItem>
+                <ListItem key={p.name}>
+                  <ProductItem product={p} quantity={p.quantity}/>
+                </ListItem>
             )}
 
-          <br/>
-          Total points: {Math.round(store.purchase.basketPoints)}
-          <br/>
-          Total CO2: {Math.round(store.purchase.basketCO2*100)/100} kg
-          <br/>
-
-          <Button variant="outlined" onClick={this.onClick}>Challenge a friend</Button>
+          </div>
+          }
         </div>
-      }
-      </div>
     );
   }
 }
