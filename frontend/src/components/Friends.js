@@ -41,7 +41,7 @@ const Friend = withStyles(styles)(
         </Avatar>
       </ListItemAvatar>
       <ListItemText
-        primary={user.name}
+        primary={user.username}
         secondary={user.description}
       />
       <div className={classes.score}>

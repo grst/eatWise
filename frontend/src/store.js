@@ -95,9 +95,8 @@ class Store {
     const e = (await api.post('/getOngoingChallenge', {
       username: this.username
     }).data);
-    if (e !== undefined ) {
-      console.log("checkChallenge", e);
-    }
+    // {"thisUserWasChallenged": false, "challengedBy": "None"}
+    set(this.challengeResult, e);
   }
 
   challengeObject() {
