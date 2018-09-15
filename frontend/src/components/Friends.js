@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
+import { toJS } from 'mobx';
 import { observer } from 'mobx-react';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
@@ -62,6 +63,8 @@ const Friend = withStyles(styles)(
 class Friends extends Component {
   challengePicker = (typeof this.props.disableChallenge === "undefined");
   onClick = (user) => {
+    console.log(toJS(user));
+    debugger;
     if(this.challengePicker && user.id !== store.user.id) {
       store.challengeFriend(user);
       this.props.history.push("/waiting-for-challenge-complete");
