@@ -162,7 +162,7 @@ def startChallenge():
 
 def calculatePoints(basket):
 	CO2sum = 0
-	weightBasket = 0 
+	weightBasket = 0
 #	print(basket)
 
 	for i in range(0, len(basket)):
@@ -176,6 +176,7 @@ def calculatePoints(basket):
 		weightBasket = weightBasket + weight
 
 	totalCO2_Basket = 100*CO2sum/weightBasket
+	# 0.39 has bee developed on a representative default basket.
 	savingsCO2_Basket = 0.39 - totalCO2_Basket
-	finalPoints = savingCO2 * 100
-	return totalCO2_Basket,finalPoints
+	finalPoints = savingsCO2_Basket * 100
+	return savingsCO2_Basket, finalPoints
