@@ -20,9 +20,7 @@ function normalizeProducts(products){
 class Store {
   @observable basket = [];
 	@observable username = localStorage.getItem("username", "Sebastian") || "Sebastian";
-	@observable currentScore = 1234;
-	@observable currentCO2 = 34.32;
-	@observable currentLevel = "ecofriendly";
+	@observable user = {};
   @observable products = [];
   @observable friends = [
   {
@@ -60,6 +58,13 @@ class Store {
     const e = await api.get("/getProductList");
     runInAction(() => {
       this.products.replace(normalizeProducts(e.data));
+    });
+  }
+
+  @action async fetchUserDetails() {
+    const e = await api.post("/start", {'username': this.username});
+    runInAction(() => {
+      this.user = e.data;
     });
   }
 
@@ -101,4 +106,5 @@ autorun(() => {
 });
 // always keep the current list of all products in memory
 store.fetchProductList();
+store.fetchUserDetails();
 export default store;
