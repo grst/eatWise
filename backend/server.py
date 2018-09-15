@@ -18,24 +18,37 @@ productList = []
 with open('buhlerFoodprint.json') as f:
     productList = json.load(f)
 
+with open('user.json') as f:
+    for user in json.load(f):
+        userList[user['username']] = user
+
 @app.route('/')
 def basic():
     # show the post with the given id, the id is an integer
     return 'Server is running... If you post something and are logged in to the API, you\'d get a more useful thing'
 
 @app.route('/start/', methods=['POST'])
-def startChallenge():
-		content = request.json
-		username = content['username']
-		newUser = {}
+def initUser():
+	content = request.json
+	username = content['username']
+	newUser = {}
+	if username not in userList:
 		newUser['name'] = username
 		newUser['points'] = 0
 		newUser['co2'] = 0
+		newUser['wasChallenged'] = False
+		newUser['adversary'] = None
 		newUser['badges'] = []
+		newUser['avatarURL'] = '/img/avatars/dummy.jpg'
 		userId = len(userList)
 		newUser['id'] = userId
 		userList[username] = newUser
-		return json.dumps(newUser)
+	else:
+		newUser = userList[username]
+	return json.dumps({
+		"currentUser": newUser,
+		"userList": userList
+	})
 
 @app.route('/getProductList/', methods=['GET'])
 def getProductList():
@@ -67,8 +80,11 @@ def calculateSum():
 		newUser = {}
 		newUser['name'] = username
 		newUser['points'] = basketPoints
+		newUser['wasChallenged'] = False
+		newUser['adversary'] = None
 		newUser['co2'] = totalCO2_Basket
 		newUser['badges'] = []
+		newUser['avatarURL'] = '/img/avatars/dummy.jpg'
 		userId = len(userList)
 		newUser['id'] = userId
 		userList[username] = newUser
@@ -83,8 +99,23 @@ def calculateSum():
 	result['BasketPoints'] = basketPoints
 	return json.dumps(result)
 
-@app.route('/getChallengeState/', methods=['POST'])
-def getChallengeState():
+@app.route('/getOngoingChallenge/', methods=['POST'])
+def getOngoingChallenge():
+	content = request.json
+	username = content['username'] #returns "two"
+	user = userList[username] 
+	adversaryName = user['adversary']
+	print(adversaryName)
+	if not adversaryName == None:
+		adversaryUser = userList[adversaryName]
+	else: adversaryUser = None
+	result = {}
+	result['thisUserWasChallenged'] = user['wasChallenged']
+	result['challengedBy'] = adversaryUser
+	return json.dumps(result)
+
+@app.route('/startChallenge/', methods=['POST'])
+def startChallenge():
 	content = request.json
 	thisUsername = content['Me'] 
 	otherUsername = content['Adversary']
@@ -99,18 +130,26 @@ def getChallengeState():
 		print("ERROR! You never saved your own points!!")
 		return make_response(jsonify({'Error!': 'Bad request format! Did you save your own points before quering it?'}), 400)
 
-	if (not otherUsername in userList):
-		resultStr = "Ongoing"
-	else:
+	if otherUsername in userList:
+		#this should be the standard case. This function is allowed to assume that both you and the adversary are valid players
 		otherUser = userList[otherUsername]
 		otherPoints = otherUser['points']
+		otherUser['wasChallenged'] = True
+		otherUser['adversary'] = thisUsername
+		userList[otherUsername] = otherUser
 
-		if thisPoints > otherPoints:
+		if otherPoints == 0:
+			resultStr = "Ongoing"
+		elif thisPoints > otherPoints:
 			resultStr = "Winner"
 		elif otherPoints > thisPoints:
 			resultStr = "Looser"
 		else:
 			resultStr = "Tie!"
+
+	else:
+		print("ERROR! Your challenger doesn't exist!!")
+		return make_response(jsonify({'Error!': 'Bad request format! Your challenger does not exist!'}), 400)
 
 	result = {}
 	result['ChallengeResult'] = resultStr
