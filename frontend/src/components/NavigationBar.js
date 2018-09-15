@@ -1,9 +1,19 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import PersonIcon from '@material-ui/icons/Person';
 import ShoppingIcon from '@material-ui/icons/ShoppingCart';
+import {Link} from "react-router-dom";
+
+const styles = {
+  root: {
+      width: '100%',
+      position: 'absolute',
+      bottom: 0
+  },
+};
 
 class NavigationBar extends React.Component {
   state = {
@@ -15,21 +25,29 @@ class NavigationBar extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
+    const { value } = this.state;
+
     return (
-      <Paper square style={{ width: 500 }}>
-        <Tabs
-          value={this.state.value}
-          onChange={this.handleChange}
-          fullWidth
-          indicatorColor="secondary"
-          textColor="secondary"
-        >
-          <Tab icon={<PersonIcon />} label="Profile" />
-          <Tab icon={<ShoppingIcon />} label="Start shopping" />
-        </Tabs>
-      </Paper>
+      <BottomNavigation
+        value={value}
+        onChange={this.handleChange}
+        showLabels
+        className={classes.root}
+      >
+        <Link to='/'>
+          <BottomNavigationAction label="Profile" icon={<PersonIcon />} />
+        </Link>
+        <Link to='/shopping-list'>
+          <BottomNavigationAction label="Shopping" icon={<ShoppingIcon />} />
+        </Link>
+      </BottomNavigation>
     );
   }
 }
 
-export default NavigationBar;
+NavigationBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(NavigationBar);
