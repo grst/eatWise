@@ -33,11 +33,17 @@ const styles = {
 
 @observer
 class IncomingChallenge extends Component {
+  componentDidMount() {
+        store.pageTitle = "You were challenged!";
+  }
+  
   render() {
+
     const { classes } = this.props;
     return (
         <div className="IncomingChallenge">
-          <ScoreCard/>
+          <ScoreCard score="XXX" text1="XXX got" text2="in the last Shoptest. "
+          avatar='/img/user2.png'/>
           <h2>Can you do better?</h2>
           <div className={classes.row}>
             <Avatar className={classes.checkAvatar}>
