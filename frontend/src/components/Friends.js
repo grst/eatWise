@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react';
 import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
 import store from '../store'
 
@@ -15,22 +16,39 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import FolderIcon from '@material-ui/icons/Folder';
 
-function Friend(props) {
-  const u = props.user;
+const styles = {
+  bigAvatar: {
+    width: 60,
+    height: 60,
+  },
+  score: {
+    fontSize: "1.3em",
+    fontWeight: "bold",
+  }
+};
+
+const Friend = withStyles(styles)(
+  ({user, classes, onClick}) => {
   return (
-    <ListItem onClick={props.onClick}>
+    <ListItem onClick={onClick}>
       <ListItemAvatar>
-        <Avatar>
-          <FolderIcon />
+        <Avatar
+          alt={user.name}
+          src={user.avatarURL}
+          className={classes.bigAvatar}
+        >
         </Avatar>
       </ListItemAvatar>
       <ListItemText
-        primary={u.name}
-        secondary={u.description}
+        primary={user.name}
+        secondary={user.description}
       />
+      <div className={classes.score}>
+        {user.id}
+      </div>
     </ListItem>
   );
-}
+});
 
 @observer
 class Friends extends Component {

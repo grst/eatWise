@@ -16,6 +16,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import Avatar from '@material-ui/core/Avatar';
 
 const styles = {
   root: {
@@ -69,7 +70,11 @@ class MenuAppBar extends React.Component {
               <div>
                 <Link to="/profile">
                   <IconButton>
-                    <AccountCircle className={classes.userButton}/>
+                    <Avatar
+                      alt={store.currentUser.name}
+                      className={classes.userButton}
+                      src={store.currentUser.avatarURL}
+                    />
                   </IconButton>
                 </Link>
               </div>

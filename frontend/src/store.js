@@ -10,8 +10,9 @@ function normalizeProducts(products){
     name: p.Name,
     iconURL: p.iconURL,
     co2_kg: p.CO2_KG,
-    co2_100g: p.CO2_100g,
+    co2_100g: Math.round(p.CO2_100g * 1000) / 1000,
     category: p.Category,
+    points: Math.round(p.Points * 10) / 10,
   }));
 }
 
@@ -25,13 +26,27 @@ class Store {
   @observable friends = [
   {
     id: 1,
-    name: "Peter",
-    description: "EcoFighter"
+    name: "Sebastian",
+    description: "EcoFighter",
+    avatarURL: "/img/avatars/sebastian.jpg",
   },
   {
     id: 2,
-    name: "Yustav",
-    description: "FoodArmy"
+    name: "Gregor",
+    description: "Food is my mood.",
+    avatarURL: "/img/avatars/gregor.jpg",
+  },
+  {
+    id: 3,
+    name: "Mari",
+    description: "Sharing is caring.",
+    avatarURL: "/img/avatars/mari.jpg",
+  },
+  {
+    id: 4,
+    name: "Betiana",
+    description: "CheeseSquad",
+    avatarURL: "/img/avatars/betiana.jpg",
   },
   ];
 	@observable purchase = JSON.parse(localStorage.getItem("purchase", "[]")) || [];
@@ -53,6 +68,16 @@ class Store {
       id: e.id,
       ...e,
     }));
+  }
+  @computed get currentUser() {
+    // silly search for the currently logged in user
+    const user = this.username.toLowerCase();
+    const userNames = this.friends.filter(f => f.name.toLowerCase() === user);
+    if (userNames.length === 0) {
+      return {};
+    } else {
+      return userNames[0];
+    }
   }
 }
 

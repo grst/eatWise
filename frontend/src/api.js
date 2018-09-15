@@ -10,7 +10,7 @@ if (window.location.hostname === "localhost" || window.location.hostname === "12
 const instance = axios.create({
   baseURL: url,
   timeout: 5000,
-  headers: {'X-Custom-Header': 'I love ponies!'}
+  headers: {'X-Custom-Header': 'I love ponies!'},
 });
 
 export default instance;
