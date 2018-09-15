@@ -89,7 +89,7 @@ class Store {
   }
 
   @action async updateChallenge() {
-    const e = (await api.post('/getChallengeState', this.challengeObject()).data);
+    const e = (await api.post('/startChallenge', this.challengeObject()).data);
   }
 
   @action async checkForOngoingChallenges() {
