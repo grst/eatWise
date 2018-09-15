@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 
 import store from '../store'
 import NavigationBar from "./NavigationBar";
+import HeaderBar from "./HeaderBar";
 
 import classNames from 'classnames';
 import Select from 'react-select';
@@ -240,6 +241,7 @@ class ShoppingList extends Component {
     }));
     return (
       <div className="ShoppingList">
+        <HeaderBar />
         <b>List of products.</b>
 
        <Select
@@ -275,7 +277,7 @@ class ShoppingList extends Component {
 
 
         <button onClick={this.onClick}>Buy</button>
-        <NavigationBar/>
+        {/*<NavigationBar/>*/}
       </div>
     );
   }

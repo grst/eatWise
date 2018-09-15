@@ -49,7 +49,7 @@ class UserProfile extends Component {
           <Link to='/login'>
             <Button variant="outlined">Change User</Button>
           </Link>
-          <NavigationBar/>
+          {/*<NavigationBar/>*/}
         </div>
     );
   }

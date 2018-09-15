@@ -19,8 +19,8 @@ class App extends Component {
         <Paper>
           <BrowserRouter>
            <Switch>
-             <Route exact path='/' component={UserProfile} />
-             <Route path='/shopping-list' component={ShoppingList} />
+             <Route path='/profile' component={UserProfile} />
+             <Route exact path='/' component={ShoppingList} />
              <Route path='/purchase-summary' component={PurchaseSummary} />
              <Route path='/challenge-a-friend' component={Friends} />
              <Route path='/challenge-result' component={ChallengeResult} />
