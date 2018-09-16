@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import store from '../store'
 import 'typeface-oswald'
 import Avatar from "@material-ui/core/Avatar/Avatar";
-
+import classNames from 'classnames';
 
 const styles = {
   card: {
@@ -88,13 +88,13 @@ const styles = {
   }
 };
 
-function ScoreCard({classes, user, text1, text2, points, co2, textColor}) {
+function ScoreCard({classes, className = "", user, text1, text2, points, co2, textColor}) {
   const badgeText = typeof user.badges === "undefined" ? null : user.badges[0];
   const badgeURL = "/img/badges/" + badgeText + ".png";
   points = typeof points === "undefined" ? user.points : points;
   co2 = typeof co2 === "undefined" ? user.co2 : co2;
   return (
-      <Card className={classes.card}>
+      <Card className={classNames(classes.card, className)}>
         <CardContent>
           <Avatar
               alt={user}

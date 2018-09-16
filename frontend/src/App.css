@@ -32,5 +32,8 @@
 }
 
 .slow {
+    animation-duration: 1500ms;
+}
+.slower {
     animation-duration: 3000ms;
 }

@@ -222,7 +222,7 @@ class ShoppingList extends Component {
       return this.state.products.filter(p2 => p2.id === p.id).length === 0;
     });
     return (
-      <div className="ShoppingList">
+      <div className="ShoppingList animated zoomIn">
        <Select
             classes={classes}
             // className={classes.select}

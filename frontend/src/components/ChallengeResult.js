@@ -4,6 +4,7 @@ import { toJS } from 'mobx';
 import { observer } from 'mobx-react';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 
 import Avatar from "@material-ui/core/Avatar/Avatar";
@@ -68,9 +69,9 @@ const userStyles = theme => ({
   },
 });
 
-const User = withStyles(userStyles)(function ({user, classes, name}) {
+const User = withStyles(userStyles)(function ({user, classes, className = "", name}) {
   return (
-    <div className={classes.user}>
+    <div className={classNames(classes.user, className)}>
       <Badge color="primary"
         badgeContent={
         (<UserBadge badge={user.badges[0]} />
@@ -152,8 +153,6 @@ class ChallengeResult extends Component {
     const quote = "You're our hero!";
     let isWinner = false;
     if (store.hasChallenge) {
-      console.log("playerOne", store.isPlayerOne);
-      console.log("playerOne", store.currentPlayer.challengePoints);
       isWinner = store.currentPlayer.challengePoints > store.otherPlayer.challengePoints;
     }
 
@@ -167,33 +166,39 @@ class ChallengeResult extends Component {
           "Still waiting."
         : (store.hasChallenge ?
           <div className={classes.challengeDiv}>
-          {isWinner ?
-            <Typography className={classes.statusText}>
-              You <b>win</b>.
-              <img alt="winner" src="/img/result/winner.gif" className={classes.winnerImg} />
-            </Typography>
-          :
-            <Typography className={classes.statusText}>
-              You <b>loose</b>.
-              <img alt="looser" src="/img/result/looser.gif" className={classes.looserImg} />
-            </Typography>
-          }
+            <div className="animated slideTopIn">
+            {isWinner ?
+              <Typography className={classes.statusText}>
+                You <b>win</b>.
+                <img alt="winner" src="/img/result/winner.gif" className={classes.winnerImg} />
+              </Typography>
+            :
+              <Typography className={classes.statusText}>
+                You <b>loose</b>.
+                <img alt="looser" src="/img/result/looser.gif" className={classes.looserImg} />
+              </Typography>
+            }
+            </div>
             <div className={classes.userContainer}>
               <User
                 user={store.currentPlayer}
+                className="animated slideLeftIn"
                 name="Me"
               />
               <User
                 user={store.otherPlayer}
                 name={store.otherPlayer.username}
+                className="animated slideRightIn"
               />
             </div>
-            <br/>
-            <Typography className={classes.quoteText}>
-              {quote}
-            </Typography>
-            <br/>
-            <Button variant="outlined" onClick={this.restartChallenge}>Restart</Button>
+            <div className="animated slideLeftIn">
+              <br/>
+              <Typography className={classes.quoteText}>
+                {quote}
+              </Typography>
+              <br/>
+              <Button variant="outlined" onClick={this.restartChallenge}>Restart</Button>
+            </div>
           </div>
           :
             <div>

@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import ScoreCard from "./ScoreCard";
+import Slide from '@material-ui/core/Slide';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -78,19 +79,21 @@ class UserProfile extends Component {
     const challengedByName = challengedBy.username;
     const hasDialogOpened = store.isWaitingForPlayerTwo && !store.isPlayerOne && !this.state.hasDeclined;
     // const badge = "foo"
+    //          <div style={{...styles.row, ...styles.username}}>
+            //{store.username} (<Link to='/login'>Logout</Link>)
+            //</div>
     return (
         <div className="UserProfile">
           <ScoreCard
             user={store.user}
             text1="Your Score: "
             points={challengedBy.points}
+            className="animated slideInDown"
           />
-          <div style={{...styles.row, ...styles.username}}>
-            {store.username} (<Link to='/login'>Logout</Link>)
-            </div>
-
-          <h2 style={styles.friendsTitle}>Your friends</h2>
-          <Friends disableChallenge="true"/>
+          <div className="animated slideInUp">
+            <h2 style={styles.friendsTitle}>Your friends</h2>
+            <Friends disableChallenge="true"/>
+          </div>
 
       {/*dialog for incoming challenge*/}
       <Dialog
@@ -102,6 +105,8 @@ class UserProfile extends Component {
         onClose={this.handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        animation={Slide}
+        transitionDuration={1000}
         >
           <DialogTitle
             id="alert-dialog-title"

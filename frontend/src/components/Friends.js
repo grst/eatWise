@@ -4,6 +4,7 @@ import { toJS } from 'mobx';
 import { observer } from 'mobx-react';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 import store from '../store'
 import api from '../api'
@@ -75,9 +76,9 @@ class Friends extends Component {
   }
   render() {
     const filteredUsers = store.users.filter(u => this.challengePicker || u.id !== store.user.id);
-    const { classes } = this.props;
+    const { classes, className = "" } = this.props;
     return (
-      <div>
+      <div className={classNames(className, "animated slideInRight")}>
         { filteredUsers.length > 0 &&
         <List dense={false}>
           { _.sortBy(filteredUsers, [function(x) {return(-x.points)}]).map(u =>

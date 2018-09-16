@@ -42,12 +42,14 @@ class PurchaseSummary extends Component {
     return (
         <div>
           <ScoreCard user={store.user}
+                    className="animated slideInDown"
                      text1={text1}
                      text2={text2}
                      textColor={textColor}
                      points={Math.abs(Math.round(store.purchase.basketPoints))}
                      co2={Math.round(store.purchase.basketCO2*100)/100}/>
 
+        <div className="animated slideInUp">
           <div style={style.button}>
 
             { store.hasChallenge && !store.isPlayerOne ?
@@ -68,6 +70,7 @@ class PurchaseSummary extends Component {
 
           </div>
           }
+        </div>
         </div>
     );
   }
