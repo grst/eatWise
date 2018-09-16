@@ -24,7 +24,7 @@ function normalizeProducts(products){
 
 
 class Store {
-	@observable username = localStorage.getItem("username") || "Sebastian";
+	@observable username = localStorage.getItem("username") || "Mari";
 	@observable user = JSON.parse(localStorage.getItem("user")) || {};
   @observable products = JSON.parse(localStorage.getItem("products")) || [];
   @observable users = JSON.parse(localStorage.getItem("users")) || [];
