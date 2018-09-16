@@ -197,10 +197,6 @@ class ChallengeResult extends Component {
             </div>
             <div className="animated slideInUp">
               <br/>
-              <Typography className={classes.quoteText}>
-                {quote}
-              </Typography>
-              <br/>
               <Button variant="outlined" onClick={this.restartChallenge}>Restart</Button>
             </div>
           </div>
