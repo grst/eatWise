@@ -30,3 +30,7 @@
 .faster {
     animation-duration: 300ms;
 }
+
+.slow {
+    animation-duration: 3000ms;
+}

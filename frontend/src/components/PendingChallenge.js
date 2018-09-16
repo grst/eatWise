@@ -35,6 +35,7 @@ const styles = {
   },
   loader: {
     padding: "2em",
+    animationDuration: "6000ms",
   },
   pendingChallenge: {
     textAlign: 'center'
@@ -92,7 +93,7 @@ class PendingChallenge extends Component {
           <br />
           You will be notified once {otherUser.username} completed the challenge!
           <div
-              className={classes.loader}
+              className={classNames(classes.loader, "animated swing")}
           >
             <PacmanLoader
               sizeUnit={"px"}
