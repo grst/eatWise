@@ -76,7 +76,7 @@ class UserProfile extends Component {
     const classes = this.props.classes;
     const challengedBy = store.challengeResult ? (store.challengeResult.playerOne || {}) : {};
     const challengedByName = challengedBy.username;
-    const hasDialogOpened = store.hasChallenge && !store.isPlayerOne && !this.state.hasDeclined;
+    const hasDialogOpened = store.isWaitingForPlayerTwo && !store.isPlayerOne && !this.state.hasDeclined;
     // const badge = "foo"
     return (
         <div className="UserProfile">
