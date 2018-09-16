@@ -103,7 +103,7 @@ class Store {
       Adversary: friend.username,
     };
   }
-  updatePeriod = 2000; // in ms
+  updatePeriod = 700; // in ms
 
   @computed get isPlayerOne() {
     return (store.hasChallenge && store.challengeResult.playerOne.username === store.username) || false;
