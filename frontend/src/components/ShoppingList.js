@@ -27,11 +27,19 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FolderIcon from '@material-ui/icons/Folder';
+import ShoppingIcon from '@material-ui/icons/ShoppingCart';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProductItem from './ProductItem';
 
+
 const styles = theme => ({
+   button: {
+    margin: theme.spacing.unit,
+     backgroundColor: "#0cbd00"
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit,
+  },
   root: {
     flexGrow: 1,
     height: 250,
@@ -252,7 +260,11 @@ class ShoppingList extends Component {
         </List>
 
         <div className={classes.checkoutBar}>
-          <Button variant="outlined" disabled={this.state.products.length === 0} onClick={this.onBuy}>Buy</Button>
+          <Button variant="extendedFab" aria-label="Delete" className={classes.button}
+          disabled={this.state.products.length === 0} onClick={this.onBuy}>
+            <ShoppingIcon className={classes.extendedIcon} />
+            Buy
+          </Button>
         </div>
       </div>
     );
