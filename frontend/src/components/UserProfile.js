@@ -92,7 +92,7 @@ class UserProfile extends Component {
           />
           <div className="animated slideInUp">
             <h2 style={styles.friendsTitle}>Your friends</h2>
-            <Friends disableChallenge="true"/>
+            <Friends disableChallenge="true" animate={false} />
           </div>
 
       {/*dialog for incoming challenge*/}

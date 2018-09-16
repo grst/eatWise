@@ -77,8 +77,12 @@ class Friends extends Component {
   render() {
     const filteredUsers = store.users.filter(u => this.challengePicker || u.id !== store.user.id);
     const { classes, className = "" } = this.props;
+    let animateClasses = "";
+    if (this.props.animate !== false) {
+      animateClasses += "animated slideInRight";
+    }
     return (
-      <div className={classNames(className, "animated slideInRight")}>
+      <div className={classNames(className, animateClasses)}>
         { filteredUsers.length > 0 &&
         <List dense={false}>
           { _.sortBy(filteredUsers, [function(x) {return(-x.points)}]).map(u =>
