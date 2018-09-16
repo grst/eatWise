@@ -12,17 +12,27 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import FolderIcon from '@material-ui/icons/Folder';
+import SendIcon from '@material-ui/icons/Send';
+import CachedIcon from '@material-ui/icons/Cached';
+
 
 import ProductItem from './ProductItem';
 import ScoreCard from "./ScoreCard";
+import ShoppingIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import {withStyles} from "@material-ui/core";
 
-const style = {
+const styles = theme => ({
   button : {
     textAlign: 'center',
-    marginBottom: 15
-  }
-};
+    marginBottom: 15,
+    backgroundColor: "#0cbd00"
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit,
+  },
+});
 
+@withStyles(styles)
 @observer
 class PurchaseSummary extends Component {
   onChallenge = () => {
@@ -35,6 +45,7 @@ class PurchaseSummary extends Component {
     store.pageTitle = "Purchase summary";
   }
   render() {
+    const { classes } = this.props;
     const points = Math.round(store.purchase.basketPoints);
     const text1 = "You " + ((points < 0) ? "lost" : "earned");
     const text2 = points < 0 ? "Try again!" : "Good job!";
@@ -49,15 +60,20 @@ class PurchaseSummary extends Component {
                      points={Math.abs(Math.round(store.purchase.basketPoints))}
                      co2={Math.round(store.purchase.basketCO2*100)/100}/>
 
-        <div className="animated slideInUp">
-          <div style={style.button}>
-
-            { store.hasChallenge && !store.isPlayerOne ?
-            <Button variant="outlined" onClick={this.onSeeResults}>See results</Button>
-            :
-            <Button variant="outlined" onClick={this.onChallenge}>Challenge a friend</Button>
-            }
-          </div>
+          <div className="animated slideInUp">
+            <div>
+              {store.hasChallenge && !store.isPlayerOne ?
+              <Button variant="extendedFab" aria-label="Delete" className={classes.button}
+                      onClick={this.onSeeResults}>
+                <CachedIcon className={classes.extendedIcon}/>
+                See results
+              </Button>
+              : <Button variant="extendedFab" aria-label="Delete" className={classes.button}
+                      onClick={this.onChallenge}>
+                <SendIcon className={classes.extendedIcon} />
+                Challenge a friend
+              </Button>}
+            </div>
 
           {store.purchase && store.purchase["boughtItems"] &&
           <div className="PurchaseSummary">
