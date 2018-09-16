@@ -39,6 +39,7 @@ const styles = theme => ({
   input: {
     display: 'flex',
     padding: 0,
+    height: 55
   },
   valueContainer: {
     display: 'flex',
@@ -80,6 +81,9 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
+  },
+  shoppingList: {
+    margin: '15px'
   }
 });
 
@@ -222,7 +226,7 @@ class ShoppingList extends Component {
       return this.state.products.filter(p2 => p2.id === p.id).length === 0;
     });
     return (
-      <div className="ShoppingList animated zoomIn">
+      <div className={classes.shoppingList}>
        <Select
             classes={classes}
             // className={classes.select}
