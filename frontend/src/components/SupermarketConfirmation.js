@@ -32,7 +32,7 @@ class SupermarketConfirmation extends React.Component {
   }
 
   componentDidMount() {
-    store.pageTitle = "Waiting for supermarket";
+    store.pageTitle = "Processing...";
     const query = qs.parse(this.props.location.search);
     // just check if set for the sake of simplicity
     if (!query.skipWaiting) {
