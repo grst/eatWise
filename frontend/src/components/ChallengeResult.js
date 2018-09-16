@@ -166,7 +166,7 @@ class ChallengeResult extends Component {
           "Still waiting."
         : (store.hasChallenge ?
           <div className={classes.challengeDiv}>
-            <div className="animated slideTopIn">
+            <div className="animated slideInDown">
             {isWinner ?
               <Typography className={classes.statusText}>
                 You <b>win</b>.
@@ -182,16 +182,16 @@ class ChallengeResult extends Component {
             <div className={classes.userContainer}>
               <User
                 user={store.currentPlayer}
-                className="animated slideLeftIn"
+                className="animated slideInLeft"
                 name="Me"
               />
               <User
                 user={store.otherPlayer}
                 name={store.otherPlayer.username}
-                className="animated slideRightIn"
+                className="animated slideInRight"
               />
             </div>
-            <div className="animated slideLeftIn">
+            <div className="animated slideInUp">
               <br/>
               <Typography className={classes.quoteText}>
                 {quote}
