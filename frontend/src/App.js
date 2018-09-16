@@ -16,6 +16,8 @@ import SupermarketConfirmation from "./components/SupermarketConfirmation";
 import IncomingChallenge from "./components/IncomingChallenge";
 import PendingChallenge from "./components/PendingChallenge";
 
+import './App.css';
+
 class App extends Component {
   render() {
     return (
