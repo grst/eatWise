@@ -10,6 +10,7 @@ import store from '../store'
 import 'typeface-oswald'
 import Avatar from "@material-ui/core/Avatar/Avatar";
 import classNames from 'classnames';
+import CountUp from 'react-countup';
 
 const styles = {
   card: {
@@ -105,10 +106,16 @@ function ScoreCard({classes, className = "", user, text1, text2, points, co2, te
             {text1}
           </Typography>
           <Typography className={classes.score} color="textSecondary" style={{color: textColor}}>
-            {Math.round(points)} <span className={classes.scorePoints}>points</span>
+            <CountUp
+              end={Math.round(points)}
+              duration={5} />
+            <span className={classes.scorePoints}> points</span>
           </Typography>
           <Typography className={classes.scoreCO2} color="textSecondary">
-            {Math.round(co2 *100)/100} kg CO₂
+            <CountUp
+              end={Math.round(co2 *100)/100}
+              duration={5} />
+            kg CO₂
           </Typography>
           <Typography className={classes.text2} color="textSecondary">
             {text2}
