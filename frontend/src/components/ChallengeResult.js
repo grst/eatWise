@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
+import Sound from 'react-sound';
 
 import Avatar from "@material-ui/core/Avatar/Avatar";
 import Typography from '@material-ui/core/Typography';
@@ -98,7 +99,6 @@ const User = withStyles(userStyles)(function ({user, classes, className = "", na
       <Typography className={classes.co2}>
         {Math.round(user.co2 * 10) / 10} kg
       </Typography>
-
     </div>
   );
 });
@@ -169,11 +169,17 @@ class ChallengeResult extends Component {
             <div className="animated slideInDown">
             {isWinner ?
               <Typography className={classes.statusText}>
+                <audio autoPlay>
+                   <source src="/sounds/we-are-the-champions-copia.mp3" type="audio/mp3"/>
+                </audio>
                 You <b>win</b>.
                 <img alt="winner" src="/img/result/winner.gif" className={classes.winnerImg} />
               </Typography>
             :
               <Typography className={classes.statusText}>
+                <audio autoPlay>
+                   <source src="/sounds/pyro-loser-2.mp3" type="audio/mp3"/>
+                </audio>
                 You <b>loose</b>.
                 <img alt="looser" src="/img/result/looser.gif" className={classes.looserImg} />
               </Typography>
