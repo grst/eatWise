@@ -24,7 +24,7 @@ function normalizeProducts(products){
 
 
 class Store {
-	@observable username = localStorage.getItem("username") || "Sebastian";
+	@observable username = localStorage.getItem("username") || "Mari";
 	@observable user = JSON.parse(localStorage.getItem("user")) || {};
   @observable products = JSON.parse(localStorage.getItem("products")) || [];
   @observable users = JSON.parse(localStorage.getItem("users")) || [];
@@ -32,7 +32,6 @@ class Store {
 	@observable purchase = JSON.parse(localStorage.getItem("purchase")) || {};
 
 	//current adversary of an ongoing challenge
-	@observable adversary = JSON.parse(localStorage.getItem("adversary")) || {};
   @observable challengeResult = JSON.parse(localStorage.getItem("challengeResult")) || {
     status: "lost"
   }
@@ -84,7 +83,7 @@ class Store {
 
   @action async challengeFriend(friend) {
     console.log("Starting challenge with: ", friend.username);
-    const data = (await api.post('/startChallenge', this.challengeObject())).data;
+    const data = (await api.post('/startChallenge', this.challengeObject(friend))).data;
     runInAction(() => {
       set(this.challengeResult, data);
     });
@@ -98,10 +97,10 @@ class Store {
     });
   }
 
-  challengeObject() {
+  challengeObject(friend) {
     return  {
       Me: this.username,
-      Adversary: this.adversary.username,
+      Adversary: friend.username,
     };
   }
   updatePeriod = 2000; // in ms
@@ -144,7 +143,7 @@ class Store {
 const store = new Store();
 
 // cache in local storage
-["purchase", "adversary", "user", "users", "products"].forEach(key => {
+["purchase", "user", "users", "products"].forEach(key => {
   observe(store[key], () => {
     const value = JSON.stringify(toJS(store[key]));
     localStorage.setItem(key, value);

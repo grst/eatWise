@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
+import { toJS } from 'mobx';
 import { observer } from 'mobx-react';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
@@ -80,8 +81,9 @@ class Friends extends Component {
         { filteredUsers.length > 0 &&
         <List dense={false}>
           { _.sortBy(filteredUsers, [function(x) {return(-x.points)}]).map(u =>
-            <Friend user={u} key={u.id} onClick={this.onClick.bind(this, u)}
-                    enabled={u.id !== store.user.id} />
+            <Friend user={u} key={u.id}
+                onClick={this.onClick.bind(this, u)}
+                enabled={u.id !== store.user.id} />
           )}
         </List>
         }

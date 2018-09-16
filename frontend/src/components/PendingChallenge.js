@@ -35,6 +35,7 @@ const styles = {
   },
   loader: {
     padding: "2em",
+    animationDuration: "6000ms",
   },
   pendingChallenge: {
     textAlign: 'center'
@@ -54,12 +55,12 @@ class PendingChallenge extends Component {
   //}
 
   componentDidMount() {
-    store.pageTitle = `${store.adversary.username}'s challenge`;
     this.interval = setInterval(function() {
       store.checkForOngoingChallenges();
     }, store.updatePeriod);
+    this.updateTitle();
     this.cancelObservation = observe(store.challengeResult, () => {
-      console.log("FF", store.challengeResult);
+      this.updateTitle();
       if (store.isChallengeFinished) {
         this.props.history.push("/challenge-result");
         this.componentWillUnmount(); // be sure to avoid any overlaps
@@ -67,6 +68,10 @@ class PendingChallenge extends Component {
     });
   }
 
+  updateTitle() {
+    const username = store.otherPlayer || {username: ""};
+    store.pageTitle = `${username.username}'s challenge`;
+  }
   componentWillUnmount() {
     if (this.interval) {
       clearInterval(this.interval);
@@ -80,15 +85,15 @@ class PendingChallenge extends Component {
 
   render() {
     const { classes } = this.props;
-    const username = store.adversary.username;
+    const otherUser = store.otherPlayer || {username: ""};
     const size = document.body.offsetWidth * 0.2;
     return (
         <div className={classes.pendingChallenge}>
-          <h2>{username} has been challenged.</h2>
+          <h2>{otherUser.username} has been challenged.</h2>
           <br />
-          You will be notified once {username} completed the challenge!
+          You will be notified once {otherUser.username} completed the challenge!
           <div
-              className={classes.loader}
+              className={classNames(classes.loader, "animated swing")}
           >
             <PacmanLoader
               sizeUnit={"px"}
