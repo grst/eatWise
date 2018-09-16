@@ -6,8 +6,6 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
-import Sound from 'react-sound';
-
 import Avatar from "@material-ui/core/Avatar/Avatar";
 import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
