@@ -5,6 +5,13 @@ Eat wise allows you to make informed decisions about the ecological
 impact of your grocery shopping. 
 
 <p align="center">
+    <img height="600" User profile" src="https://github.com/grst/eatWise/blob/master/uxflow.gif" />
+</p>
+
+More screenshots
+-------------------
+
+<p align="center">
     <img height="600" User profile" src="https://user-images.githubusercontent.com/4370550/45688079-b730b300-bb50-11e8-87c0-0c379c2ca5c5.png" />
 </p>
 <p align="center">
